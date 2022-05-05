@@ -1,7 +1,7 @@
 import request from 'superagent'
 
 export const RECIEVE_COSTS = 'RECEIVE_COSTS'
-export const LOAD_FREQUENCY = 'LOAD_FREQUENCY'
+export const UPDATE_FREQUENCY = 'UPDATE_FREQUENCY'
 export const LOAD_FINANCIALS = 'LOAD_FINANCIALS'
 export const SHOW_ERROR = 'SHOW_ERROR'
 
@@ -9,7 +9,7 @@ export const SHOW_ERROR = 'SHOW_ERROR'
 export function recieveCosts(costs) {
   return {
     type: RECIEVE_COSTS,
-    cost,
+    costs,
   }
 }
 
@@ -20,12 +20,23 @@ export function showError(errorMessage) {
   }
 }
 
-export function loadFrequency(freq) {}
+export function updateFrequency(costs) {
+  return {
+    type: UPDATE_FREQUENCY,
+    costs,
+  }
+}
+
+export function loadFinancials(financials) {
+  return {
+    type: LOAD_FINANCIALS,
+    financials,
+  }
+}
 
 // THUNKS
 
 export function getCosts() {
-  console.log('heelo')
   return (dispatch) => {
     return request
       .get('/api/v1/costs/')
