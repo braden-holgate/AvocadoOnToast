@@ -17,8 +17,8 @@ function timeCostPerYear(item) {
 
 
 
-
-console.log(utils.afterTaxIncomePerYear(90000))
+// console.log(utils.salaryPerYear(3000, 'fortnight'))
+// console.log(utils.afterTaxIncomePerYear(90000))
 
 module.exports = {
   timeCostPerItem,
