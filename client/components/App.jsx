@@ -12,12 +12,22 @@ function App () {
       <header className="header">
       </header>
       <section className="main">
+        {/* <Nav />
+        <Welcome />
+        <Questions />
+        <YearsToRetire />
+        <TimeCostTable />
+        <Footer /> */}
+
+        {/* {------Jessie's test----------} */}
+
         <Nav />
         <Welcome />
         <Questions />
         <YearsToRetire />
         <TimeCostTable />
         <Footer />
+
       </section>
     </>
   )
