@@ -5,6 +5,7 @@ import Questions from './Questions'
 import TimeCostTable from './TimeCostTable'
 import Welcome from './Welcome'
 import YearsToRetire from './YearsToRetire'
+import Test from './Test'
 
 function App () {
   return (
@@ -12,6 +13,7 @@ function App () {
       <header className="header">
       </header>
       <section className="main">
+        <Test />
         <Nav />
         <Welcome />
         <Questions />
