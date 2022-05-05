@@ -59,4 +59,4 @@ At this stage we should be able to view our information. Below are suggested nex
 - Could you add an external API (maybe an inspirational quote in the footer?)
 - If you haven't already, CSS!
 
-Edit to test config
+Edit to test configuration
