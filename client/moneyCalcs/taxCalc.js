@@ -41,7 +41,6 @@ function afterTaxIncomePerYear(preTaxIncomePerYear) {
 }
 
 
+// console.log(afterTaxIncomePerYear(80000))
 
-
-
-console.log(afterTaxIncomePerYear(80000))
+module.exports = afterTaxIncomePerYear
