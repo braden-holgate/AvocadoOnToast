@@ -5,7 +5,7 @@ export const LOAD_FREQUENCY = 'LOAD_FREQUENCY'
 export const LOAD_FINANCIALS = 'LOAD_FINANCIALS'
 export const SHOW_ERROR = 'SHOW_ERROR'
 
-//ACTION CREATORS
+// ACTION CREATORS
 export function recieveCosts(costs) {
   return {
     type: RECIEVE_COSTS,
@@ -20,13 +20,17 @@ export function showError(errorMessage) {
   }
 }
 
-export function loadFrequency(freq)
-//THUNKS
+export function loadFrequency(freq) {}
+
+// THUNKS
+
 export function getCosts() {
+  console.log('heelo')
   return (dispatch) => {
     return request
       .get('/api/v1/costs/')
       .then((res) => {
+        console.log(res.body)
         dispatch(recieveCosts(res.body))
         return null
       })
@@ -35,4 +39,3 @@ export function getCosts() {
       })
   }
 }
-
