@@ -3,8 +3,10 @@ import React from 'react'
 function YearsToRetire () {
   return (
     <>
-    <h2>This is how many years you currently have until you can retire:</h2>
-    <div>00</div>
+      <section className="section has-background-light has-text-centered is-size-3 ">
+        <h2>Years to retire:</h2>
+        <p id="years">90</p>
+      </section>
     </>
   )
 }
