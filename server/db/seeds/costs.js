@@ -5,8 +5,7 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex('Costs').insert([
         { id: 1, item: 'coffee', cost: 5.00 },
-        { id: 2, item: 'lunch', cost: 15.00 },
-        { id: 3, item: 'dinner', cost: 25.00 }
+        { id: 2, item: 'eatingOut', cost: 20.00 }
       ])
     })
 }
