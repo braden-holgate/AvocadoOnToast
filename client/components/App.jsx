@@ -1,4 +1,5 @@
 import React from 'react'
+import Footer from './Footer'
 import Nav from './Nav'
 import Questions from './Questions'
 import TimeCostTable from './TimeCostTable'
@@ -9,7 +10,6 @@ function App () {
   return (
     <>
       <header className="header">
-        <h1>Money days</h1>
       </header>
       <section className="main">
         <Nav />
@@ -17,7 +17,7 @@ function App () {
         <Questions />
         <YearsToRetire />
         <TimeCostTable />
-        
+        <Footer />
       </section>
     </>
   )
