@@ -1,20 +1,27 @@
-body {
-  position: absolute;
-  top: 0;
-  left: 0;
-  margin: 0;
-  padding: 20px;
-  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-li {
-  list-style: none;
-  margin: 5px;
-  padding: 10px;
-}
-
-ul {
-  display: flex;
-}
+@charset "utf-8";
 
 
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&family=Space+Mono&display=swap');
+
+
+// Import custom variables and Bulma overides
+@import "./variables.scss";
+
+// Import only what you need from Bulma
+@import "bulma/sass/utilities/_all.sass";
+@import "bulma/sass/base/_all.sass";
+@import "bulma/sass/elements/button.sass";
+@import "bulma/sass/elements/container.sass";
+@import "bulma/sass/elements/title.sass";
+@import "bulma/sass/form/_all.sass";
+@import "bulma/sass/components/navbar.sass";
+@import "bulma/sass/layout/hero.sass";
+@import "bulma/sass/layout/section.sass";
+@import "bulma/sass/helpers/color.sass";
+@import "bulma/sass/helpers/spacing.sass";
+@import "bulma/sass/helpers/typography.sass";
+@import "bulma/sass/helpers/flexbox.sass";
+@import "bulma/sass/grid/columns.sass";
