@@ -48,6 +48,7 @@
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.1",
+    "@types/react-edit-text": "^4.4.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.0.2",
     "eslint": "7.20.0",
@@ -74,6 +75,7 @@
     "express": "^4.17.1",
     "knex": "^1.0.2",
     "pg": "^8.5.1",
+    "react-edit-text": "^4.4.0",
     "superagent": "^6.1.0"
   }
 }
