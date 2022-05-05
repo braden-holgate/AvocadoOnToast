@@ -13,13 +13,16 @@ function App () {
       <header className="header">
       </header>
       <section className="main">
+
         <Test />
+
         <Nav />
         <Welcome />
         <Questions />
         <YearsToRetire />
         <TimeCostTable />
         <Footer />
+
       </section>
     </>
   )
