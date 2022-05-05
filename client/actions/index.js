@@ -1,15 +1,15 @@
 import request from 'superagent'
 
 export const RECIEVE_COSTS = 'RECEIVE_COSTS'
-export const LOAD_FREQUENCY = 'LOAD_FREQUENCY'
+export const UPDATE_FREQUENCY = 'UPDATE_FREQUENCY'
 export const LOAD_FINANCIALS = 'LOAD_FINANCIALS'
 export const SHOW_ERROR = 'SHOW_ERROR'
 
-//ACTION CREATORS
+// ACTION CREATORS
 export function recieveCosts(costs) {
   return {
     type: RECIEVE_COSTS,
-    cost,
+    costs,
   }
 }
 
@@ -20,13 +20,28 @@ export function showError(errorMessage) {
   }
 }
 
-export function loadFrequency(freq)
-//THUNKS
+export function updateFrequency(costs) {
+  return {
+    type: UPDATE_FREQUENCY,
+    costs,
+  }
+}
+
+export function loadFinancials(financials) {
+  return {
+    type: LOAD_FINANCIALS,
+    financials,
+  }
+}
+
+// THUNKS
+
 export function getCosts() {
   return (dispatch) => {
     return request
       .get('/api/v1/costs/')
       .then((res) => {
+        console.log(res.body)
         dispatch(recieveCosts(res.body))
         return null
       })
@@ -35,4 +50,3 @@ export function getCosts() {
       })
   }
 }
-

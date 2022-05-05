@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux'
-
-// import stuff from './stuff'
+import costs from './costs'
+import financials from './financials'
 
 export default combineReducers({
-  // stuff
+  costs,
+  financials,
 })
