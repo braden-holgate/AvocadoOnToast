@@ -1,6 +1,23 @@
 import React from 'react'
 
 function Questions () {
+  // shape of financials state
+  // {
+  //   income: null,
+  //   incomePeriod: null,
+  //   currentSavings: null,
+  //   savings: null,
+  //   savingsPeriod: null,
+  //   hoursWorkedPerWeek: null,
+  // }
+
+  // shape of costs state
+  //   [{
+  //    id: 1,        <- DB
+  //    item: coffee,     <- DB
+  //    cost: 5,       <- DB
+  //    frequencyPerWeek: 3}, <- user input, default 0
+  //   ]
   return (
     <>
       <section className="section has-background-white has-text-centered is-size-5">
