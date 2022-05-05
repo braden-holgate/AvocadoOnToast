@@ -58,3 +58,5 @@ At this stage we should be able to view our information. Below are suggested nex
 - Is there any complex data you chose to not include earlier or any way you could expand this dataset?
 - Could you add an external API (maybe an inspirational quote in the footer?)
 - If you haven't already, CSS!
+
+Edit to test config
