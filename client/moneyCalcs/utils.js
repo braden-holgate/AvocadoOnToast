@@ -1,5 +1,5 @@
+// CALCULATE AFTER TAX INCOME PER YEAR
 // input: pre-tax income per YEAR
-
 // output: estimated after-tax income per YEAR
 
 // Assumptions:
@@ -41,6 +41,6 @@ function afterTaxIncomePerYear(preTaxIncomePerYear) {
 }
 
 
-// console.log(afterTaxIncomePerYear(80000))
-
-module.exports = afterTaxIncomePerYear
+module.exports = {
+  afterTaxIncomePerYear
+}
