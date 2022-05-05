@@ -25,3 +25,28 @@
 @import "bulma/sass/helpers/typography.sass";
 @import "bulma/sass/helpers/flexbox.sass";
 @import "bulma/sass/grid/columns.sass";
+
+
+
+#years{
+  font-size: 100px;
+}
+
+.banner-words{
+  position:relative;
+  display:inline-block;
+}
+
+.banner-line1{
+  position:absolute;
+  bottom:550px;
+  width:100%;
+  text-align: center;
+}
+
+.banner-line2{
+  position:absolute;
+  bottom:500px;
+  width:100%;
+  text-align: center;
+}

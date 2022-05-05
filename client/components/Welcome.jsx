@@ -3,8 +3,17 @@ import React from 'react'
 function Welcome () {
   return (
     <>
-    <h1>Welcome to the start of your journey to financial Freedom!</h1>
-    <h3>Fill in the quick questions to below to get started and paint a picture of your current money life status.</h3>
+
+      <section className="hero has-background-light ">
+        <div className="banner-words">
+          <p className='title banner-line1'>Welcome to the start of your journey to financial Freedom!</p>
+          <p className='subtitle banner-line2'>Fill in the quick questions to below to get started and paint a picture of your current money life status.</p>
+          <figure className="image columns is-flex is-centered">
+            <img src="images/banner3.jpg" />
+          </figure>
+        </div>
+      </section>
+
     </>
   )
 }

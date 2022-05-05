@@ -4,14 +4,29 @@ function Footer
 () {
   return (
     <>
-      <ul>
-        <li>Muer</li>
-        <li>Kate</li>
-        <li>Jessie</li>
-        <li>Braden</li>
-        <li>Louisa</li>
-      </ul>
-      <p>&copy; Money or Life EDA 2022 </p>
+      <div className="has-text-centered has-background-light is-size-6 ">
+        <div className="columns">
+          <div className="column">
+        Muer
+          </div>
+          <div className="column">
+        Kate
+          </div>
+          <div className="column">
+        Jessie
+          </div>
+          <div className="column">
+        Braden
+          </div>
+          <div className="column">
+        Louisa
+          </div>
+        </div>
+
+        <p >
+        &copy; Money or Life EDA 2022
+        </p>
+      </div>
     </>
   )
 }
