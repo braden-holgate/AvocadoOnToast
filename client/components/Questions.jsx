@@ -108,7 +108,7 @@ dispatch(loadFinancials(financials))
 
 
           <select onChange={incomeFrequency} defaultValue={incomePeriod}>
-            <option selected value="week">
+            <option  value="week">
               Week
             </option>
             <option value="fortnight">Fortnight</option>
@@ -129,7 +129,7 @@ dispatch(loadFinancials(financials))
             onChange={handleSavings}
           />
           <select onChange={savingFrequency} defaultValue={savingsPeriod}>
-            <option selected value="week">
+            <option  value="week">
               Week
             </option>
             <option value="fortnight">Fortnight</option>
