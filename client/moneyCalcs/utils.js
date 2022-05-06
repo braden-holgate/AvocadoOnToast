@@ -1,13 +1,13 @@
-// NORMALISE SALARY INPUT DATA TO PER YEAR
+// NORMALISE MONETARY INPUT DATA TO PER YEAR
 
-function incomePerYear(income, incomePeriod) {
-  if (incomePeriod == 'week') 
-    return income * 52
-  else if (incomePeriod == 'fortnight')
-    return income * 26
-  else if (incomePeriod == 'year')
-    return income
-  else return console.log(`Error! '${incomePeriod}' does not match any of the available options in the incomePerYear function in client/moneyCalcs/utils`)
+function moneyPerYear(value, valuePeriod) {
+  if (valuePeriod == 'week') 
+    return value * 52
+  else if (valuePeriod == 'fortnight')
+    return value * 26
+  else if (valuePeriod == 'year')
+    return value
+  else return console.log(`Error! '${valuePeriod}' does not match any of the available options in the moneyPerYear function in client/moneyCalcs/utils`)
 }
 
 
@@ -27,7 +27,7 @@ function incomePerYear(income, incomePeriod) {
 
 // EXPORTED FUNCTION
 function afterTaxIncomePerYear(income, incomePeriod) {
-  const preTaxIncomePerYear = incomePerYear(income, incomePeriod)
+  const preTaxIncomePerYear = moneyPerYear(income, incomePeriod)
   const takeHomePercent = calcTakeHomePercent(preTaxIncomePerYear)
   return Math.round(preTaxIncomePerYear * takeHomePercent)
 }
