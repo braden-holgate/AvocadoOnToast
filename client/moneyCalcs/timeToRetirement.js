@@ -10,14 +10,13 @@ const yearsToRetireArray = [
   4.1,3.8,3.5, 3.2,2.9,2.7,2.4,2.1,1.8,1.6,1.3,1,0.8,0.5,0.3,0
 ]
 
-function yearsToRetirement (income, savings) {
-  const afterTax = utils.afterTaxIncomePerYear(income)
-  console.log(afterTax)
-  const savingsRateRough = savings/afterTax
-  const savingsRate = savingsRateRough.toFixed(2)
+function yearsToRetirement (income, incomePeriod, savings, savingsPeriod) {
+  const savingsNormalised = utils.moneyPerYear(savings, savingsPeriod)
+  const afterTax = utils.afterTaxIncomePerYear(income, incomePeriod)
+  const savingsRate = (savingsNormalised/afterTax).toFixed(2)
   const index = (savingsRate*100)
   const yearsToRetire = yearsToRetireArray[index]
-  console.log(index)
+
   if (savingsRate > 1) {
     return "Woah! You're saving more than your after tax income! Retire today!"
   } else if (yearsToRetire == 0) {
@@ -26,4 +25,4 @@ function yearsToRetirement (income, savings) {
     return yearsToRetire
   }
 }
-console.log(yearsToRetirement(10000, 6320))
+// console.log(yearsToRetirement(10000, "year", 6000, "year"))
