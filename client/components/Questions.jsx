@@ -1,14 +1,16 @@
 
 import React, { useState } from 'react'
-import { useSelector, dispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { loadFinancials, updateFrequency } from '../actions'
 // import { EditText } from 'react-edit-text'
 // import 'react-edit-text/dist/index.css'
 
 function Questions() {
+
+  const dispatch = useDispatch()
   const [income, setIncome] = useState(null)
   const [incomePeriod, setIncomePeriod] = useState('week')
-  const [currentSavings, setCurrentSavings] = useState(null)
-  //TODO: Clarify savings vs existing savings
+  // const [currentSavings, setCurrentSavings] = useState(null)
   const [savings, setSavings] = useState(null)
   const [savingsPeriod, setSavingsPeriod] = useState('week')
   const [hoursWorkedPerWeek, setHoursWorkedPerWeek] = useState(null)
@@ -20,14 +22,14 @@ function Questions() {
     frequencyPerWeek: 0,
   })
   const [eatingOutCost, setEatingOutCost] = useState({
-    id: 1,
+    id: 2,
     item: 'eatingOut',
     cost: 20,
     frequencyPerWeek: 0,
   })
 
   const handleIncome = (e) => {
-    setIncome(e.target.value)
+    setIncome(Number(e.target.value))
 
   }
 
@@ -36,19 +38,19 @@ function Questions() {
   }
 
   const handleSavings = (e) => {
-    setSavings(e.target.value)
+    setSavings(Number(e.target.value))
   }
 
   const savingFrequency = (e) => {
     setSavingsPeriod(e.target.value)
   }
 
-  const handleCurrentSavings = (e) => {
-    setCurrentSavings(e.target.value)
-  }
+  // const handleCurrentSavings = (e) => {
+  //   setCurrentSavings(e.target.value)
+  // }
 
   const handleHoursInput = (e) => {
-    setHoursWorkedPerWeek(e.target.value)
+    setHoursWorkedPerWeek(Number(e.target.value))
   }
 
   const handleCoffee = (e) => {
@@ -63,6 +65,23 @@ function Questions() {
       ...eatingOutCost,
       frequencyPerWeek: e.target.value,
     })
+  }
+
+
+  const handleCalculate = (e) => {
+e.preventDefault()
+let costsArray = []
+costsArray.push(coffeeCost, eatingOutCost)
+
+const financials = {
+  ...{income}, 
+  ...{incomePeriod}, 
+  ...{savings}, 
+  ...{savingsPeriod}, 
+  ...{hoursWorkedPerWeek}}
+
+dispatch(updateFrequency(costsArray))
+dispatch(loadFinancials(financials))
   }
 
   return (
@@ -118,8 +137,7 @@ function Questions() {
           </select>
         </div>
 
-
-        <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
+        {/* <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
             <label className="mr-2">
               How much do you currently have saved?
@@ -132,15 +150,15 @@ function Questions() {
             placeholder="Enter how much you already have saved here"
             defaultValue={currentSavings}
             onChange={handleCurrentSavings}
-          />
-        </div>
+          /> */}
+        {/* </div> */}
         {/* single numerical input - we probably need to do `Number('user input')` */}
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
             <label className="mr-2">How many hours per week do you work?</label>
           </strong>
           <input
-            name="current-savings"
+            name="hours-worked"
             type="text"
             style={{ width: '200px', padding: '5px', border: '2px solid #ccc' }}
             placeholder="Enter how many hours per week do you work"
@@ -180,6 +198,7 @@ function Questions() {
             onChange={handleEatingOut}
           />
         </div>
+        <button onClick={handleCalculate} type='submit'>Calculate</button>
       </section>
     </>
   )
