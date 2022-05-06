@@ -2,8 +2,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { loadFinancials, updateFrequency } from '../actions'
-// import { EditText } from 'react-edit-text'
-// import 'react-edit-text/dist/index.css'
 
 function Questions() {
 
@@ -69,9 +67,9 @@ function Questions() {
 
 
   const handleCalculate = (e) => {
-e.preventDefault()
-let costsArray = []
-costsArray.push(coffeeCost, eatingOutCost)
+    e.preventDefault()
+    let costsArray = []
+    costsArray.push(coffeeCost, eatingOutCost)
 
 const financials = {
   ...{income}, 
@@ -105,7 +103,6 @@ dispatch(loadFinancials(financials))
             defaultValue={income}
             onChange={handleIncome}
           />
-
 
           <select onChange={incomeFrequency} defaultValue={incomePeriod}>
             <option  value="week">
@@ -152,7 +149,7 @@ dispatch(loadFinancials(financials))
             onChange={handleCurrentSavings}
           /> */}
         {/* </div> */}
-        {/* single numerical input - we probably need to do `Number('user input')` */}
+        
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
             <label className="mr-2">How many hours per week do you work?</label>
