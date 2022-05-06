@@ -11,8 +11,7 @@ function YearsToRetire () {
   // console.log(util.yearsToRetirement(income, incomePeriod, savings, savingsPeriod))
 
   useEffect(() => {
-      let tempYears = util.yearsToRetirement(income, incomePeriod, savings, savingsPeriod)
-      setYears(tempYears)
+      setYears(util.yearsToRetirement(income, incomePeriod, savings, savingsPeriod))
   }, [financials])
 
   return (
