@@ -60,4 +60,5 @@ function calcTakeHomePercent(preTaxIncomePerYear) {
 
 module.exports = {
   afterTaxIncomePerYear,
+  moneyPerYear
 }
