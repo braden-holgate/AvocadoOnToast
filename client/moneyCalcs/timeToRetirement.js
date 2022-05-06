@@ -13,10 +13,15 @@ const yearsToRetireArray = [
 function yearsToRetirement (income, incomePeriod, savings, savingsPeriod) {
   const savingsNormalised = utils.moneyPerYear(savings, savingsPeriod)
   const afterTax = utils.afterTaxIncomePerYear(income, incomePeriod)
-  const savingsRate = (savingsNormalised/afterTax).toFixed(2)
-  const index = (savingsRate*100)
-  const yearsToRetire = yearsToRetireArray[index]
 
+  const savingsRate = roundTo((savingsNormalised/afterTax), 2)
+  const index = roundTo((savingsRate*100), 0)
+  const yearsToRetire = yearsToRetireArray[index]
+  console.log('aftertax' + afterTax)
+  console.log('savings' + savingsNormalised)
+  console.log(savingsRate)
+  console.log(index)
+  console.log(yearsToRetire)
   if (savingsRate > 1) {
     return "Woah! You're saving more than your after tax income! Retire today!"
   } else if (yearsToRetire == 0) {
@@ -25,4 +30,25 @@ function yearsToRetirement (income, incomePeriod, savings, savingsPeriod) {
     return yearsToRetire
   }
 }
+
+function roundTo(n, digits) {
+  var negative = false;
+  if (digits === undefined) {
+      digits = 0;
+  }
+  if (n < 0) {
+      negative = true;
+      n = n * -1;
+  }
+  var multiplicator = Math.pow(10, digits);
+  n = parseFloat((n * multiplicator).toFixed(11));
+  n = (Math.round(n) / multiplicator).toFixed(digits);
+  if (negative) {
+      n = (n * -1).toFixed(digits);
+  }
+  return n;
+}
 // console.log(yearsToRetirement(10000, "year", 6000, "year"))
+module.exports = {
+  yearsToRetirement,
+}

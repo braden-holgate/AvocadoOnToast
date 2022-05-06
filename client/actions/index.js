@@ -41,7 +41,6 @@ export function getCosts() {
     return request
       .get('/api/v1/costs/')
       .then((res) => {
-        console.log(res.body)
         dispatch(recieveCosts(res.body))
         return null
       })
