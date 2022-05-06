@@ -25,10 +25,11 @@
 @import "bulma/sass/helpers/typography.sass";
 @import "bulma/sass/helpers/flexbox.sass";
 @import "bulma/sass/grid/columns.sass";
+@import "bulma/sass/elements/table.sass";
 
 
 #wrapper{
-  background-color: rgb(110, 110, 110);
+  background-color: rgb(255, 255, 255);
   max-width: 1024px;
   margin:0 auto;
 }
