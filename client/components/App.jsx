@@ -6,11 +6,13 @@ import Home from './Home'
 function App() {
   return (
     <>
+    <div id="wrapper">
       <header className="header"></header>
-      <section className="main">
+      <div className="main">
         <Test />
         <Home />
-      </section>
+      </div>
+      </div>
     </>
   )
 }

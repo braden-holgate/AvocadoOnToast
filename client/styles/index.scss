@@ -27,6 +27,11 @@
 @import "bulma/sass/grid/columns.sass";
 
 
+#wrapper{
+  background-color: rgb(110, 110, 110);
+  max-width: 1024px;
+  margin:0 auto;
+}
 
 #years{
   font-size: 100px;
@@ -49,4 +54,8 @@
   bottom:500px;
   width:100%;
   text-align: center;
+}
+
+.banner{
+  width:1024px;
 }

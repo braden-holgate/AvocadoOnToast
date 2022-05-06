@@ -9,11 +9,16 @@ function TimeCostTable
       <section className="section columns has-background-white is-centered ">
         <table className="table is-hoverable ">
           <thead>
+          <tr>
            {
              Object.values(headers).map(header=>{
-               return(<th key={header}>{header}</th>)
+               
+               return(
+               <th key={header}>{header}</th>)
              })
+
            }
+           </tr>
           </thead>
 
           <tbody>

@@ -9,7 +9,7 @@ function Nav () {
 
   return (
     <>
-      <nav className="navbar">
+      <nav className="">
         <div className="container">
 
           <div className='navbar-start'>
