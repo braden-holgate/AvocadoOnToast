@@ -1,4 +1,4 @@
-import { RECIEVE_COSTS, UPDATE_FREQUENCY } from '../actions'
+import { RECEIVE_COSTS, UPDATE_FREQUENCY } from '../actions'
 
 const initialState = [
   {
@@ -11,7 +11,7 @@ const initialState = [
 
 function costs(state = initialState, action) {
   switch (action.type) {
-    case RECIEVE_COSTS:
+    case RECEIVE_COSTS:
       const newCosts = action.costs.map((item) => {
         item.frequencyPerWeek = 0
         return item
