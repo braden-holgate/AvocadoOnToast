@@ -41,9 +41,9 @@ function Questions() {
     setSavingsPeriod(e.target.value)
   }
 
-  const handleCurrentSavings = (e) => {
-    setCurrentSavings(e.target.value)
-  }
+  // const handleCurrentSavings = (e) => {
+  //   setCurrentSavings(e.target.value)
+  // }
 
   const handleHoursInput = (e) => {
     setHoursWorkedPerWeek(e.target.value)
@@ -115,7 +115,7 @@ function Questions() {
           </select>
         </div>
 
-        <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
+        {/* <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
             <label className="mr-2">
               How much do you currently have saved?
@@ -128,15 +128,15 @@ function Questions() {
             placeholder="Enter how much you already have saved here"
             defaultValue={currentSavings}
             onChange={handleCurrentSavings}
-          />
-        </div>
+          /> */}
+        {/* </div> */}
         {/* single numerical input - we probably need to do `Number('user input')` */}
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
             <label className="mr-2">How many hours per week do you work?</label>
           </strong>
           <input
-            name="current-savings"
+            name="hours-worked"
             type="text"
             style={{ width: '200px', padding: '5px', border: '2px solid #ccc' }}
             placeholder="Enter how many hours per week do you work"
