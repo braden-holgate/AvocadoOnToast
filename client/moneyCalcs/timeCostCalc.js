@@ -7,7 +7,7 @@ const costs = {
   id: 1,
   item: 'coffee',
   cost: 5,
-  frequencyPerWeek: 3,
+  frequencyPerWeek: 12,
 }
 
 // test financials object
@@ -24,45 +24,75 @@ function timeCostObjCreator(itemCostsObj, financialsObj) {
   ({ id, item, cost, frequencyPerWeek } = itemCostsObj);
   ({ income, incomePeriod, hoursWorkedPerWeek } = financialsObj);
 
-  console.log(id, item, cost, frequencyPerWeek);
-  console.log( income, incomePeriod, hoursWorkedPerWeek);
+  const minutesPerItem = timeCostPerItem(income, incomePeriod, hoursWorkedPerWeek, cost)
+  const minutesPerWeek = timeCostPerWeek(minutesPerItem, frequencyPerWeek)
+  const minutesPerYear = timeCostPerYear(minutesPerWeek)
 
+  return {
+    item: item,
+    timeCostPerItem: determineUnit(minutesPerItem),
+    timeCostPerWeek: determineUnit(minutesPerWeek),
+    timeCostPerYear: determineUnit(minutesPerYear)
+  }
+}
+console.log(timeCostObjCreator(costs, financials))
 
-  return null //{
-  //   item: item,
-  //   timeCostPerItem: null,
-  //   timeCostPerWeek: null,
-  //   timeCostPerYear: null
-  // }
+// the below function takes an input in minutes
+function determineUnit(timeInMinutes) {
+  const timeCostObj = {
+    timeValue: null,
+    unit: null
+  }
+  const minutesInHour = 60 // 1 hour in minutes
+  const minutesInDay = 24 * minutesInHour // 1 day in minutes
+  const minutesInWeek = 7 * minutesInDay // 1 week in minutes
+
+  if (timeInMinutes > minutesInWeek) {
+    timeCostObj.timeValue = (timeInMinutes / minutesInWeek).toFixed(1)
+    timeCostObj.unit = 'weeks'
+  } 
+  else if (timeInMinutes > minutesInDay) {
+    timeCostObj.timeValue = (timeInMinutes / minutesInDay).toFixed(1)
+    timeCostObj.unit = 'days'
+  }
+  else if (timeInMinutes > minutesInHour) {
+    timeCostObj.timeValue = (timeInMinutes / minutesInHour).toFixed(1)
+    timeCostObj.unit = 'hours'
+  }
+  else {
+    timeCostObj.timeValue = timeInMinutes.toFixed(0)
+    timeCostObj.unit = 'minutes'
+  }
+  return timeCostObj
 }
 
-// timeCostObjCreator(costs, financials)
-
 function timeValuePerMinute(income, incomePeriod, hoursWorkedPerWeek) {
-
   const annualAfterTaxIncome = utils.afterTaxIncomePerYear(income, incomePeriod)
-  
-  console.log(annualAfterTaxIncome)
-
   const weeklyIncomeAfterTax = annualAfterTaxIncome / 52
   const dollarsPerHour = weeklyIncomeAfterTax / hoursWorkedPerWeek
-  // console.log(dollarsPerHour)
   const dollarsPerMinute = dollarsPerHour / 60
   return dollarsPerMinute
 }
+// console.log('dollars per minute: ', timeValuePerMinute(3000, 'fortnight', 40))
 
-console.log(timeValuePerMinute(3000, 'fortnight', 40))
-
-function timeCostPerItem(timeValuePerMinute, cost) {
-  return 
-
+function timeCostPerItem(income, incomePeriod, hoursWorkedPerWeek, cost) {
+  const dollarsPerMinute = timeValuePerMinute(income, incomePeriod, hoursWorkedPerWeek)
+  const minutesPerItem = cost/dollarsPerMinute
+  return minutesPerItem
+  // return Math.round(minutesPerItem)
 }
+// console.log('Time cost per item: ', timeCostPerItem(3000, 'fortnight', 40, 5))
 
-function timeCostPerWeek(item) {}
+function timeCostPerWeek(minutesPerItem, frequencyPerWeek) {
+  const minutesPerWeek = minutesPerItem * frequencyPerWeek
+  return minutesPerWeek
+}
+// console.log('Time cost per week: ', timeCostPerWeek (11, 3))
 
-function timeCostPerYear(item) {}
-
-// console.log(utils.salaryPerYear(3000, 'fortnight'))
-// console.log(utils.afterTaxIncomePerYear(90000))
+function timeCostPerYear(minutesPerWeek) {
+  const minutesPerYear = minutesPerWeek * 52
+  return minutesPerYear
+}
+// console.log('Time cost per year: ', timeCostPerYear (33))
 
 module.exports = timeCostObjCreator
