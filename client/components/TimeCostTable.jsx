@@ -2,18 +2,23 @@ import React from 'react'
 
 function TimeCostTable
 () {
-  const headers={item:"Item",perItem:"Per Item",weekly:"Weekly",yearly:"Yearly"}
-  const data=[{item:"Coffee",perItem:"5",weekly:"35",yearly:"150"}]
+  const headers={item:"Item",timeCostPerItem:"Per Item",timeCostPerWeek:"Weekly",timeCostPerYear:"Yearly"}
+  const data=[{item:"Coffee",timeCostPerItem:"5",timeCostPerWeek:"35",timeCostPerYear:"150"}]
   return (
     <>
       <section className="section columns has-background-white is-centered ">
-        <table className="table is-hoverable ">
+        <table className="table is-hoverable">
           <thead>
+          <tr>
            {
              Object.values(headers).map(header=>{
-               return(<th key={header}>{header}</th>)
+               
+               return(
+               <th key={header}>{header}</th>)
              })
+
            }
+           </tr>
           </thead>
 
           <tbody>
