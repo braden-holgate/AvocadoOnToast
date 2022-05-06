@@ -1,14 +1,16 @@
 // NORMALISE SALARY INPUT DATA TO PER YEAR
 
-function salaryPerYear(income, incomePeriod) {
+function incomePerYear(income, incomePeriod) {
   if (incomePeriod == 'week') 
     return income * 52
   else if (incomePeriod == 'fortnight')
     return income * 26
   else if (incomePeriod == 'year')
     return income
-  else return console.log(`Error! '${incomePeriod}' does not match any of the available options in the salaryPerYear function in client/moneyCalcs/utils`)
+  else return console.log(`Error! '${incomePeriod}' does not match any of the available options in the incomePerYear function in client/moneyCalcs/utils`)
 }
+
+
 
 
 // CALCULATE AFTER TAX INCOME PER YEAR
@@ -22,6 +24,13 @@ function salaryPerYear(income, incomePeriod) {
 // pecentage take home pay calculated from https://www.paye.net.nz/calculator/
 // percentage taken based on mid point between two data points (eg lessThan50K based on 45K salary)
 // lowest income based on 35K, highest income based on 135K
+
+// EXPORTED FUNCTION
+function afterTaxIncomePerYear(income, incomePeriod) {
+  const preTaxIncomePerYear = incomePerYear(income, incomePeriod)
+  const takeHomePercent = calcTakeHomePercent(preTaxIncomePerYear)
+  return Math.round(preTaxIncomePerYear * takeHomePercent)
+}
 
 const takeHomePay = [
   { lessThan: 40000, takeHomePercent: 0.8233 },
@@ -48,13 +57,7 @@ function calcTakeHomePercent(preTaxIncomePerYear) {
   }
 }
 
-function afterTaxIncomePerYear(preTaxIncomePerYear) {
-  const takeHomePercent = calcTakeHomePercent(preTaxIncomePerYear)
-  return Math.round(preTaxIncomePerYear * takeHomePercent)
-}
-
 
 module.exports = {
   afterTaxIncomePerYear,
-  salaryPerYear
 }
