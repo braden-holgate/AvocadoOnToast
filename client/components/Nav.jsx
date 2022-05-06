@@ -13,19 +13,19 @@ function Nav () {
         <div className="container">
 
           <div className='navbar-start'>
-            <div>
               <a className="navbar-item">
                 <p className="is-size-4">Money or Life</p>
               </a>
-            </div>
-            <div>
+            <div className='navbar-end'> 
               {loggedIn
-                ? (<div>Logout</div>)
+                ? (<div className="navbar-item button">Logout</div>)
                 : (
                   <>
-                    <div className='navbar-end'>
-                      <div className="navbar-item"onClick={handleLogIn}>Login</div>
-                      <div className="navbar-item">Register</div>
+                    <div>
+                      <div className="navbar-item">
+                        <div className="button"onClick={handleLogIn}>Login</div>
+                        <div className="button">Register</div>
+                      </div>
                     </div>
                   </>
                 )}

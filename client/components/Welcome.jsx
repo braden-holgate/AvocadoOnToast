@@ -9,7 +9,7 @@ function Welcome () {
           <p className='title banner-line1'>Welcome to the start of your journey to financial Freedom!</p>
           <p className='subtitle banner-line2'>Fill in the quick questions to below to get started and paint a picture of your current money life status.</p>
           <figure className="image columns is-flex is-centered">
-            <img src="images/banner3.jpg" />
+            <img src="images/banner4.jpg" />
           </figure>
         </div>
       </section>

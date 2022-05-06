@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react'
 import { useSelector, dispatch } from 'react-redux'
 // import { EditText } from 'react-edit-text'
@@ -27,6 +28,7 @@ function Questions() {
 
   const handleIncome = (e) => {
     setIncome(e.target.value)
+
   }
 
   const incomeFrequency = (e) => {
@@ -84,6 +86,7 @@ function Questions() {
             defaultValue={income}
             onChange={handleIncome}
           />
+
 
           <select onChange={incomeFrequency} defaultValue={incomePeriod}>
             <option selected value="week">
