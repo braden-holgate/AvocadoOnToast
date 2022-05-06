@@ -7,7 +7,7 @@ function TimeCostTable
   return (
     <>
       <section className="section columns has-background-white is-centered ">
-        <table className="table is-hoverable ">
+        <table className="table is-hoverable">
           <thead>
           <tr>
            {
