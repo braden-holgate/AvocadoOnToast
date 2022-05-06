@@ -1,14 +1,16 @@
 
 import React, { useState } from 'react'
-import { useSelector, dispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { loadFinancials, updateFrequency } from '../actions'
 // import { EditText } from 'react-edit-text'
 // import 'react-edit-text/dist/index.css'
 
 function Questions() {
+
+  const dispatch = useDispatch()
   const [income, setIncome] = useState(null)
   const [incomePeriod, setIncomePeriod] = useState('week')
-  const [currentSavings, setCurrentSavings] = useState(null)
-  //TODO: Clarify savings vs existing savings
+  // const [currentSavings, setCurrentSavings] = useState(null)
   const [savings, setSavings] = useState(null)
   const [savingsPeriod, setSavingsPeriod] = useState('week')
   const [hoursWorkedPerWeek, setHoursWorkedPerWeek] = useState(null)
@@ -20,14 +22,14 @@ function Questions() {
     frequencyPerWeek: 0,
   })
   const [eatingOutCost, setEatingOutCost] = useState({
-    id: 1,
+    id: 2,
     item: 'eatingOut',
     cost: 20,
     frequencyPerWeek: 0,
   })
 
   const handleIncome = (e) => {
-    setIncome(e.target.value)
+    setIncome(Number(e.target.value))
 
   }
 
@@ -36,7 +38,7 @@ function Questions() {
   }
 
   const handleSavings = (e) => {
-    setSavings(e.target.value)
+    setSavings(Number(e.target.value))
   }
 
   const savingFrequency = (e) => {
@@ -48,7 +50,7 @@ function Questions() {
   // }
 
   const handleHoursInput = (e) => {
-    setHoursWorkedPerWeek(e.target.value)
+    setHoursWorkedPerWeek(Number(e.target.value))
   }
 
   const handleCoffee = (e) => {
@@ -63,6 +65,23 @@ function Questions() {
       ...eatingOutCost,
       frequencyPerWeek: e.target.value,
     })
+  }
+
+
+  const handleCalculate = (e) => {
+e.preventDefault()
+let costsArray = []
+costsArray.push(coffeeCost, eatingOutCost)
+
+const financials = {
+  ...{income}, 
+  ...{incomePeriod}, 
+  ...{savings}, 
+  ...{savingsPeriod}, 
+  ...{hoursWorkedPerWeek}}
+
+dispatch(updateFrequency(costsArray))
+dispatch(loadFinancials(financials))
   }
 
   return (
@@ -179,6 +198,7 @@ function Questions() {
             onChange={handleEatingOut}
           />
         </div>
+        <button onClick={handleCalculate} type='submit'>Calculate</button>
       </section>
     </>
   )
