@@ -1,5 +1,18 @@
-// input: pre-tax income per YEAR
+// NORMALISE SALARY INPUT DATA TO PER YEAR
 
+function salaryPerYear(income, incomePeriod) {
+  if (incomePeriod == 'week') 
+    return income * 52
+  else if (incomePeriod == 'fortnight')
+    return income * 26
+  else if (incomePeriod == 'year')
+    return income
+  else return console.log(`Error! '${incomePeriod}' does not match any of the available options in the salaryPerYear function in client/moneyCalcs/utils`)
+}
+
+
+// CALCULATE AFTER TAX INCOME PER YEAR
+// input: pre-tax income per YEAR
 // output: estimated after-tax income per YEAR
 
 // Assumptions:
@@ -41,6 +54,7 @@ function afterTaxIncomePerYear(preTaxIncomePerYear) {
 }
 
 
-// console.log(afterTaxIncomePerYear(80000))
-
-module.exports = afterTaxIncomePerYear
+module.exports = {
+  afterTaxIncomePerYear,
+  salaryPerYear
+}
