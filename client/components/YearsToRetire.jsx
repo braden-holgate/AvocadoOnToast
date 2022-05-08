@@ -16,7 +16,7 @@ function YearsToRetire () {
 
   return (
     <>
-      <section className="section has-background-light has-text-centered is-size-3 ">
+      <section className="retire-years section has-text-centered is-size-3 ">
         <h2>Years to retire:</h2>
         <p id="years">{years}</p>
       </section>

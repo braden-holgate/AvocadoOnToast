@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 function Welcome () {
   return (
     <>
@@ -11,7 +12,8 @@ function Welcome () {
           <figure className="welcome image columns is-flex is-centered">
             <img className="banner" src="images/banner4.jpg" />
           </figure>
-        </div>
+        </div>    
+      
       </section>
 
     </>

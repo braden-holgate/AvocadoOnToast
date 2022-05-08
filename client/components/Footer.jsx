@@ -4,7 +4,7 @@ function Footer
 () {
   return (
     <>
-      <div className="has-text-centered has-background-light is-size-6 ">
+      <div className=" footer has-text-centered is-size-6 ">
         <div className="columns">
           <div className="column">
         Muer

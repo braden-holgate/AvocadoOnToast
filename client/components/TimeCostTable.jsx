@@ -14,10 +14,9 @@ const timeCostObjCreator = require('../moneyCalcs/timeCostCalc')
 function TimeCostTable() {
   const costs = useSelector((globalState) => globalState.costs)
   const financials = useSelector((globalState) => globalState.financials)
-  // console.log("costs", costs)
-  // console.log("finan",financials)
 
-  console.log( "=======",timeCostObjCreator(costs[0], financials))
+  const {income, incomePeriod, savings, savingsPeriod} = financials
+  const notNull = income !== null && incomePeriod !== null && savings !== null && savingsPeriod !== null;
 
   const headers = {
     item: 'Item',
@@ -25,20 +24,7 @@ function TimeCostTable() {
     timeCostPerWeek: 'Weekly',
     timeCostPerYear: 'Yearly',
   }
-  const data = [
-    {
-      item: 'coffee',
-      timeCostPerItem: { timeValue: '11', unit: 'minutes' },
-      timeCostPerWeek: { timeValue: '2.1', unit: 'hours' },
-      timeCostPerYear: { timeValue: '4.6', unit: 'days' },
-    },
-    {
-      item: 'eating out',
-      timeCostPerItem: { timeValue: '22', unit: 'minutes' },
-      timeCostPerWeek: { timeValue: '33', unit: 'hours' },
-      timeCostPerYear: { timeValue: '44', unit: 'days' },
-    },
-  ]
+ 
   return (
     <>
       <section className="section columns has-background-white is-centered ">
@@ -52,15 +38,16 @@ function TimeCostTable() {
           </thead>
 
           <tbody>
-            {data.map((item, index) => {
+            {notNull && costs.map((item, index) => {
+              const data = timeCostObjCreator(item, financials);
               return (
                 <tr key={index}>
                   {Object.keys(headers).map((key) => {
                     let value
                     if (key === 'item') {
-                      value = item[key]
+                      value = data[key]
                     } else {
-                      const obj = item[key]
+                      const obj = data[key]
                       value = obj.timeValue + ' ' + obj.unit
                     }
 
