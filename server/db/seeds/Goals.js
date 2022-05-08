@@ -10,28 +10,28 @@ exports.seed = function (knex) {
           goal: `save an extra 2% per year by cancelling Netflix`,
           author: `Barat`,
           rating: `5`,
-          date: `08052022`,
+          date: new Date(Date.now()),
         },
         {
           id: 2,
           goal: 'Make coffee at home to save $15 per week',
           author: 'Sierra',
           rating: 4,
-          date: 10042022,
+          date: new Date(Date.now()),
         },
         {
           id: 3,
           goal: 'Move to a city with lower rents and less commuting time.',
           author: 'Jin',
           rating: 5,
-          date: 10052022,
+          date: new Date(Date.now()),
         },
         {
           id: 4,
           goal: 'Shop around for better rates on my mortgage',
           author: 'Mavis',
           rating: 5,
-          date: 12032022,
+          date: new Date(Date.now()),
         },
       ])
     })
