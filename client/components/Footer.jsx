@@ -24,7 +24,7 @@ function Footer
         </div>
 
         <p >
-        &copy; Money or Life EDA 2022
+        &copy; Avocado.onToast - EDA Piwakawaka 2022
         </p>
       </div>
     </>

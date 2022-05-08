@@ -17,7 +17,7 @@ function Nav () {
                 <figure className="image columns is-flex">
                   <img className="logo" src="images/Logo.png" />
                 </figure>
-                <p className="app-name is-size-3">Advocado on Toast</p>
+                <p className="app-name is-size-3">Avocado.onToast?</p>
               </a>
             <div className='navbar-end'> 
               {loggedIn
