@@ -84,7 +84,7 @@ dispatch(loadFinancials(financials))
 
   return (
     <>
-      <section className="section has-background-white has-text-centered is-size-5">
+      <section className="question section has-text-centered is-size-5">
         <div
           style={{
             whiteSpace: 'nowrap',
@@ -196,6 +196,30 @@ dispatch(loadFinancials(financials))
           />
         </div>
         <button onClick={handleCalculate} type='submit'>Calculate</button>
+       
+       
+        {/* -----Jessie's toggle test-----start----- */}
+         {/* toggle 1 */}
+        <div className='toggle-box'>
+          <label className="label">
+            <div className="toggle">
+              <input className="toggle-state" type="checkbox" name="check" value="check"/>
+            <div className="indicator"></div>
+            </div>
+          </label>
+        </div>
+ 
+       {/* toggle 2 */}
+        <div className='toggle-box'>
+          <label className="label">
+            <div className="toggle">
+              <input className="toggle-state" type="checkbox" name="check" value="check"/>
+            <div className="indicator"></div>
+            </div>
+          </label>
+        </div>
+         {/* -----Jessie's toggle test------end------ */}
+
       </section>
     </>
   )

@@ -9,12 +9,15 @@ function Nav () {
 
   return (
     <>
-      <nav className="">
+      <nav className="navigation">
         <div className="container">
 
           <div className='navbar-start'>
               <a className="navbar-item">
-                <p className="is-size-4">Money or Life</p>
+                <figure className="image columns is-flex">
+                  <img className="logo" src="images/Logo.png" />
+                </figure>
+                <p className="app-name is-size-3">Advocado on Toast</p>
               </a>
             <div className='navbar-end'> 
               {loggedIn
