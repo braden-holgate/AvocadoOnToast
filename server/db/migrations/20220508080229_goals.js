@@ -4,7 +4,7 @@ exports.up = function (knex) {
     table.string('goal')
     table.string('author')
     table.integer('rating')
-    table.datetime('date')
+    table.date('date')
   })
 }
 
