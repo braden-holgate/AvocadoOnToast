@@ -35,7 +35,7 @@ function timeCostObjCreator(itemCostsObj, financialsObj) {
     timeCostPerYear: determineUnit(minutesPerYear)
   }
 }
-console.log(timeCostObjCreator(costs, financials))
+// console.log(timeCostObjCreator(costs, financials))
 
 // the below function takes an input in minutes
 function determineUnit(timeInMinutes) {
