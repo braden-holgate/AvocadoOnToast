@@ -29,13 +29,14 @@ function timeCostObjCreator(itemCostsObj, financialsObj) {
   const minutesPerYear = timeCostPerYear(minutesPerWeek)
 
   return {
-    item: item,
+    item,
     timeCostPerItem: determineUnit(minutesPerItem),
     timeCostPerWeek: determineUnit(minutesPerWeek),
-    timeCostPerYear: determineUnit(minutesPerYear)
+    timeCostPerYear: determineUnit(minutesPerYear),
+    frequencyPerWeek
   }
 }
-console.log(timeCostObjCreator(costs, financials))
+// console.log(timeCostObjCreator(costs, financials))
 
 // the below function takes an input in minutes
 function determineUnit(timeInMinutes) {
