@@ -1,6 +1,8 @@
 import React from 'react'
 import TimeCostTable from './TimeCostTable'
+import TimeCostTableCompare from './TimeCostTableCompare'
 import YearsToRetire from './YearsToRetire'
+import YearsToRetireCompare from'./YearsToRetireCompare'
 
 
 function YearsAndTable() {
@@ -13,8 +15,8 @@ function YearsAndTable() {
     </div>
       
     <div className="table-right card column"> 
-      <YearsToRetire />
-      <TimeCostTable />
+      <YearsToRetireCompare />
+      <TimeCostTableCompare />
     </div>
     </section>
       
