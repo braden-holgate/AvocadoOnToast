@@ -9,7 +9,7 @@ function Questions() {
   const items = useSelector(state => state.costs)
   const [income, setIncome] = useState(null)
   const [incomePeriod, setIncomePeriod] = useState('week')
-  // const [currentSavings, setCurrentSavings] = useState(null)
+  const [currentSavings, setCurrentSavings] = useState(null)
   const [savings, setSavings] = useState(null)
   const [savingsPeriod, setSavingsPeriod] = useState('week')
   const [hoursWorkedPerWeek, setHoursWorkedPerWeek] = useState(null)
@@ -44,9 +44,9 @@ function Questions() {
     setSavingsPeriod(e.target.value)
   }
 
-  // const handleCurrentSavings = (e) => {
-  //   setCurrentSavings(e.target.value)
-  // }
+  const handleCurrentSavings = (e) => {
+    setCurrentSavings(e.target.value)
+  }
 
   const handleHoursInput = (e) => {
     setHoursWorkedPerWeek(Number(e.target.value))
@@ -65,14 +65,14 @@ function Questions() {
       frequencyPerWeek: e.target.value,
     })
   }
-
-  const handleItems = (e) => {
-    const temp = localItems.map((item) => {
-      item.item === e.target.name ? item.frequencyPerWeek = e.target.value : null
-      return item
-    })
-    setLocalItems(temp)
-  }
+  // function to be used if we let users create their own inputs
+  // const handleItems = (e) => {
+  //   const temp = localItems.map((item) => {
+  //     item.item === e.target.name ? item.frequencyPerWeek = e.target.value : null
+  //     return item
+  //   })
+  //   setLocalItems(temp)
+  // }
 
 
   const handleCalculate = (e) => {
@@ -85,7 +85,8 @@ function Questions() {
       ...{incomePeriod}, 
       ...{savings}, 
       ...{savingsPeriod}, 
-      ...{hoursWorkedPerWeek}}
+      ...{hoursWorkedPerWeek},
+      ...{currentSavings}}
 
     dispatch(updateFrequency(costsArray))
     dispatch(loadFinancials(financials))
@@ -135,7 +136,7 @@ function Questions() {
           </select>
         </div>
 
-        {/* <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
+        <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
             <label className="mr-2">
               How much do you currently have saved?
@@ -148,8 +149,8 @@ function Questions() {
             placeholder="Enter how much you already have saved here"
             defaultValue={currentSavings}
             onChange={handleCurrentSavings}
-          /> */}
-        {/* </div> */}
+          /> 
+        </div>
         
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
@@ -189,26 +190,15 @@ function Questions() {
        
         {/* -----Jessie's toggle test-----start----- */}
          {/* toggle 1 */}
-        <div className='toggle-box'>
+        {/* <div className='toggle-box'>
           <label className="label">
             <div className="toggle">
               <input className="toggle-state" type="checkbox" name="check" value="check"/>
             <div className="indicator"></div>
             </div>
           </label>
-        </div>
+        </div> */}
  
-       {/* toggle 2 */}
-        <div className='toggle-box'>
-          <label className="label">
-            <div className="toggle">
-              <input className="toggle-state" type="checkbox" name="check" value="check"/>
-            <div className="indicator"></div>
-            </div>
-          </label>
-        </div>
-         {/* -----Jessie's toggle test------end------ */}
-
       </section>
     </>
   )

@@ -9,8 +9,8 @@ function yearsToRetirement(
   currentSavings
 ) {
   const savingsNormalised = utils.moneyPerYear(savings, savingsPeriod)
-  const savingsRate = savingsNormalised / afterTax
   const afterTax = utils.afterTaxIncomePerYear(income, incomePeriod)
+  const savingsRate = savingsNormalised / afterTax
   const SWR = 0.04
   const rateOfReturn = 0.05
 
@@ -20,7 +20,13 @@ function yearsToRetirement(
   const calc2 = currentSavings * rateOfReturn + savingsRate * afterTax
   const calc3 = Math.log10(calc1 / calc2)
   const yearsToRetire = roundTo(calc3 / Math.log10(1 + rateOfReturn), 1)
-
+  console.log(savingsNormalised)
+  console.log(savingsRate)
+  console.log(afterTax)
+  console.log(calc1)
+  console.log(calc2)
+  console.log(calc3)
+  console.log(yearsToRetire)
   if (savingsRate > 1) {
     return "Woah! You're saving more than your after tax income! Retire today!"
   } else if (yearsToRetire == 0) {
