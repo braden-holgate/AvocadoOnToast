@@ -2,18 +2,12 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 const timeCostObjCreator = require('../moneyCalcs/timeCostCalc')
 
-// timeCostObjCreator(costs[0]), financials)
-// returns:
-// { 
-//   frequencyPerWeek: '3'  
-//   item: 'coffee',
-//   timeCostPerItem: { timeValue: '11', unit: 'minutes' },
-//   timeCostPerWeek: { timeValue: '2.1', unit: 'hours' },
-//   timeCostPerYear: { timeValue: '4.6', unit: 'days' }
-// }
-
-function TimeCostTable() {
-  const costs = useSelector((globalState) => globalState.costs)
+// TODO:
+// add form boxes
+// add click handler that dispatches updateCompareCostsFreqency(id, frequencyPerWeek)
+ 
+function TimeCostTableCompare() {
+  const compareCosts = useSelector((globalState) => globalState.compareCosts)
   const financials = useSelector((globalState) => globalState.financials)
 
   const {income, incomePeriod, savings, savingsPeriod} = financials
@@ -39,7 +33,7 @@ function TimeCostTable() {
           </thead>
 
           <tbody>
-            {notNull && costs.map((item, index) => {
+            {notNull && compareCosts.map((item, index) => {
               const data = timeCostObjCreator(item, financials);
               return (
                 <tr key={index}>
@@ -64,4 +58,4 @@ function TimeCostTable() {
   )
 }
 
-export default TimeCostTable
+export default TimeCostTableCompare
