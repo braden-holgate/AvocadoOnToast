@@ -122,10 +122,11 @@ nav.container{
 
 .question{
   background-color:#f3f3f3;
+  
 }
 
 .retire-years{
-  background-color:#f3f3f3;
+  // background-color:#f3f3f3;
 }
 
 .above-footer{
@@ -422,3 +423,67 @@ section.runningman {
     transform: rotate(120deg); } }
 
   // --------------------------Running man animation-----------End-------------------------------//
+
+
+
+  //--------------------Card--------start--------------//
+  .card {
+    margin:0 20px;
+    width: 400px;
+    height: 600px;
+    border-radius: 30px;
+    background: #f0f0f0;
+    box-shadow: 0px 0px 20px #c4c6d0,
+                // -15px -15px 30px #bebebe;
+   }
+
+   .table-right{
+     background-color: #76B76D;
+     color:white;
+   }
+//--------------------Card-----end-----------------//
+
+
+//----------------Input----------start--------//
+   
+.input {
+  border:1px solid #76B76D;
+  border-radius: 5px;
+  padding: 15px;
+  background-color: #ffffff;
+  font-size: medium;
+  font-weight: bold;
+  max-width: 200px;
+ }
+ 
+ .input:focus {
+  outline-color: white;
+  place-content: "Enter your message!";
+ }
+
+ //----------------Input----------end--------//
+
+ //----------------TotalExpense-----start------//
+ .total-expense{
+   font-size: 100px;
+   color:#76B76D;
+ }
+ .for-you{
+   margin-top:50px;
+   color:#76B76D;
+ }
+//----------------TotalExpense-----end------//
+
+.subscribe{
+  height:100px;
+  background-color: #76B76D;
+  color:white;
+} 
+
+.subscribe-words{
+  margin-bottom: 10px;
+  margin-left:50px;
+  font-size: 20px;
+}
+
+
