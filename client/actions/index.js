@@ -50,6 +50,10 @@ export function saveAllGoals(goals) {
 //hmm possibly could rename one of these to be more consistent? i.e save and get are a bit confusing?
 
 export function addGoal(newGoal) {
+  console.log(
+    `hey I've reached add goal action - whats newGoal looking like`,
+    newGoal
+  )
   return {
     type: ADD_GOAL,
     newGoal,

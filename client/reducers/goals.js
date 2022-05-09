@@ -8,7 +8,7 @@ function goals(state = initialState, action) {
       return action.goals
 
     case ADD_GOAL:
-      return [...state, newGoal] //might need format work here
+      return [...state, action.newGoal] //might need format work here
 
     case UPDATE_GOAL:
       state.forEach((goal) => {
