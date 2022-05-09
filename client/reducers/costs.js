@@ -5,7 +5,7 @@ const initialState = [
     id: null,
     item: null,
     cost: null,
-    frequency: null,
+    frequencyPerWeek: null,
   },
 ]
 

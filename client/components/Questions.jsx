@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadFinancials, updateFrequency, getCosts } from '../actions'
+import { loadFinancials, updateFrequency, getCosts, setCompareCosts } from '../actions'
 
 function Questions() {
 
@@ -9,7 +9,7 @@ function Questions() {
   const items = useSelector(state => state.costs)
   const [income, setIncome] = useState(null)
   const [incomePeriod, setIncomePeriod] = useState('week')
-  // const [currentSavings, setCurrentSavings] = useState(null)
+  const [currentSavings, setCurrentSavings] = useState(null)
   const [savings, setSavings] = useState(null)
   const [savingsPeriod, setSavingsPeriod] = useState('week')
   const [hoursWorkedPerWeek, setHoursWorkedPerWeek] = useState(null)
@@ -44,9 +44,9 @@ function Questions() {
     setSavingsPeriod(e.target.value)
   }
 
-  // const handleCurrentSavings = (e) => {
-  //   setCurrentSavings(e.target.value)
-  // }
+  const handleCurrentSavings = (e) => {
+    setCurrentSavings(e.target.value)
+  }
 
   const handleHoursInput = (e) => {
     setHoursWorkedPerWeek(Number(e.target.value))
@@ -65,14 +65,14 @@ function Questions() {
       frequencyPerWeek: e.target.value,
     })
   }
-
-  const handleItems = (e) => {
-    const temp = localItems.map((item) => {
-      item.item === e.target.name ? item.frequencyPerWeek = e.target.value : null
-      return item
-    })
-    setLocalItems(temp)
-  }
+  // function to be used if we let users create their own inputs
+  // const handleItems = (e) => {
+  //   const temp = localItems.map((item) => {
+  //     item.item === e.target.name ? item.frequencyPerWeek = e.target.value : null
+  //     return item
+  //   })
+  //   setLocalItems(temp)
+  // }
 
 
   const handleCalculate = (e) => {
@@ -85,9 +85,11 @@ function Questions() {
       ...{incomePeriod}, 
       ...{savings}, 
       ...{savingsPeriod}, 
-      ...{hoursWorkedPerWeek}}
+      ...{hoursWorkedPerWeek},
+      ...{currentSavings}}
 
     dispatch(updateFrequency(costsArray))
+    dispatch(setCompareCosts(JSON.parse(JSON.stringify(costsArray)))) // creating a deep copy because otherwise the compare costs state will reference the same array and changing one will change the other!
     dispatch(loadFinancials(financials))
   }
 
@@ -123,8 +125,8 @@ function Questions() {
             <label className="mr-2">How much do you estimate you save?</label>
           </strong>
 
-          <input type="text" name="income" className="input" placeholder="Estimate save" defaultValue={income}
-            onChange={handleIncome}></input>
+          <input type="text" name="average-savings" className="input" placeholder="Estimate save" defaultValue={savings}
+            onChange={handleSavings}></input>
 
           <select onChange={savingFrequency} defaultValue={savingsPeriod}>
             <option  value="week">
@@ -135,7 +137,7 @@ function Questions() {
           </select>
         </div>
 
-        {/* <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
+        <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
             <label className="mr-2">
               How much do you currently have saved?
@@ -148,16 +150,16 @@ function Questions() {
             placeholder="Enter how much you already have saved here"
             defaultValue={currentSavings}
             onChange={handleCurrentSavings}
-          /> */}
-        {/* </div> */}
+          /> 
+        </div>
         
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
             <label className="mr-2">How many hours per week do you work?</label>
           </strong>
 
-          <input type="text" name="income" className="input" placeholder="Working hours weekly" defaultValue={income}
-            onChange={handleIncome}></input>
+          <input type="text" name="hours-worked" className="input" placeholder="Working hours weekly" defaultValue={hoursWorkedPerWeek}
+            onChange={handleHoursInput}></input>
 
         </div>
 
@@ -169,8 +171,8 @@ function Questions() {
             </label>
           </strong>
 
-          <input type="text" name="income" className="input" placeholder="Coffee weekly" defaultValue={income}
-            onChange={handleIncome}></input>
+          <input type="text" name="coffees" className="input" placeholder="Coffee weekly"
+            onChange={handleCoffee}></input>
 
         </div>
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
@@ -180,8 +182,8 @@ function Questions() {
             </label>
           </strong>
 
-          <input type="text" name="income" className="input" placeholder="Eating out" defaultValue={income}
-            onChange={handleIncome}></input>
+          <input type="text" name="food" className="input" placeholder="Eating out" 
+            onChange={handleEatingOut}></input>
 
         </div>
         <button onClick={handleCalculate} type='submit'>Calculate</button>
@@ -189,26 +191,15 @@ function Questions() {
        
         {/* -----Jessie's toggle test-----start----- */}
          {/* toggle 1 */}
-        <div className='toggle-box'>
+        {/* <div className='toggle-box'>
           <label className="label">
             <div className="toggle">
               <input className="toggle-state" type="checkbox" name="check" value="check"/>
             <div className="indicator"></div>
             </div>
           </label>
-        </div>
+        </div> */}
  
-       {/* toggle 2 */}
-        <div className='toggle-box'>
-          <label className="label">
-            <div className="toggle">
-              <input className="toggle-state" type="checkbox" name="check" value="check"/>
-            <div className="indicator"></div>
-            </div>
-          </label>
-        </div>
-         {/* -----Jessie's toggle test------end------ */}
-
       </section>
     </>
   )
