@@ -24,7 +24,7 @@ function yearsToRetirement (income, incomePeriod, savings, savingsPeriod) {
     return yearsToRetire
   }
 }
-
+// from stackoverflow
 function roundTo(n, digits) {
   var negative = false;
   if (digits === undefined) {
@@ -42,6 +42,7 @@ function roundTo(n, digits) {
   }
   return n;
 }
+
 module.exports = {
   yearsToRetirement,
 }
