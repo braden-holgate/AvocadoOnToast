@@ -51,7 +51,7 @@ function Questions() {
   }
 
   const handleCoffee = (e) => {
-    console.log(e.target)
+    console.log(e.target.value)
     setCoffeeCost({
       ...coffeeCost,
       frequencyPerWeek: e.target.value,
@@ -172,7 +172,7 @@ function Questions() {
             </label>
           </strong>
           <input
-            name="coffees"
+            name="Coffees"
             type="number"
             style={{ width: '200px', padding: '5px', border: '2px solid #ccc' }}
             placeholder="Enter your average weekly coffee count"
@@ -187,7 +187,7 @@ function Questions() {
             </label>
           </strong>
           <input
-            name="food"
+            name="Eating Out"
             type="number"
             style={{ width: '200px', padding: '5px', border: '2px solid #ccc' }}
             placeholder="Enter your weekly takeout count"
