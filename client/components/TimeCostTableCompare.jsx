@@ -14,6 +14,7 @@ function TimeCostTableCompare() {
   const notNull = income !== null && incomePeriod !== null && savings !== null && savingsPeriod !== null;
 
   const headers = {
+    frequencyPerWeek:'Frequency Weekly',
     item: 'Item',
     timeCostPerItem: 'Per Item',
     timeCostPerWeek: 'Weekly',
@@ -22,7 +23,7 @@ function TimeCostTableCompare() {
  
   return (
     <>
-      <section className="section columns has-background-white is-centered ">
+      <section className=" section columns has-background-white is-centered ">
         <table className="table is-hoverable">
           <thead>
             <tr>
@@ -41,7 +42,10 @@ function TimeCostTableCompare() {
                     let value
                     if (key === 'item') {
                       value = data[key]
-                    } else {
+                    } else if(key==='frequencyPerWeek'){
+                      value=<input className='table-input'/>
+                    }
+                    else {
                       const obj = data[key]
                       value = obj.timeValue + ' ' + obj.unit
                     }
