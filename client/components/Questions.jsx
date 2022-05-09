@@ -104,14 +104,10 @@ function Questions() {
           <strong>
             <label className="mr-2">What is your income?</label>
           </strong>
-          <input
-            name="income"
-            type="number"
-            style={{ width: '200px', padding: '5px', border: '1px solid #ccc' }}
-            placeholder="Enter your income here"
-            defaultValue={income}
-            onChange={handleIncome}
-          />
+
+          <input type="text" name="income" className="input" placeholder="Enter your income" defaultValue={income}
+            onChange={handleIncome}></input>
+          
 
           <select onChange={incomeFrequency} defaultValue={incomePeriod}>
             <option  value="week">
@@ -126,14 +122,10 @@ function Questions() {
           <strong>
             <label className="mr-2">How much do you estimate you save?</label>
           </strong>
-          <input
-            name="average-savings"
-            type="number"
-            style={{ width: '200px', padding: '5px', border: '2px solid #ccc' }}
-            placeholder="Enter how much you think you save here"
-            defaultValue={savings}
-            onChange={handleSavings}
-          />
+
+          <input type="text" name="income" className="input" placeholder="Estimate save" defaultValue={income}
+            onChange={handleIncome}></input>
+
           <select onChange={savingFrequency} defaultValue={savingsPeriod}>
             <option  value="week">
               Week
@@ -163,14 +155,10 @@ function Questions() {
           <strong>
             <label className="mr-2">How many hours per week do you work?</label>
           </strong>
-          <input
-            name="hours-worked"
-            type="number"
-            style={{ width: '200px', padding: '5px', border: '2px solid #ccc' }}
-            placeholder="Enter how many hours per week do you work"
-            defaultValue={hoursWorkedPerWeek}
-            onChange={handleHoursInput}
-          />
+
+          <input type="text" name="income" className="input" placeholder="Working hours weekly" defaultValue={income}
+            onChange={handleIncome}></input>
+
         </div>
 
         {/* //LOU - MAKE SURE TO PREVENT NEGATIVE NUMBERS */}
@@ -180,14 +168,10 @@ function Questions() {
               How often do you buy coffee per week?
             </label>
           </strong>
-          <input
-            name="Coffees"
-            type="number"
-            style={{ width: '200px', padding: '5px', border: '2px solid #ccc' }}
-            placeholder="Enter your average weekly coffee count"
-            defaultValue={coffeeCost}
-            onChange={handleCoffee}
-          />
+
+          <input type="text" name="income" className="input" placeholder="Coffee weekly" defaultValue={income}
+            onChange={handleIncome}></input>
+
         </div>
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
@@ -195,14 +179,10 @@ function Questions() {
               How often do you buy lunch/dinner/takeaways per week?
             </label>
           </strong>
-          <input
-            name="Eating Out"
-            type="number"
-            style={{ width: '200px', padding: '5px', border: '2px solid #ccc' }}
-            placeholder="Enter your weekly takeout count"
-            defaultValue={eatingOutCost}
-            onChange={handleEatingOut}
-          />
+
+          <input type="text" name="income" className="input" placeholder="Eating out" defaultValue={income}
+            onChange={handleIncome}></input>
+
         </div>
         <button onClick={handleCalculate} type='submit'>Calculate</button>
        
