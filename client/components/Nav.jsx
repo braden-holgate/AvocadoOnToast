@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import GoalForm from './GoalForm'
+import { Link } from 'react-router-dom'
 
 function Nav () {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -107,6 +109,5 @@ function Nav () {
 //     </div>
 //
 
-/* //We will only ever display a max of 2 of these at a time. If user not logged in, we show Login and Register. If they are logged in, we show Logout. */
 
 export default Nav
