@@ -1,30 +1,31 @@
 
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { loadFinancials, updateFrequency } from '../actions'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { loadFinancials, updateFrequency, getCosts } from '../actions'
 
 function Questions() {
 
   const dispatch = useDispatch()
+  const items = useSelector(state => state.costs)
   const [income, setIncome] = useState(null)
   const [incomePeriod, setIncomePeriod] = useState('week')
   // const [currentSavings, setCurrentSavings] = useState(null)
   const [savings, setSavings] = useState(null)
   const [savingsPeriod, setSavingsPeriod] = useState('week')
   const [hoursWorkedPerWeek, setHoursWorkedPerWeek] = useState(null)
+  const [localItems, setLocalItems] = useState("items")
+  const [coffeeCost, setCoffeeCost] = useState(null)
+  const [eatingOutCost, setEatingOutCost] = useState(null)
 
-  const [coffeeCost, setCoffeeCost] = useState({
-    id: 1,
-    item: 'coffee',
-    cost: 5,
-    frequencyPerWeek: 0,
-  })
-  const [eatingOutCost, setEatingOutCost] = useState({
-    id: 2,
-    item: 'eatingOut',
-    cost: 20,
-    frequencyPerWeek: 0,
-  })
+  useEffect(() => {
+  dispatch(getCosts())
+  }, [])
+
+  useEffect(() => {
+    setCoffeeCost(items[0])
+    setEatingOutCost(items[1])
+    setLocalItems(items)
+  }, [items])
 
   const handleIncome = (e) => {
     setIncome(Number(e.target.value))
@@ -65,21 +66,29 @@ function Questions() {
     })
   }
 
+  const handleItems = (e) => {
+    const temp = localItems.map((item) => {
+      item.item === e.target.name ? item.frequencyPerWeek = e.target.value : null
+      return item
+    })
+    setLocalItems(temp)
+  }
+
 
   const handleCalculate = (e) => {
     e.preventDefault()
     let costsArray = []
     costsArray.push(coffeeCost, eatingOutCost)
 
-const financials = {
-  ...{income}, 
-  ...{incomePeriod}, 
-  ...{savings}, 
-  ...{savingsPeriod}, 
-  ...{hoursWorkedPerWeek}}
+    const financials = {
+      ...{income}, 
+      ...{incomePeriod}, 
+      ...{savings}, 
+      ...{savingsPeriod}, 
+      ...{hoursWorkedPerWeek}}
 
-dispatch(updateFrequency(costsArray))
-dispatch(loadFinancials(financials))
+    dispatch(updateFrequency(costsArray))
+    dispatch(loadFinancials(financials))
   }
 
   return (
@@ -97,7 +106,7 @@ dispatch(loadFinancials(financials))
           </strong>
           <input
             name="income"
-            type="text"
+            type="number"
             style={{ width: '200px', padding: '5px', border: '1px solid #ccc' }}
             placeholder="Enter your income here"
             defaultValue={income}
@@ -119,7 +128,7 @@ dispatch(loadFinancials(financials))
           </strong>
           <input
             name="average-savings"
-            type="text"
+            type="number"
             style={{ width: '200px', padding: '5px', border: '2px solid #ccc' }}
             placeholder="Enter how much you think you save here"
             defaultValue={savings}
@@ -156,7 +165,7 @@ dispatch(loadFinancials(financials))
           </strong>
           <input
             name="hours-worked"
-            type="text"
+            type="number"
             style={{ width: '200px', padding: '5px', border: '2px solid #ccc' }}
             placeholder="Enter how many hours per week do you work"
             defaultValue={hoursWorkedPerWeek}
@@ -172,7 +181,7 @@ dispatch(loadFinancials(financials))
             </label>
           </strong>
           <input
-            name="coffees"
+            name="Coffees"
             type="number"
             style={{ width: '200px', padding: '5px', border: '2px solid #ccc' }}
             placeholder="Enter your average weekly coffee count"
@@ -187,7 +196,7 @@ dispatch(loadFinancials(financials))
             </label>
           </strong>
           <input
-            name="food"
+            name="Eating Out"
             type="number"
             style={{ width: '200px', padding: '5px', border: '2px solid #ccc' }}
             placeholder="Enter your weekly takeout count"
