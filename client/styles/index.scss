@@ -31,10 +31,13 @@
 @import "bulma/sass/elements/table.sass";
 
 
+
 #wrapper{
   background-color: rgb(255, 255, 255);
   max-width: 1024px;
   margin:0 auto;
+  box-shadow: -4px -4px 8px 0px #f0f0f0,
+  4px 4px 8px 0px #f0f0f0,
 }
 
 .navigation{

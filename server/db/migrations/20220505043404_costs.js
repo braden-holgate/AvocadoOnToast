@@ -1,5 +1,5 @@
 exports.up = function (knex) {
-  return knex.schema.createTable('Costs', function (table) {
+  return knex.schema.createTable('costs', function (table) {
     table.increments('id')
     table.string('item')
     table.decimal('cost')
@@ -7,5 +7,5 @@ exports.up = function (knex) {
 }
 
 exports.down = function (knex) {
-  return knex.schema.dropTable('Costs')
+  return knex.schema.dropTable('costs')
 }

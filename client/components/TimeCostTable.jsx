@@ -4,7 +4,8 @@ const timeCostObjCreator = require('../moneyCalcs/timeCostCalc')
 
 // timeCostObjCreator(costs[0]), financials)
 // returns:
-// {
+// { 
+//   frequencyPerWeek: '3'  
 //   item: 'coffee',
 //   timeCostPerItem: { timeValue: '11', unit: 'minutes' },
 //   timeCostPerWeek: { timeValue: '2.1', unit: 'hours' },
@@ -14,6 +15,7 @@ const timeCostObjCreator = require('../moneyCalcs/timeCostCalc')
 function TimeCostTable() {
   const costs = useSelector((globalState) => globalState.costs)
   const financials = useSelector((globalState) => globalState.financials)
+  // console.log("TIMECOST: ", timeCostObjCreator(costs[0], financials))
 
   const {income, incomePeriod, savings, savingsPeriod} = financials
   const notNull = income !== null && incomePeriod !== null && savings !== null && savingsPeriod !== null;

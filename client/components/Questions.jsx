@@ -1,30 +1,31 @@
 
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { loadFinancials, updateFrequency } from '../actions'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { loadFinancials, updateFrequency, getCosts } from '../actions'
 
 function Questions() {
 
   const dispatch = useDispatch()
+  const items = useSelector(state => state.costs)
   const [income, setIncome] = useState(null)
   const [incomePeriod, setIncomePeriod] = useState('week')
   // const [currentSavings, setCurrentSavings] = useState(null)
   const [savings, setSavings] = useState(null)
   const [savingsPeriod, setSavingsPeriod] = useState('week')
   const [hoursWorkedPerWeek, setHoursWorkedPerWeek] = useState(null)
+  const [localItems, setLocalItems] = useState("items")
+  const [coffeeCost, setCoffeeCost] = useState(null)
+  const [eatingOutCost, setEatingOutCost] = useState(null)
 
-  const [coffeeCost, setCoffeeCost] = useState({
-    id: 1,
-    item: 'coffee',
-    cost: 5,
-    frequencyPerWeek: 0,
-  })
-  const [eatingOutCost, setEatingOutCost] = useState({
-    id: 2,
-    item: 'eatingOut',
-    cost: 20,
-    frequencyPerWeek: 0,
-  })
+  useEffect(() => {
+  dispatch(getCosts())
+  }, [])
+
+  useEffect(() => {
+    setCoffeeCost(items[0])
+    setEatingOutCost(items[1])
+    setLocalItems(items)
+  }, [items])
 
   const handleIncome = (e) => {
     setIncome(Number(e.target.value))
@@ -65,21 +66,29 @@ function Questions() {
     })
   }
 
+  const handleItems = (e) => {
+    const temp = localItems.map((item) => {
+      item.item === e.target.name ? item.frequencyPerWeek = e.target.value : null
+      return item
+    })
+    setLocalItems(temp)
+  }
+
 
   const handleCalculate = (e) => {
     e.preventDefault()
     let costsArray = []
     costsArray.push(coffeeCost, eatingOutCost)
 
-const financials = {
-  ...{income}, 
-  ...{incomePeriod}, 
-  ...{savings}, 
-  ...{savingsPeriod}, 
-  ...{hoursWorkedPerWeek}}
+    const financials = {
+      ...{income}, 
+      ...{incomePeriod}, 
+      ...{savings}, 
+      ...{savingsPeriod}, 
+      ...{hoursWorkedPerWeek}}
 
-dispatch(updateFrequency(costsArray))
-dispatch(loadFinancials(financials))
+    dispatch(updateFrequency(costsArray))
+    dispatch(loadFinancials(financials))
   }
 
   return (
@@ -95,9 +104,11 @@ dispatch(loadFinancials(financials))
           <strong>
             <label className="mr-2">What is your income?</label>
           </strong>
+
           <input type="text" name="income" className="input" placeholder="Enter your income" defaultValue={income}
             onChange={handleIncome}></input>
           
+
           <select onChange={incomeFrequency} defaultValue={incomePeriod}>
             <option  value="week">
               Week
@@ -111,8 +122,10 @@ dispatch(loadFinancials(financials))
           <strong>
             <label className="mr-2">How much do you estimate you save?</label>
           </strong>
+
           <input type="text" name="income" className="input" placeholder="Estimate save" defaultValue={income}
             onChange={handleIncome}></input>
+=
           <select onChange={savingFrequency} defaultValue={savingsPeriod}>
             <option  value="week">
               Week
@@ -142,8 +155,10 @@ dispatch(loadFinancials(financials))
           <strong>
             <label className="mr-2">How many hours per week do you work?</label>
           </strong>
+
           <input type="text" name="income" className="input" placeholder="Working hours weekly" defaultValue={income}
             onChange={handleIncome}></input>
+
         </div>
 
         {/* //LOU - MAKE SURE TO PREVENT NEGATIVE NUMBERS */}
@@ -153,8 +168,10 @@ dispatch(loadFinancials(financials))
               How often do you buy coffee per week?
             </label>
           </strong>
+
           <input type="text" name="income" className="input" placeholder="Coffee weekly" defaultValue={income}
             onChange={handleIncome}></input>
+
         </div>
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
@@ -162,8 +179,10 @@ dispatch(loadFinancials(financials))
               How often do you buy lunch/dinner/takeaways per week?
             </label>
           </strong>
+
           <input type="text" name="income" className="input" placeholder="Eating out" defaultValue={income}
             onChange={handleIncome}></input>
+
         </div>
         <button onClick={handleCalculate} type='submit'>Calculate</button>
        
