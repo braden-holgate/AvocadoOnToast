@@ -94,9 +94,9 @@ export function getCosts() {
 export function getGoals() {
   return (dispatch) => {
     return request
-      .get('/api/v1/goals/')
-      .then((res) => {
-        dispatch(saveAllGoals(res.body))
+      .get('/api/v1/goals')
+      .then((goalsArr) => {
+        dispatch(saveAllGoals(goalsArr))
         return null
       })
       .catch((err) => {
@@ -104,3 +104,16 @@ export function getGoals() {
       })
   }
 }
+// export function getGoals() {
+//   return (dispatch) => {
+//     return request
+//       .get('/api/v1/goals/')
+//       .then((res) => {
+//         dispatch(saveAllGoals(res.body))
+//         return null
+//       })
+//       .catch((err) => {
+//         dispatch(showError(err.message))
+//       })
+//   }
+// }
