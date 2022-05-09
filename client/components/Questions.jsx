@@ -124,8 +124,8 @@ function Questions() {
             <label className="mr-2">How much do you estimate you save?</label>
           </strong>
 
-          <input type="text" name="income" className="input" placeholder="Estimate save" defaultValue={income}
-            onChange={handleIncome}></input>
+          <input type="text" name="income" className="input" placeholder="Estimate save" defaultValue={savings}
+            onChange={handleSavings}></input>
 
           <select onChange={savingFrequency} defaultValue={savingsPeriod}>
             <option  value="week">
@@ -157,8 +157,8 @@ function Questions() {
             <label className="mr-2">How many hours per week do you work?</label>
           </strong>
 
-          <input type="text" name="income" className="input" placeholder="Working hours weekly" defaultValue={income}
-            onChange={handleIncome}></input>
+          <input type="text" name="income" className="input" placeholder="Working hours weekly" defaultValue={hoursWorkedPerWeek}
+            onChange={handleHoursInput}></input>
 
         </div>
 
@@ -170,8 +170,8 @@ function Questions() {
             </label>
           </strong>
 
-          <input type="text" name="income" className="input" placeholder="Coffee weekly" defaultValue={income}
-            onChange={handleIncome}></input>
+          <input type="text" name="income" className="input" placeholder="Coffee weekly"
+            onChange={handleCoffee}></input>
 
         </div>
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
@@ -181,8 +181,8 @@ function Questions() {
             </label>
           </strong>
 
-          <input type="text" name="income" className="input" placeholder="Eating out" defaultValue={income}
-            onChange={handleIncome}></input>
+          <input type="text" name="income" className="input" placeholder="Eating out" 
+            onChange={handleEatingOut}></input>
 
         </div>
         <button onClick={handleCalculate} type='submit'>Calculate</button>
