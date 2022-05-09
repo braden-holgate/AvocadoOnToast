@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadFinancials, updateFrequency, getCosts } from '../actions'
+import { loadFinancials, updateFrequency, getCosts, setCompareCosts } from '../actions'
 
 function Questions() {
 
@@ -86,8 +86,9 @@ function Questions() {
       ...{savings}, 
       ...{savingsPeriod}, 
       ...{hoursWorkedPerWeek}}
-
+    console.log(costsArray)
     dispatch(updateFrequency(costsArray))
+    dispatch(setCompareCosts(costsArray))
     dispatch(loadFinancials(financials))
   }
 

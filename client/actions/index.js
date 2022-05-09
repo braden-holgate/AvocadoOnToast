@@ -20,7 +20,7 @@ export const ADD_GOAL = 'ADD_GOAL'
 export function showError(errorMessage) {
   return {
     type: SHOW_ERROR,
-    errorMessage: errorMessage,
+    errorMessage: errorMessage
   }
 }
 
@@ -28,21 +28,21 @@ export function showError(errorMessage) {
 export function recieveCosts(costs) {
   return {
     type: RECEIVE_COSTS,
-    costs,
+    costs
   }
 }
 
 export function updateFrequency(costs) {
   return {
     type: UPDATE_FREQUENCY,
-    costs,
+    costs
   }
 }
 
 export function loadFinancials(financials) {
   return {
     type: LOAD_FINANCIALS,
-    financials,
+    financials
   }
 }
 
@@ -50,14 +50,15 @@ export function loadFinancials(financials) {
 export function setCompareCosts(compareCosts) {
   return {
     type: SET_COMPARE_COSTS,
-    compareCosts,
+    compareCosts
   }
 }
 
-export function updateCompareCostsFreqency(compareCosts) {
+export function updateCompareCostsFreqency(id, frequency) {
   return {
     type: UPDATE_COMPARE_COSTS_FREQUENCY,
-    compareCosts,
+    id,
+    frequency
   }
 }
 
@@ -66,7 +67,7 @@ export function updateCompareCostsFreqency(compareCosts) {
 export function saveAllGoals(goals) {
   return {
     type: GET_GOALS,
-    goals,
+    goals
   }
 }
 //hmm possibly could rename one of these to be more consistent? i.e save and get are a bit confusing?

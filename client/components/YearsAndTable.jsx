@@ -1,5 +1,6 @@
 import React from 'react'
 import TimeCostTable from './TimeCostTable'
+import TimeCostTableCompare from './TimeCostTableCompare'
 import YearsToRetire from './YearsToRetire'
 
 
