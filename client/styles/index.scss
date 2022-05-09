@@ -31,10 +31,13 @@
 @import "bulma/sass/elements/table.sass";
 
 
+
 #wrapper{
   background-color: rgb(255, 255, 255);
   max-width: 1024px;
   margin:0 auto;
+  box-shadow: -4px -4px 8px 0px #f0f0f0,
+  4px 4px 8px 0px #f0f0f0,
 }
 
 .navigation{
@@ -429,7 +432,7 @@ section.runningman {
   //--------------------Card--------start--------------//
   .card {
     margin:0 20px;
-    width: 400px;
+    width: 440px;
     height: 600px;
     border-radius: 30px;
     background: #f0f0f0;
@@ -440,6 +443,10 @@ section.runningman {
    .table-right{
      background-color: #76B76D;
      color:white;
+   }
+
+   .table-input{
+     width:60px; 
    }
 //--------------------Card-----end-----------------//
 

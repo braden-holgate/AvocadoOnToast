@@ -15,13 +15,15 @@ function Nav () {
         <div className="container">
 
           <div className='navbar-start'>
-              <a className="navbar-item">
+              <a className="navbar-item" href="/">
                 <figure className="image columns is-flex">
                   <img className="logo" src="images/logo.png" />
                 </figure>
                 <p className="app-name is-size-3">Avocado.onToast?</p>
-              </a>
-            <div className="navbar-item">Avo Community Posts</div>
+            </a>
+             <Link to="/goals">
+              <div className="navbar-item">Avo Community Posts</div>
+            </Link>
             <div className='navbar-end'> 
               {loggedIn
                 ? (<div className="navbar-item button">Logout</div>)
