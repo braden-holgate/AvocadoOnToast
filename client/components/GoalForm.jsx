@@ -2,22 +2,20 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addGoal } from '../actions'
 import { FaStar } from "react-icons/fa";
-{/* <FontAwesomeIcon icon="fa-light fa-face-smile-beam" /> */}
 
 const colors = {
   orange: "#FFBA5A",
   grey: "#a9a9a9"
-  
 };
 
 function GoalForm() {
 
-  const [rating, setRating] = useState(0);
+  const [ratingValue, setRatingValue] = useState(0);
   const [hoverValue, setHoverValue] = useState(undefined);
   const stars = Array(5).fill(0)
 
   const handleClick = value => {
-    setRating(value)
+    setRatingValue(value)
   }
 
   const handleMouseOver = newHoverValue => {
@@ -28,11 +26,11 @@ function GoalForm() {
     setHoverValue(undefined)
   }
 
-
   const [formData, setFormData] = useState({
     author: '',
     content: '',
-    rating: ''
+    rating: ratingValue,
+    date: new Date(Date.now())
   })
 
   const dispatch = useDispatch()
@@ -50,7 +48,8 @@ function GoalForm() {
     setFormData({
       author: '',
       content: '',
-      rating: ''
+      rating: ratingValue,
+      date: new Date(Date.now())
     })
   }
 
@@ -65,7 +64,6 @@ function GoalForm() {
             type="text"
             style={{ width: '200px', padding: '5px', margin: '15px', border: '1px solid #ccc' }}
             placeholder="Enter your goal here"
-            // defaultValue=''
             onChange={handleChange}
           />
           </div>
@@ -78,7 +76,6 @@ function GoalForm() {
             type="text"
             style={{ width: '200px', padding: '5px', margin: '15px', border: '1px solid #ccc' }}
             placeholder="Enter your name here"
-            // defaultValue=''
             onChange={handleChange}
           />
       </div>
@@ -86,21 +83,19 @@ function GoalForm() {
       <strong>
           <label className="mr-2">Your rating:</label>
       </strong>
-      {/* /////rating star test */}
-      {/* <div style={styles.container}> */}
+
       <div style={styles.stars}>
         {stars.map((_, index) => {
           return (
             <FaStar
               key={index}
-              name="rating"
+              name="ratingValue"
               size={24}
               onClick={() => handleClick(index + 1)}
               onMouseOver={() => handleMouseOver(index + 1)}
               onMouseLeave={handleMouseLeave}
-              color={(hoverValue || rating) > index ? colors.orange : colors.grey}
+              color={(hoverValue || ratingValue) > index ? colors.orange : colors.grey}
               style={{
-                // marginRight: 10,
                 cursor: "pointer"
               }}
             />
