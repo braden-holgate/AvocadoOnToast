@@ -19,7 +19,7 @@ function yearsToRetirement(
     savingsRate * afterTax
   const calc2 = currentSavings * rateOfReturn + savingsRate * afterTax
   const calc3 = Math.log10(calc1 / calc2)
-  const yearsToRetire = roundTo(calc3 / Math.log10(1 + rateOfReturn), 1)
+  const yearsToRetire = utils.roundTo(calc3 / Math.log10(1 + rateOfReturn), 1)
   if (savingsRate > 1) {
     return "Woah! You're saving more than your after tax income! Retire today!"
   } else if (yearsToRetire == 0) {
@@ -28,24 +28,7 @@ function yearsToRetirement(
     return yearsToRetire
   }
 }
-// from stackoverflow
-function roundTo(n, digits) {
-  var negative = false
-  if (digits === undefined) {
-    digits = 0
-  }
-  if (n < 0) {
-    negative = true
-    n = n * -1
-  }
-  var multiplicator = Math.pow(10, digits)
-  n = parseFloat((n * multiplicator).toFixed(11))
-  n = (Math.round(n) / multiplicator).toFixed(digits)
-  if (negative) {
-    n = (n * -1).toFixed(digits)
-  }
-  return n
-}
+
 
 module.exports = {
   yearsToRetirement,
