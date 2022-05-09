@@ -432,7 +432,7 @@ section.runningman {
   //--------------------Card--------start--------------//
   .card {
     margin:0 20px;
-    width: 400px;
+    width: 440px;
     height: 600px;
     border-radius: 30px;
     background: #f0f0f0;
@@ -443,6 +443,10 @@ section.runningman {
    .table-right{
      background-color: #76B76D;
      color:white;
+   }
+
+   .table-input{
+     width:60px; 
    }
 //--------------------Card-----end-----------------//
 
