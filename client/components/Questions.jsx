@@ -13,8 +13,9 @@ function Questions() {
   const [savings, setSavings] = useState(null)
   const [savingsPeriod, setSavingsPeriod] = useState('week')
   const [hoursWorkedPerWeek, setHoursWorkedPerWeek] = useState(null)
-  const [coffeeCost, setCoffeeCost] = useState('coffeeCost')
-  const [eatingOutCost, setEatingOutCost] = useState('eatingOutCost')
+  const [localItems, setLocalItems] = useState("items")
+  const [coffeeCost, setCoffeeCost] = useState(null)
+  const [eatingOutCost, setEatingOutCost] = useState(null)
 
   useEffect(() => {
   dispatch(getCosts())
@@ -23,6 +24,7 @@ function Questions() {
   useEffect(() => {
     setCoffeeCost(items[0])
     setEatingOutCost(items[1])
+    setLocalItems(items)
   }, [items])
 
   const handleIncome = (e) => {
@@ -51,7 +53,6 @@ function Questions() {
   }
 
   const handleCoffee = (e) => {
-    console.log(e.target.value)
     setCoffeeCost({
       ...coffeeCost,
       frequencyPerWeek: e.target.value,
@@ -63,6 +64,14 @@ function Questions() {
       ...eatingOutCost,
       frequencyPerWeek: e.target.value,
     })
+  }
+
+  const handleItems = (e) => {
+    const temp = localItems.map((item) => {
+      item.item === e.target.name ? item.frequencyPerWeek = e.target.value : null
+      return item
+    })
+    setLocalItems(temp)
   }
 
 
