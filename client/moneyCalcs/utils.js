@@ -7,7 +7,7 @@ function moneyPerYear(value, valuePeriod) {
     return value * 26
   else if (valuePeriod == 'year')
     return value
-  else return console.log(`Error! '${valuePeriod}' does not match any of the available options in the moneyPerYear function in client/moneyCalcs/utils`)
+  // else return console.log(`Error! '${valuePeriod}' does not match any of the available options in the moneyPerYear function in client/moneyCalcs/utils`)
 }
 
 

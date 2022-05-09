@@ -5,9 +5,9 @@ import { getCosts } from '../actions'
 function Test () {
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(getCosts())
-  })
+  // useEffect(() => {
+  //   dispatch(getCosts())
+  // })
   return (
     <div></div>
   )
