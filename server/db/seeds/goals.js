@@ -1,10 +1,10 @@
 exports.seed = function (knex) {
   // Deletes ALL existing entries
-  return knex('Goals')
+  return knex('goals')
     .del()
     .then(function () {
       // Inserts seed entries
-      return knex('Goals').insert([
+      return knex('goals').insert([
         {
           id: 1,
           goal: `save an extra 2% per year by cancelling Netflix`,
