@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import Goal from './Goal'
 import GoalForm from './GoalForm'
+import Nav from './Nav'
 import { getGoals } from '../actions'
 
 function GoalList() {
@@ -17,6 +18,7 @@ function GoalList() {
 
   return (
     <>
+      <Nav />
       <div>
         <GoalForm />
       </div>
