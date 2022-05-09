@@ -54,11 +54,11 @@ export function setCompareCosts(compareCosts) {
   }
 }
 
-export function updateCompareCostsFreqency(id, frequency) {
+export function updateCompareCostsFreqency(id, frequencyPerWeek) {
   return {
     type: UPDATE_COMPARE_COSTS_FREQUENCY,
     id,
-    frequency
+    frequencyPerWeek
   }
 }
 

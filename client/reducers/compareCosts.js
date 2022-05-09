@@ -5,7 +5,7 @@ const initialState = [
     id: null,
     item: null,
     cost: null,
-    frequency: null,
+    frequencyPerWeek: null,
   },
 ]
 
@@ -14,7 +14,12 @@ function compareCosts(state = initialState, action) {
     case SET_COMPARE_COSTS:
       return action.compareCosts
     case UPDATE_COMPARE_COSTS_FREQUENCY:
-      return action.compareCosts
+      return state.map((item) => {
+        if (item.id == action.id) {
+          item.frequencyPerWeek = action.frequencyPerWeek
+        }
+        return item
+      })
     default:
       return state
   }
