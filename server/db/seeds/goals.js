@@ -7,7 +7,7 @@ exports.seed = function (knex) {
       return knex('goals').insert([
         {
           id: 1,
-          content: `save an extra 2% per year by cancelling Netflix`,
+          content: `Save an extra 2% per year by cancelling Netflix`,
           author: `Barat`,
           rating: `5`,
           date: new Date(Date.now()),
