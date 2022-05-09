@@ -7,7 +7,7 @@ function YearsToRetire () {
   const financials = useSelector(state => state.financials)
   const {income, incomePeriod, savings, savingsPeriod} = financials
 
-  console.log(financials)
+  // console.log(financials)
   // console.log(util.yearsToRetirement(income, incomePeriod, savings, savingsPeriod))
 
   useEffect(() => {

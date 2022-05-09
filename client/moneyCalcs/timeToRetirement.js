@@ -17,11 +17,11 @@ function yearsToRetirement (income, incomePeriod, savings, savingsPeriod) {
   const savingsRate = roundTo((savingsNormalised/afterTax), 2)
   const index = roundTo((savingsRate*100), 0)
   const yearsToRetire = yearsToRetireArray[index]
-  console.log('aftertax' + afterTax)
-  console.log('savings' + savingsNormalised)
-  console.log(savingsRate)
-  console.log(index)
-  console.log(yearsToRetire)
+  // console.log('aftertax' + afterTax)
+  // console.log('savings' + savingsNormalised)
+  // console.log(savingsRate)
+  // console.log(index)
+  // console.log(yearsToRetire)
   if (savingsRate > 1) {
     return "Woah! You're saving more than your after tax income! Retire today!"
   } else if (yearsToRetire == 0) {
