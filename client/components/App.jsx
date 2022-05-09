@@ -7,11 +7,13 @@ import GoalForm from './GoalForm'
 function App() {
   return (
     <>
-    <div id="wrapper">
+   
+    <div id='wrapper'>
       
       <Test />
       <Home />
     </div>
+    
     </>
   )
 }
