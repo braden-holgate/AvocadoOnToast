@@ -1,7 +1,14 @@
 import React from 'react'
-
+import { useSelector } from 'react-redux'
 
 function Barchart () {
+  const financials = useSelector(state => state.financials)
+  const {income, incomePeriod, savings, savingsPeriod, currentSavings} = financials
+
+  useEffect(() => {
+      setYears(util.yearsToRetirement(income, incomePeriod, savings, savingsPeriod, currentSavings))
+  }, [financials])
+  
   return (
     <>
   
