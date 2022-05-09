@@ -5,23 +5,23 @@ function getAllItems(db = conn) {
 }
 
 function getAllGoals(db = conn) {
-  return db('Goals')
+  return db('goals')
 }
 
 function getGoalById(id, db = conn) {
-  return db('Goals').where('id', id).select().first()
+  return db('goals').where('id', id).select().first()
 }
 
 function addGoal(newGoal, db = conn) {
-  return db('Goals').insert(newGoal)
+  return db('goals').insert(newGoal)
 }
 
 function updateGoal(id, newInfo, db = conn) {
-  return db('Goals').where('id', id).update(newInfo)
+  return db('goals').where('id', id).update(newInfo)
 }
 
 function deleteGoal(id, db = conn) {
-  return db('Goals').where('id', id).del()
+  return db('goals').where('id', id).del()
 }
 
 module.exports = {

@@ -3,22 +3,22 @@ const utils = require('./utils')
 // this function is set up to receive an item costs object and a financials object from global state
 
 // test costs object 
-const costs = {
-  id: 1,
-  item: 'coffee',
-  cost: 5,
-  frequencyPerWeek: 12,
-}
+// const costs = {
+//   id: 1,
+//   item: 'coffee',
+//   cost: 5,
+//   frequencyPerWeek: 12,
+// }
 
 // test financials object
-const financials = {
-  income: 3000,
-  incomePeriod: 'fortnight',
-  currentSavings: 500,
-  savings: 50,
-  savingsPeriod: 'week',
-  hoursWorkedPerWeek: 40 
-}
+// const financials = {
+//   income: 3000,
+//   incomePeriod: 'fortnight',
+//   currentSavings: 500,
+//   savings: 50,
+//   savingsPeriod: 'week',
+//   hoursWorkedPerWeek: 40 
+// }
 
 function timeCostObjCreator(itemCostsObj, financialsObj) {
   ({ id, item, cost, frequencyPerWeek } = itemCostsObj);

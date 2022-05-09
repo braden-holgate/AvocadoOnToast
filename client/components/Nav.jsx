@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import GoalForm from './GoalForm'
+import { Link } from 'react-router-dom'
 
 function Nav () {
   const [loggedIn, setLoggedIn] = useState(false)
@@ -15,10 +17,11 @@ function Nav () {
           <div className='navbar-start'>
               <a className="navbar-item">
                 <figure className="image columns is-flex">
-                  <img className="logo" src="images/Logo.png" />
+                  <img className="logo" src="images/logo.png" />
                 </figure>
                 <p className="app-name is-size-3">Avocado.onToast?</p>
               </a>
+            <div className="navbar-item">Avo Community Posts</div>
             <div className='navbar-end'> 
               {loggedIn
                 ? (<div className="navbar-item button">Logout</div>)
@@ -106,6 +109,5 @@ function Nav () {
 //     </div>
 //
 
-/* //We will only ever display a max of 2 of these at a time. If user not logged in, we show Login and Register. If they are logged in, we show Logout. */
 
 export default Nav

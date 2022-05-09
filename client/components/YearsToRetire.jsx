@@ -5,16 +5,16 @@ const util = require('../moneyCalcs/timeToRetirement')
 function YearsToRetire () {
   const [years, setYears] = useState()
   const financials = useSelector(state => state.financials)
-  const {income, incomePeriod, savings, savingsPeriod} = financials
+  const {income, incomePeriod, savings, savingsPeriod, currentSavings} = financials
 
   useEffect(() => {
-      setYears(util.yearsToRetirement(income, incomePeriod, savings, savingsPeriod))
+      setYears(util.yearsToRetirement(income, incomePeriod, savings, savingsPeriod, currentSavings))
   }, [financials])
 
   return (
     <>
       <section className="retire-years section has-text-centered is-size-3 ">
-        <h2>Years to retire:</h2>
+        <p>Years to retire:</p>
         <p id="years">{years}</p>
       </section>
     </>

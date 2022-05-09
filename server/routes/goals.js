@@ -43,7 +43,7 @@ router.patch('/:id', async (req, res) => {
 })
 
 //DELETE
-router.delete(':/id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id)
     await db.deleteGoal(id)
@@ -52,3 +52,5 @@ router.delete(':/id', async (req, res) => {
     res.status(500).json({ error: error.message })
   }
 })
+
+module.exports = router
