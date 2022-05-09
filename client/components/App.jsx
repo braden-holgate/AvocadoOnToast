@@ -4,7 +4,7 @@ import Home from './Home'
 
 function App() {
   return (
-    <div id="wrapper">
+    <div id='wrapper'>
       <Test />
       <Home />
     </div>
