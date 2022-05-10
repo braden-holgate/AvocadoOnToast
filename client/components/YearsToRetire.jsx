@@ -30,7 +30,7 @@ function YearsToRetire () {
         <p>Years to retire:</p>
         <p id="years">{years}</p>
         {currentAge ? 
-          <p className="is-size-5">{`You will be ${retirementAge} years old when you retire!`}</p> : 
+          <p className="is-size-5">{`If you continue with your current spending habits, you will be ${retirementAge} years old when you retire!`}</p> : 
           <p className="is-size-5">Add your age in the options above to see your retirement age!</p>}
                
       </section>

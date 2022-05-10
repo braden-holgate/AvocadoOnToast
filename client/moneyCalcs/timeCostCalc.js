@@ -33,7 +33,8 @@ function timeCostObjCreator(itemCostsObj, financialsObj) {
     timeCostPerItem: determineUnit(minutesPerItem),
     timeCostPerWeek: determineUnit(minutesPerWeek),
     timeCostPerYear: determineUnit(minutesPerYear),
-    frequencyPerWeek
+    frequencyPerWeek,
+    id
   }
 }
 // console.log(timeCostObjCreator(costs, financials))
