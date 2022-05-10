@@ -2,43 +2,41 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 const retire = require('../moneyCalcs/timeToRetirement')
 const utils = require('../moneyCalcs/utils')
-function YearsToRetire () {
+function YearsToRetire() {
   const [years, setYears] = useState()
+  const [retirementAge, setRetirementAge] = useState()
   const financials = useSelector(state => state.financials)
-  const {income, incomePeriod, savings, savingsPeriod, currentSavings } = financials
-  
-  // calculate extra savings per week
+  const { income, incomePeriod, savings, savingsPeriod, currentSavings } = financials
+
   const costs = useSelector(state => state.costs)
   const compareCosts = useSelector(state => state.compareCosts)
 
-  const [weeklySavings, setWeeklySavings] = useState(0)
-
-
-  useEffect(() => {
-      const weeklySavingsCount = utils.additionalSavings(costs, compareCosts)
-      setWeeklySavings(weeklySavingsCount)
-  }, [compareCosts])
-
-console.log(compareCosts)
-
   // TODO:
-  // update yearsToRetirement to recieve additional savings as an input
-  // display estimated cost of item on webpage
-  // STRETCH - give user option of changing estimated cost
-
+  // once age is available from form inputs, update this line to receive currentAge from state
+  // delete the below line once this is done
+  const currentAge = 30
 
   useEffect(() => {
-      setYears(retire.yearsToRetirement(income, incomePeriod, savings, savingsPeriod, currentSavings, weeklySavings))
+    const weeklySavingsCount = utils.additionalSavings(costs, compareCosts)
+
+    const yearsToRetirement = retire.yearsToRetirement(income, incomePeriod, savings, savingsPeriod, currentSavings, weeklySavingsCount)
+    setYears(yearsToRetirement)
+
+    setRetirementAge((Number(currentAge) + Number(yearsToRetirement)).toFixed(0))
   }, [compareCosts])
 
   return (
     <>
       <section className="retire-years section has-text-centered is-size-3 ">
-        <p>Years to retire:</p>
+      <p>Years to retire:</p>
         <p id="years">{years}</p>
+        {currentAge &&
+          <p className="is-size-4">{`You will be ${retirementAge} years old`}</p>}
+
       </section>
     </>
   )
 }
+
 
 export default YearsToRetire
