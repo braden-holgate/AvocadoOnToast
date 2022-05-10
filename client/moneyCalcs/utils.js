@@ -96,6 +96,14 @@ function calcFVAnnuities(depositAnnual, additionalSavingsAnnual, rate, years) {
   return (depositAnnual + additionalSavingsAnnual) * ((Math.pow((1 + rate), years) - 1) / rate)
 }
 
+function retirementAmount(income, incomePeriod, savings, savingsPeriod, additionalSavingsWeekly) {
+  const SWR = 0.04
+  const savingsNormalised = moneyPerYear(savings, savingsPeriod) + moneyPerYear(additionalSavingsWeekly, 'week')
+  const afterTax = afterTaxIncomePerYear(income, incomePeriod)
+  const amount = roundTo((1 / SWR),0) * (afterTax - savingsNormalised)
+  return amount
+}
+
 module.exports = {
   afterTaxIncomePerYear,
   moneyPerYear,
@@ -103,4 +111,5 @@ module.exports = {
   calcFVAnnuities,
   roundTo,
   additionalSavings,
+  retirementAmount
 }
