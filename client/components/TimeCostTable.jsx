@@ -10,6 +10,7 @@ const timeCostObjCreator = require('../moneyCalcs/timeCostCalc')
 //   timeCostPerItem: { timeValue: '11', unit: 'minutes' },
 //   timeCostPerWeek: { timeValue: '2.1', unit: 'hours' },
 //   timeCostPerYear: { timeValue: '4.6', unit: 'days' }
+//   id: 1
 // }
 
 function TimeCostTable() {
@@ -48,6 +49,8 @@ function TimeCostTable() {
                     let value
                     if (key === 'item') {
                       value = data[key]
+                    } else if(key==='frequencyPerWeek'){
+                      value = data.frequencyPerWeek
                     } else {
                       const obj = data[key]
                       value = obj.timeValue + ' ' + obj.unit
