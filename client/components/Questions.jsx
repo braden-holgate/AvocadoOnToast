@@ -143,7 +143,7 @@ function Questions() {
             onChange={handleIncome}></input>
           
 
-          <select onChange={incomeFrequency} defaultValue={incomePeriod}>
+          <select  className='dropdown' onChange={incomeFrequency} defaultValue={incomePeriod}>
             <option  value="week">
               Week
             </option>
@@ -273,8 +273,7 @@ function Questions() {
 
         {!displayAdditional && <button onClick={handleDisplayOptions}>Additional Options</button>}
         {displayAdditional && <button onClick={handleDisplayOptions}>Hide Options</button>}
-        <button onClick={handleCalculate} type='submit'>Calculate</button>
-       
+        <button className='question-button' onClick={handleCalculate} type='submit'>Calculate</button>
           
         {/* -----Jessie's toggle test-----start----- */}
          {/* toggle 1 */}
@@ -286,6 +285,9 @@ function Questions() {
             </div>
           </label>
         </div> */}
+
+    
+
  
       </section>
     </>
