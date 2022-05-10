@@ -5,14 +5,14 @@ function Goal(props) {
   return (
     <div>
       <p>
-        <strong>{author}</strong> 
+        <strong>{author}</strong>
       </p>
       <p>Date: {new Date(date).toDateString()}</p>
       <p>{content}</p>
       <p>Rating: {rating}</p>
+      <br />
     </div>
   )
 }
-  
-export default Goal
 
+export default Goal

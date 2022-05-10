@@ -23,8 +23,8 @@ function GoalList() {
         <GoalForm />
       </div>
       <div>
-        {goals?.map((goal) => (
-          <Goal key={goal?.id} goal={goal} />
+        {goals?.map((goal, i) => (
+          <Goal key={i} goal={goal} />
         ))}
       </div>
     </>
