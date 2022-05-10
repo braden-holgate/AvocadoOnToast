@@ -1,11 +1,9 @@
 import React from 'react'
-import Test from './Test'
 import Home from './Home'
 
 function App() {
   return (
-    <div id='wrapper'>
-      <Test />
+    <div id="wrapper">
       <Home />
     </div>
   )

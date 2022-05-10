@@ -10,7 +10,24 @@ function moneyPerYear(value, valuePeriod) {
   // else return console.log(`Error! '${valuePeriod}' does not match any of the available options in the moneyPerYear function in client/moneyCalcs/utils`)
 }
 
-
+// from stackoverflow
+function roundTo(n, digits) {
+  let negative = false
+  if (digits === undefined) {
+    digits = 0
+  }
+  if (n < 0) {
+    negative = true
+    n = n * -1
+  }
+  const multiplicator = Math.pow(10, digits)
+  n = parseFloat((n * multiplicator).toFixed(11))
+  n = (Math.round(n) / multiplicator).toFixed(digits)
+  if (negative) {
+    n = (n * -1).toFixed(digits)
+  }
+  return n
+}
 
 
 // CALCULATE AFTER TAX INCOME PER YEAR
@@ -57,8 +74,23 @@ function calcTakeHomePercent(preTaxIncomePerYear) {
   }
 }
 
+// A -> Accrued Amount (principal + interest)
+// P -> Principal
+// r -> Interest Rate
+// t -> number of time periods elapsed
+
+function calcCompoundInterest(principal, rate, years) {
+  return principal * Math.pow(1 + rate, years);
+}
+
+function calcFVAnnuities(depositAnnual, additionalSavingsAnnual, rate, years) {
+  return (depositAnnual + additionalSavingsAnnual) * ((Math.pow((1 + rate), years) - 1) / rate)
+}
 
 module.exports = {
   afterTaxIncomePerYear,
-  moneyPerYear
+  moneyPerYear,
+  calcCompoundInterest,
+  calcFVAnnuities,
+  roundTo,
 }
