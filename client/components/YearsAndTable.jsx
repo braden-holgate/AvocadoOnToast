@@ -8,7 +8,7 @@ import YearsToRetireCompare from './YearsToRetireCompare'
 
 function YearsAndTable() {
   const financials = useSelector(state => state.financials)
-
+  const costs = useSelector(state => state.costs)
   const { income, incomePeriod, savings, savingsPeriod } = financials
 
   const notNull = income !== null && incomePeriod !== null && savings !== null && savingsPeriod !== null;

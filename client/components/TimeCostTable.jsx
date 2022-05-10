@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 const timeCostObjCreator = require('../moneyCalcs/timeCostCalc')
 
@@ -20,6 +20,10 @@ function TimeCostTable() {
   const {income, incomePeriod, savings, savingsPeriod} = financials
   const notNull = income !== null && incomePeriod !== null && savings !== null && savingsPeriod !== null;
   
+  useEffect(() => {
+    console.log(costs)
+  }, [costs])
+
 
   const headers = {
     frequencyPerWeek:'Number per week',
