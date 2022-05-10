@@ -18,7 +18,8 @@ function Questions() {
   const [eatingOutCost, setEatingOutCost] = useState(null)
   const [displayAdditional, setDisplayAdditional] = useState(false)
   const [ageAndCommute, setAgeAndCommute] = useState({age: null, commute: 0, commutePeriod: "day"})
-  const [newItem, setNewItem] = useState({})
+  const [newItem, setNewItem] = useState({item: "", cost: "", frequencyPerWeek: ""})
+  const [newItemAlert, setNewItemAlert] = useState(false)
 
   useEffect(() => {
   dispatch(getCosts())
@@ -74,17 +75,28 @@ function Questions() {
   }
 
   const handleItems = (e) => {
-
+    e.target.name === 'item' ?
     setNewItem({
-      id: (items.length + 1),
+      id: (localItems.length + 1),
       ...newItem,
       [e.target.name]: e.target.value
+    })
+    :
+    setNewItem({
+      id: (localItems.length + 1),
+      ...newItem,
+      [e.target.name]: Number(e.target.value)
     })
   }
   const handleAddItems = (e) => {
     e.preventDefault()
-    let newItemArray = [...items, newItem]
-    dispatch(updateFrequency(newItemArray))
+    let notNull = newItem.item !== "" && newItem.cost !== "" && newItem.frequencyPerWeek !== ""
+    if (notNull) {
+    dispatch(updateFrequency([...items, newItem]))
+    setLocalItems([...localItems, newItem])
+    setNewItem({item: "", cost: "", frequencyPerWeek: ""})
+    setNewItemAlert(false)
+    } else {setNewItemAlert(true)}
   }
 
   const handleAgeandCommute = (e) => {
@@ -250,24 +262,25 @@ function Questions() {
                   Expense name:  
                 </label>
               </strong>
-              <input type="text" name="item" className="input"  
+              <input type="text" name="item" className="input" value={newItem.item} 
                 onChange={handleItems}></input>
               <strong>
                 <label className="mr-2">
                   How often per week?
                 </label>
               </strong>
-              <input type="number" name="frequencyPerWeek" className="input"  
+              <input type="number" name="frequencyPerWeek" className="input" value={newItem.frequencyPerWeek} 
                 onChange={handleItems}></input>
               <strong>
                 <label className="mr-2">
                   Cost?
                 </label>
               </strong>
-              <input type="number" name="cost" className="input"
+              <input type="number" name="cost" className="input" value={newItem.cost}
                 onChange={handleItems}></input>
               <button onClick={handleAddItems} type='submit'>Add</button>
             </div>
+            {newItemAlert && <p>Please fill in all fields before clicking "Add"</p>}
           </form>
         </div>}
 
