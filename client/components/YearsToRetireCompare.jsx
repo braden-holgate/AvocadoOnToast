@@ -19,7 +19,6 @@ function YearsToRetire () {
       setWeeklySavings(weeklySavingsCount)
   }, [compareCosts])
 
-console.log(compareCosts)
 
   // TODO:
   // update yearsToRetirement to recieve additional savings as an input
