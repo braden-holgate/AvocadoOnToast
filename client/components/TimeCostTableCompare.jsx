@@ -2,10 +2,6 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateCompareCostsFreqency } from '../actions'
 const timeCostObjCreator = require('../moneyCalcs/timeCostCalc')
-
-// TODO:
-// add form boxes
-// add click handler that dispatches updateCompareCostsFreqency(id, frequencyPerWeek)
  
 function TimeCostTableCompare() {
   const dispatch = useDispatch()
@@ -22,9 +18,9 @@ function TimeCostTableCompare() {
   }
 
   const headers = {
-    frequencyPerWeek:'Frequency Weekly',
+    frequencyPerWeek:'Number per week',
     item: 'Item',
-    timeCostPerItem: 'Per Item',
+    timeCostPerItem: 'Per item',
     timeCostPerWeek: 'Weekly',
     timeCostPerYear: 'Yearly',
   }

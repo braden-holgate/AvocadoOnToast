@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadFinancials, updateFrequency, getCosts, setCompareCosts } from '../actions'
+import { loadFinancials, updateFrequency, getCosts, setCompareCosts, setCosts } from '../actions'
+import UserUpdateTable from './UserUpdateTable'
 
 function Questions() {
 
@@ -13,10 +14,11 @@ function Questions() {
   const [savings, setSavings] = useState(null)
   const [savingsPeriod, setSavingsPeriod] = useState('week')
   const [hoursWorkedPerWeek, setHoursWorkedPerWeek] = useState(null)
-  const [localItems, setLocalItems] = useState("items")
-  const [coffeeCost, setCoffeeCost] = useState(null)
-  const [eatingOutCost, setEatingOutCost] = useState(null)
+  // const [localItems, setLocalItems] = useState("items")
+  // const [coffeeCost, setCoffeeCost] = useState(null)
+  // const [eatingOutCost, setEatingOutCost] = useState(null)
   const [displayAdditional, setDisplayAdditional] = useState(false)
+  const [displayEdit, setDisplayEdit] = useState(false)
   const [ageAndCommute, setAgeAndCommute] = useState({age: null, commute: 0, commutePeriod: "day"})
   const [newItem, setNewItem] = useState({item: "", cost: "", frequencyPerWeek: ""})
   const [newItemAlert, setNewItemAlert] = useState(false)
@@ -25,11 +27,11 @@ function Questions() {
   dispatch(getCosts())
   }, [])
 
-  useEffect(() => {
-    setCoffeeCost(items[0])
-    setEatingOutCost(items[1])
-    setLocalItems(items)
-  }, [items])
+  // useEffect(() => {
+  //   setCoffeeCost(items[0])
+  //   setEatingOutCost(items[1])
+  //   setLocalItems(items)
+  // }, [items])
 
   const handleIncome = (e) => {
     setIncome(Number(e.target.value))
@@ -57,33 +59,39 @@ function Questions() {
   }
 
   const handleCoffee = (e) => {
-    setCoffeeCost({
-      ...coffeeCost,
-      frequencyPerWeek: e.target.value,
-    })
+    // setCoffeeCost({
+    //   ...coffeeCost,
+    //   frequencyPerWeek: e.target.value,
+    // })
+    items[0].frequencyPerWeek = e.target.value
   }
 
   const handleEatingOut = (e) => {
-    setEatingOutCost({
-      ...eatingOutCost,
-      frequencyPerWeek: e.target.value,
-    })
+    // setEatingOutCost({
+    //   ...eatingOutCost,
+    //   frequencyPerWeek: e.target.value,
+    // })
+    items[1].frequencyPerWeek = e.target.value
   }
 
   const handleDisplayOptions = (e) => {
     displayAdditional ? setDisplayAdditional(false) : setDisplayAdditional(true)
   }
 
+  const handleDisplayEdit = (e) => {
+    displayEdit ? setDisplayEdit(false) : setDisplayEdit(true)
+  }
+
   const handleItems = (e) => {
     e.target.name === 'item' ?
     setNewItem({
-      id: (localItems.length + 1),
+      id: (items.length + 1),
       ...newItem,
       [e.target.name]: e.target.value
     })
     :
     setNewItem({
-      id: (localItems.length + 1),
+      id: (items.length + 1),
       ...newItem,
       [e.target.name]: Number(e.target.value)
     })
@@ -92,8 +100,9 @@ function Questions() {
     e.preventDefault()
     let notNull = newItem.item !== "" && newItem.cost !== "" && newItem.frequencyPerWeek !== ""
     if (notNull) {
-    dispatch(updateFrequency([...items, newItem]))
-    setLocalItems([...localItems, newItem])
+    let newItemArray = [...items, newItem]
+    dispatch(setCosts(newItemArray))
+    dispatch(setCompareCosts(JSON.parse(JSON.stringify(newItemArray))))
     setNewItem({item: "", cost: "", frequencyPerWeek: ""})
     setNewItemAlert(false)
     } else {setNewItemAlert(true)}
@@ -114,8 +123,8 @@ function Questions() {
 
   const handleCalculate = (e) => {
     e.preventDefault()
-    let costsArray = []
-    costsArray.push(coffeeCost, eatingOutCost)
+    // let costsArray = []
+    // costsArray.push(coffeeCost, eatingOutCost)
 
     let totHours
     ageAndCommute.commutePeriod === "day" ? 
@@ -132,8 +141,10 @@ function Questions() {
       age: ageAndCommute.age
     }
 
-    dispatch(updateFrequency(costsArray))
-    dispatch(setCompareCosts(JSON.parse(JSON.stringify(costsArray)))) // creating a deep copy because otherwise the compare costs state will reference the same array and changing one will change the other!
+    // dispatch(updateFrequency(coffeeCost.id, coffeeCost.frequencyPerWeek))
+    // dispatch(updateFrequency(eatingOutCost.id, eatingOutCost.frequencyPerWeek))
+    dispatch(setCosts(items))
+    dispatch(setCompareCosts(JSON.parse(JSON.stringify(items)))) // creating a deep copy because otherwise the compare costs state will reference the same array and changing one will change the other!
     dispatch(loadFinancials(financials))
   }
 
@@ -284,9 +295,20 @@ function Questions() {
           </form>
         </div>}
 
+        {displayEdit && <div>
+          <UserUpdateTable />
+        </div>}
+
+
         {!displayAdditional && <button onClick={handleDisplayOptions}>Additional Options</button>}
         {displayAdditional && <button onClick={handleDisplayOptions}>Hide Options</button>}
-        <button className='question-button' onClick={handleCalculate} type='submit'>Calculate</button>
+        
+        {!displayEdit && <button onClick={handleDisplayEdit}>Edit expenses</button>}
+        {displayEdit && <button onClick={handleDisplayEdit}>Hide expenses</button>}
+        
+        <br></br>
+        <button onClick={handleCalculate} type='submit'>Calculate</button>
+       
           
         {/* -----Jessie's toggle test-----start----- */}
          {/* toggle 1 */}
