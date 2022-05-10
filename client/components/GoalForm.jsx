@@ -15,7 +15,7 @@ function GoalForm() {
     author: '',
     content: '',
     rating: 0,
-    date: new Date(Date.now()),
+    date: new Date(Date.now())
   })
 
   const dispatch = useDispatch()
@@ -26,7 +26,7 @@ function GoalForm() {
     setRatingValue(value)
     setFormData({
       ...formData,
-      rating: value,
+      rating: value
     })
   }
 
@@ -41,7 +41,7 @@ function GoalForm() {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     })
   }
 
@@ -55,7 +55,7 @@ function GoalForm() {
       author: '',
       content: '',
       rating: 0,
-      date: new Date(Date.now()),
+      date: new Date(Date.now())
     })
   }
 
@@ -66,10 +66,6 @@ function GoalForm() {
           <label className="mr-2">
             What's your thought? Any financial goal to share?
           </label>
-          {/* <label className="mr-2">
-            Share your goal with others who are trying to reach financial
-            freedom
-          </label> */}
         </strong>
         <input
           name="content"
@@ -78,7 +74,7 @@ function GoalForm() {
             width: '200px',
             padding: '5px',
             margin: '15px',
-            border: '1px solid #ccc',
+            border: '1px solid #ccc'
           }}
           placeholder="Enter your goal here"
           value={formData.content}
@@ -96,7 +92,7 @@ function GoalForm() {
             width: '200px',
             padding: '5px',
             margin: '15px',
-            border: '1px solid #ccc',
+            border: '1px solid #ccc'
           }}
           placeholder="Enter your name here"
           value={formData.author}
@@ -107,7 +103,6 @@ function GoalForm() {
         <strong>
           <label className="mr-2">Rate your satisfaction with our app:</label>
         </strong>
-        {/* <div style={styles.stars}> */}
         {stars.map((_, index) => {
           return (
             <FaStar
@@ -123,7 +118,7 @@ function GoalForm() {
                   : colors.grey
               }
               style={{
-                cursor: 'pointer',
+                cursor: 'pointer'
               }}
             />
           )
@@ -143,11 +138,11 @@ const styles = {
   container: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   stars: {
     display: 'flex',
-    flexDirection: 'row',
+    flexDirection: 'row'
   },
   textarea: {
     border: '1px solid #a9a9a9',
@@ -155,13 +150,13 @@ const styles = {
     padding: 10,
     margin: '20px 0',
     minHeight: 100,
-    width: 300,
+    width: 300
   },
   button: {
     border: '1px solid #a9a9a9',
     borderRadius: 5,
     width: 300,
-    padding: 10,
+    padding: 10
   },
 }
 

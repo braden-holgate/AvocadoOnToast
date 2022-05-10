@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteOneGoal } from '../actions'
+import { deleteOneGoal, getGoals } from '../actions'
 import { FaStar } from 'react-icons/fa'
 
 function Goal(props) {
@@ -9,6 +9,7 @@ function Goal(props) {
 
   const handleDelete = (id) => {
     dispatch(deleteOneGoal(id))
+    dispatch(getGoals())
   }
 
   const stars = Array(rating).fill(0)
@@ -37,10 +38,9 @@ function Goal(props) {
         &emsp; &emsp; &emsp; &emsp;
         <button>✏️</button>
         &emsp;
-        <button>🗑️</button>
+        <button onClick={() => handleDelete(id)}>🗑️</button>
       </p>
       <br />
-      <button onClick={() => handleDelete(id)}>Delete</button>
     </div>
   )
 }
