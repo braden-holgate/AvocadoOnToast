@@ -11,16 +11,23 @@ function goals(state = initialState, action) {
       return action.goals
 
     case ADD_GOAL:
-      action.goal.id = maxId + 1
+      action.newGoal.id = maxId + 1
       return [...state, action.newGoal]
 
     case UPDATE_GOAL:
-      state.forEach((goal) => {
-        if (goal.id === action.id) {
-          goal = action.newGoal
-        }
+      return state.map((goal) => {
+        goal.id == action.id
+          ? {
+              ...action,
+            }
+          : goal
       })
-      return [...state]
+    // state.forEach((goal) => {
+    //   if (goal.id === action.id) {
+    //     goal = action.newGoal
+    //   }
+    // })
+    // return [...state]
 
     case REMOVE_GOAL:
       console.log('in reducer', id)

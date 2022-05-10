@@ -1,4 +1,5 @@
 import request from 'superagent'
+import { fetchGoals, postGoal, delGoal, patchGoal } from '../apis/goals'
 
 export const SHOW_ERROR = 'SHOW_ERROR'
 
@@ -93,11 +94,10 @@ export function addGoal(newGoal) {
   }
 }
 
-export function updateGoal(id, newInfo) {
+export function updateGoal(newInfo) {
   return {
     type: UPDATE_GOAL,
-    id,
-    newGoal: newInfo,
+    newInfo,
   }
 }
 
@@ -123,12 +123,12 @@ export function getCosts() {
   }
 }
 
+//GOALS THUNK
 export function getGoals() {
   return (dispatch) => {
-    return request
-      .get('/api/v1/goals/')
+    fetchGoals()
       .then((res) => {
-        dispatch(saveAllGoals(res.body))
+        dispatch(saveAllGoals(res))
         return null
       })
       .catch((err) => {
@@ -139,11 +139,9 @@ export function getGoals() {
 
 export function saveNewGoal(newGoal) {
   return (dispatch) => {
-    return request
-      .post('/api/v1/goals/')
-      .send(newGoal)
-      .then((res) => {
-        dispatch(addGoal(res.body))
+    postGoal(newGoal)
+      .then((goalObj) => {
+        dispatch(addGoal(goalObj))
         return null
       })
       .catch((err) => {
@@ -154,12 +152,14 @@ export function saveNewGoal(newGoal) {
 
 export function deleteOneGoal(id) {
   return (dispatch) => {
-    return request
-      .delete('/api/v1/goals/' + id)
-      .then(() => {
+    // return request
+    //   .delete(`/api/v1/goals/${id}`)
+    delGoal(id)
+      .then((res) => {
+        console.log('res:', res.body)
         dispatch(removeGoal(id))
+        return null
       })
-      .then(() => null)
       .catch((err) => {
         dispatch(showError(err.message))
       })
