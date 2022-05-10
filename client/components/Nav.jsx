@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import GoalForm from './GoalForm'
 import { Link } from 'react-router-dom'
 
 function Nav () {

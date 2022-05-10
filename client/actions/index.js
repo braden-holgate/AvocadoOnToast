@@ -71,14 +71,12 @@ export function updateCompareCostsFreqency(id, frequencyPerWeek) {
 }
 
 //GOALS
-
 export function saveAllGoals(goals) {
   return {
     type: GET_GOALS,
     goals,
   }
 }
-//hmm possibly could rename one of these to be more consistent? i.e save and get are a bit confusing?
 
 export function addGoal(newGoal) {
   return {
@@ -103,7 +101,6 @@ export function removeGoal(id) {
 }
 
 // THUNKS
-
 export function getCosts() {
   return (dispatch) => {
     return request
@@ -141,6 +138,20 @@ export function saveNewGoal(newGoal) {
         dispatch(addGoal(res.body))
         return null
       })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+
+export function deleteOneGoal(id) {
+  return (dispatch) => {
+    return request
+      .delete('/api/v1/goals/' + id)
+      .then(() => {
+        dispatch(removeGoal(id))
+      })
+      .then(() => null)
       .catch((err) => {
         dispatch(showError(err.message))
       })
