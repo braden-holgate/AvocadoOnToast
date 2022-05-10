@@ -149,3 +149,16 @@ export function deleteOneGoal(id) {
       })
   }
 }
+
+export function updateAGoal(info) {
+  return (dispatch) => {
+    patchGoal(info)
+      .then((res) => {
+        dispatch(updateGoal(res))
+        return null
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}

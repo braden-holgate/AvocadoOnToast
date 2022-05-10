@@ -25,12 +25,12 @@ export function delGoal(id) {
   )
 }
 
-export function patchGoal(id, info) {
+export function patchGoal(goal) {
   return request
-    .patch(`/api/v1/goals/${id}`)
-    .send(info)
+    .patch(`/api/v1/goals/${goal.id}`)
+    .send(goal)
     .then((response) => response.body)
-    .catch(errorHandler('PATCH', `/api/v1/goals/${id}`))
+    .catch(errorHandler('PATCH', `/api/v1/goals/${goal.id}`))
 }
 
 function errorHandler(method, route) {
