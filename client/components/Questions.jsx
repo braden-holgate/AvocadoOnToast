@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadFinancials, updateFrequency, getCosts, setCompareCosts } from '../actions'
+import AdditionalOptions from './AdditionalOptions'
 
 function Questions() {
 
@@ -16,6 +17,7 @@ function Questions() {
   const [localItems, setLocalItems] = useState("items")
   const [coffeeCost, setCoffeeCost] = useState(null)
   const [eatingOutCost, setEatingOutCost] = useState(null)
+  const [displayAdditional, setDisplayAdditional] = useState(null)
 
   useEffect(() => {
   dispatch(getCosts())
@@ -64,6 +66,10 @@ function Questions() {
       ...eatingOutCost,
       frequencyPerWeek: e.target.value,
     })
+  }
+
+  const handleDisplayOptions = (e) => {
+    setDisplayAdditional(true)
   }
   // function to be used if we let users create their own inputs
   // const handleItems = (e) => {
@@ -181,6 +187,8 @@ function Questions() {
             onChange={handleEatingOut}></input>
 
         </div>
+        {displayAdditional && <AdditionalOptions/>}
+        <button onClick={handleDisplayOptions}>Additional Options</button>
         <button onClick={handleCalculate} type='submit'>Calculate</button>
        
        
