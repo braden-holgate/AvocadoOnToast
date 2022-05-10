@@ -166,7 +166,7 @@ function Questions() {
             </label>
           </strong>
 
-          <input type="text" name="coffees" className="input" placeholder="Coffee weekly"
+          <input type="number" name="coffees" className="input" placeholder="Coffee weekly"
             onChange={handleCoffee}></input>
 
         </div>
@@ -177,7 +177,7 @@ function Questions() {
             </label>
           </strong>
 
-          <input type="text" name="food" className="input" placeholder="Eating out" 
+          <input type="number" name="food" className="input" placeholder="Eating out" 
             onChange={handleEatingOut}></input>
 
         </div>
