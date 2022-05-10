@@ -64,9 +64,12 @@ function GoalForm() {
       <div>
         <strong>
           <label className="mr-2">
+            What's your thought? Any financial goal to share?
+          </label>
+          {/* <label className="mr-2">
             Share your goal with others who are trying to reach financial
             freedom
-          </label>
+          </label> */}
         </strong>
         <input
           name="content"
@@ -100,37 +103,37 @@ function GoalForm() {
           onChange={handleChange}
         />
       </div>
-      <div>
+      <div style={styles.stars}>
         <strong>
-          <label className="mr-2">Your rating:</label>
+          <label className="mr-2">Rate your satisfaction with our app:</label>
         </strong>
-
-        <div style={styles.stars}>
-          {stars.map((_, index) => {
-            return (
-              <FaStar
-                key={index}
-                name="ratingValue"
-                size={24}
-                onClick={() => handleClick(index + 1)}
-                onMouseOver={() => handleMouseOver(index + 1)}
-                onMouseLeave={handleMouseLeave}
-                color={
-                  hoverValue || ratingValue > index
-                    ? colors.orange
-                    : colors.grey
-                }
-                style={{
-                  cursor: 'pointer',
-                }}
-              />
-            )
-          })}
-        </div>
+        {/* <div style={styles.stars}> */}
+        {stars.map((_, index) => {
+          return (
+            <FaStar
+              key={index}
+              name="ratingValue"
+              size={24}
+              onClick={() => handleClick(index + 1)}
+              onMouseOver={() => handleMouseOver(index + 1)}
+              onMouseLeave={handleMouseLeave}
+              color={
+                (hoverValue || ratingValue) > index
+                  ? colors.orange
+                  : colors.grey
+              }
+              style={{
+                cursor: 'pointer',
+              }}
+            />
+          )
+        })}
+        {/* </div> */}
+        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+        <button onClick={onShare} type="submit">
+          Share
+        </button>
       </div>
-      <button onClick={onShare} type="submit">
-        Share
-      </button>
     </>
   )
 }
