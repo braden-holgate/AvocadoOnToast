@@ -8,8 +8,7 @@
 // Import a Google Font
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&family=Space+Mono&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Josefin+Sans:wght@500&family=Montserrat:ital,wght@1,900&family=Poppins:wght@100;800&family=Righteous&family=Space+Mono&display=swap');
 // Import custom variables and Bulma overides
 @import "./variables.scss";
 
@@ -59,13 +58,54 @@ nav.container{
 
 .app-name{
   margin-top:-14px;
-  font-family: 'Archivo Black', sans-serif;
-  color:#333333;
+  font-family:'Righteous', cursive;
+  font-size: 30px;
+  color:#76B76D;
 }
 
 .navbar-end{
   margin-top:20px;  
 }
+
+.login-button{
+  border:1px solid #76B76D;
+  border-radius: 5px;
+  background-color: #ffffff;
+  font-size: medium;
+  font-weight: bold;
+  color:#76B76D;
+  width: 80px;
+  height:40px;
+  margin-right:10px;
+  
+}
+
+.register-button{
+  border:1px solid #76B76D;
+  border-radius: 5px;
+  background-color: #76B76D;
+  font-size: medium;
+  font-weight: bold;
+  color:white;
+  width: 80px;
+  height:40px;
+  margin-right:10px;
+}
+
+.logout-button{
+  border:1px solid #76B76D;
+  border-radius: 5px;
+  background-color: #ffffff;
+  font-size: medium;
+  font-weight: bold;
+  color:#76B76D;
+  width: 80px;
+  height:40px;
+  margin-right:10px;
+  
+}
+
+
 
 #years{
   font-size: 100px;
