@@ -48,7 +48,7 @@ function GoalForm() {
   const onShare = (e) => {
     e.preventDefault()
     dispatch(saveNewGoal(formData))
-    dispatch(getGoals())
+    // dispatch(getGoals())
     setRatingValue(0)
     setHoverValue(undefined)
     setFormData({

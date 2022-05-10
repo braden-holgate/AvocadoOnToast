@@ -10,7 +10,6 @@ function GoalList() {
   const dispatch = useDispatch()
 
   const goals = useSelector((state) => state.goals)
-  console.log(goals)
 
   useEffect(() => {
     dispatch(getGoals())
