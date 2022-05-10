@@ -26,7 +26,7 @@ function costs(state = initialState, action) {
         return item
       })
     case SET_COSTS:
-      return action.costs
+      return JSON.parse(JSON.stringify(action.costs))
     default:
       return state
   }

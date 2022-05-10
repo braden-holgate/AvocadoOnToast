@@ -42,8 +42,12 @@ function UserUpdateTable() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
     dispatch(setCosts(costsArr))
-    dispatch(setCompareCosts(JSON.parse(JSON.stringify(costsArr))))
+    dispatch(setCompareCosts(costsArr))
+
+    // dispatch(setCosts(JSON.parse(JSON.stringify(costsArr))))
+    // dispatch(setCompareCosts(JSON.parse(JSON.stringify(costsArr))))
   }
 
 
