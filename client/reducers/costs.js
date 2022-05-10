@@ -1,4 +1,4 @@
-import { RECEIVE_COSTS, UPDATE_FREQUENCY } from '../actions'
+import { RECEIVE_COSTS, SET_COSTS, UPDATE_FREQUENCY } from '../actions'
 
 const initialState = [
   {
@@ -18,6 +18,8 @@ function costs(state = initialState, action) {
       })
       return newCosts
     case UPDATE_FREQUENCY:
+      return action.costs
+    case SET_COSTS:
       return action.costs
     default:
       return state

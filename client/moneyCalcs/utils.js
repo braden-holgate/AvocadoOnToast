@@ -1,10 +1,14 @@
 // NORMALISE MONETARY INPUT DATA TO PER YEAR
 
 function moneyPerYear(value, valuePeriod) {
-  if (valuePeriod == 'week') 
+  if (valuePeriod == 'day')
+    return value * 365
+  else if (valuePeriod == 'week') 
     return value * 52
   else if (valuePeriod == 'fortnight')
     return value * 26
+  else if (valuePeriod == 'month')
+    return value * 12
   else if (valuePeriod == 'year')
     return value
   // else return console.log(`Error! '${valuePeriod}' does not match any of the available options in the moneyPerYear function in client/moneyCalcs/utils`)

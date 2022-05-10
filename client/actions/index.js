@@ -5,6 +5,7 @@ export const SHOW_ERROR = 'SHOW_ERROR'
 export const RECEIVE_COSTS = 'RECEIVE_COSTS'
 export const UPDATE_FREQUENCY = 'UPDATE_FREQUENCY'
 export const LOAD_FINANCIALS = 'LOAD_FINANCIALS'
+export const SET_COSTS = 'SET_COSTS'
 
 export const SET_COMPARE_COSTS = 'SET_COMPARE_COSTS'
 export const UPDATE_COMPARE_COSTS_FREQUENCY = 'UPDATE_COMPARE_COSTS_FREQUENCY'
@@ -43,6 +44,13 @@ export function loadFinancials(financials) {
   return {
     type: LOAD_FINANCIALS,
     financials,
+  }
+}
+
+export function setCosts(costs) {
+  return {
+    type: SET_COSTS,
+    costs,
   }
 }
 
