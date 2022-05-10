@@ -19,6 +19,7 @@ function TimeCostTable() {
 
   const {income, incomePeriod, savings, savingsPeriod} = financials
   const notNull = income !== null && incomePeriod !== null && savings !== null && savingsPeriod !== null;
+  
 
   const headers = {
     frequencyPerWeek:'Number per week',

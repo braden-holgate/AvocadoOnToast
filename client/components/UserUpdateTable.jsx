@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCompareCosts, setCosts } from '../actions'
 
@@ -6,7 +6,9 @@ function UserUpdateTable() {
   const dispatch = useDispatch()
 
   const costs = useSelector((globalState) => globalState.costs)
-  // console.log(costs)
+  console.log(costs)
+
+  const [costsArr, setCostsArr] = useState(costs)
 
   const handleFreqChange = (id, e) => {
     const frequencyPerWeek = e.target.value
@@ -15,6 +17,7 @@ function UserUpdateTable() {
         itemObj.frequencyPerWeek = frequencyPerWeek
       }
     })
+    setCostsArr(costs)
   }
 
   const handleItemChange = (id, e) => {
@@ -24,6 +27,7 @@ function UserUpdateTable() {
         itemObj.item = item
       }
     })
+    setCostsArr(costs)
   }
 
   const handleCostChange = (id, e) => {
@@ -33,12 +37,13 @@ function UserUpdateTable() {
         itemObj.cost = cost
       }
     })
+    setCostsArr(costs)
   }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(setCosts(costs))
-    dispatch(setCompareCosts(JSON.parse(JSON.stringify(costs))))
+    dispatch(setCosts(costsArr))
+    dispatch(setCompareCosts(JSON.parse(JSON.stringify(costsArr))))
   }
 
 
@@ -65,7 +70,7 @@ function UserUpdateTable() {
               return (
                 <tr key={index}>
                   {Object.keys(headers).map((key) => {
-                    console.log(itemObj)
+                    // console.log(itemObj)
                     let value
                     if (key === 'item') {
                       value = <input type='text' name='item-name' className='table-input' defaultValue={itemObj.item} onChange={(e) => handleItemChange(itemObj.id, e)} />

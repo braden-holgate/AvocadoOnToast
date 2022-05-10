@@ -19,7 +19,6 @@ function Home() {
       <Welcome />
       <Runningman/>
       <Questions />
-      <UserUpdateTable />
       <YearsAndTable/>
       <TotalExpense/>
       <Barchart/>

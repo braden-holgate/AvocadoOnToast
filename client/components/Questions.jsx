@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadFinancials, updateFrequency, getCosts, setCompareCosts, setCosts } from '../actions'
+import UserUpdateTable from './UserUpdateTable'
 
 function Questions() {
 
@@ -13,10 +14,11 @@ function Questions() {
   const [savings, setSavings] = useState(null)
   const [savingsPeriod, setSavingsPeriod] = useState('week')
   const [hoursWorkedPerWeek, setHoursWorkedPerWeek] = useState(null)
-  const [localItems, setLocalItems] = useState("items")
-  const [coffeeCost, setCoffeeCost] = useState(null)
-  const [eatingOutCost, setEatingOutCost] = useState(null)
+  // const [localItems, setLocalItems] = useState("items")
+  // const [coffeeCost, setCoffeeCost] = useState(null)
+  // const [eatingOutCost, setEatingOutCost] = useState(null)
   const [displayAdditional, setDisplayAdditional] = useState(false)
+  const [displayEdit, setDisplayEdit] = useState(false)
   const [ageAndCommute, setAgeAndCommute] = useState({age: null, commute: 0, commutePeriod: "day"})
   const [newItem, setNewItem] = useState({})
 
@@ -24,11 +26,11 @@ function Questions() {
   dispatch(getCosts())
   }, [])
 
-  useEffect(() => {
-    setCoffeeCost(items[0])
-    setEatingOutCost(items[1])
-    setLocalItems(items)
-  }, [items])
+  // useEffect(() => {
+  //   setCoffeeCost(items[0])
+  //   setEatingOutCost(items[1])
+  //   setLocalItems(items)
+  // }, [items])
 
   const handleIncome = (e) => {
     setIncome(Number(e.target.value))
@@ -73,6 +75,10 @@ function Questions() {
 
   const handleDisplayOptions = (e) => {
     displayAdditional ? setDisplayAdditional(false) : setDisplayAdditional(true)
+  }
+
+  const handleDisplayEdit = (e) => {
+    displayEdit ? setDisplayEdit(false) : setDisplayEdit(true)
   }
 
   const handleItems = (e) => {
@@ -276,8 +282,18 @@ function Questions() {
           </form>
         </div>}
 
+        {displayEdit && <div>
+          <UserUpdateTable />
+        </div>}
+
+
         {!displayAdditional && <button onClick={handleDisplayOptions}>Additional Options</button>}
         {displayAdditional && <button onClick={handleDisplayOptions}>Hide Options</button>}
+        
+        {!displayEdit && <button onClick={handleDisplayEdit}>Edit expenses</button>}
+        {displayEdit && <button onClick={handleDisplayEdit}>Hide expenses</button>}
+        
+        <br></br>
         <button onClick={handleCalculate} type='submit'>Calculate</button>
        
           
