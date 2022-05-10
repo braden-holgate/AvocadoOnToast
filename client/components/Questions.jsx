@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loadFinancials, updateFrequency, getCosts, setCompareCosts } from '../actions'
-import AdditionalOptions from './AdditionalOptions'
 
 function Questions() {
 
@@ -19,6 +18,7 @@ function Questions() {
   const [eatingOutCost, setEatingOutCost] = useState(null)
   const [displayAdditional, setDisplayAdditional] = useState(false)
   const [ageAndCommute, setAgeAndCommute] = useState({age: null, commute: 0, commutePeriod: "day"})
+  const [newItem, setNewItem] = useState({})
 
   useEffect(() => {
   dispatch(getCosts())
@@ -75,10 +75,18 @@ function Questions() {
 
   const handleItems = (e) => {
 
+    setNewItem({
+      id: (items.length + 1),
+      ...newItem,
+      [e.target.name]: e.target.value
+    })
   }
   const handleAddItems = (e) => {
-
+    e.preventDefault()
+    let newItemArray = [...items, newItem]
+    dispatch(updateFrequency(newItemArray))
   }
+
   const handleAgeandCommute = (e) => {
     e.target.name === "commutePeriod" ? 
     setAgeAndCommute({
@@ -96,7 +104,7 @@ function Questions() {
     e.preventDefault()
     let costsArray = []
     costsArray.push(coffeeCost, eatingOutCost)
-    
+
     let totHours
     ageAndCommute.commutePeriod === "day" ? 
     totHours = hoursWorkedPerWeek + (ageAndCommute.commute * 5)
@@ -239,17 +247,24 @@ function Questions() {
             <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
               <strong>
                 <label className="mr-2">
-                  How often do you spend per week on  
+                  Expense name:  
                 </label>
               </strong>
-              <input type="text" name="newItem" className="input"  
+              <input type="text" name="item" className="input"  
+                onChange={handleItems}></input>
+              <strong>
+                <label className="mr-2">
+                  How often per week?
+                </label>
+              </strong>
+              <input type="number" name="frequencyPerWeek" className="input"  
                 onChange={handleItems}></input>
               <strong>
                 <label className="mr-2">
                   Cost?
                 </label>
               </strong>
-              <input type="number" name="newItemCost" className="input"  
+              <input type="number" name="cost" className="input"
                 onChange={handleItems}></input>
               <button onClick={handleAddItems} type='submit'>Add</button>
             </div>
