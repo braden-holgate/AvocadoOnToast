@@ -60,8 +60,8 @@ function GoalForm() {
   }
 
   return (
-    <>
-      <div>
+    <div className='goal-form'>
+      <div >
         <strong>
           <label className="mr-2">
             What's your thought? Any financial goal to share?
@@ -132,9 +132,10 @@ function GoalForm() {
         &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
         <button onClick={onShare} type="submit">
           Share
-        </button>
-      </div>
-    </>
+        </button>   
+      </div>  
+    </div>
+   
   )
 }
 

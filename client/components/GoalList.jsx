@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import Goal from './Goal'
 import GoalForm from './GoalForm'
 import Nav from './Nav'
+import Subscribe from './Subscribe'
+import Footer from './Footer'
 import { getGoals } from '../actions'
 
 function GoalList() {
@@ -17,21 +19,20 @@ function GoalList() {
   }, [])
 
   return (
-    <>
+    <div id="wrapper">
       <Nav />
-
-      <div>
+      <div className='goal-background'>
         <GoalForm />
+        <div className='line'>------------------------------------------------------------------------------</div>
+        <div className='goal'>
+          {goals?.map((goal, i) => (
+            <Goal key={i} goal={goal} />
+          ))}
+        </div>
       </div>
-      <br />
-      <br />
-
-      <div>
-        {goals?.map((goal, i) => (
-          <Goal key={i} goal={goal} />
-        ))}
+      
+      <Footer />
       </div>
-    </>
   )
 }
 
