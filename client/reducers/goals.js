@@ -11,19 +11,9 @@ function goals(state = initialState, action) {
       return [...state, action.newGoal]
 
     case UPDATE_GOAL:
-      return state.map((goal) => {
-        goal.id == action.id
-          ? {
-              ...action,
-            }
-          : goal
-      })
-    // state.forEach((goal) => {
-    //   if (goal.id === action.id) {
-    //     goal = action.newGoal
-    //   }
-    // })
-    // return [...state]
+      return state.map((goal) =>
+        goal.id == action.newInfo.id ? action.newInfo : goal
+      )
 
     case REMOVE_GOAL:
       return state.filter((goal) => goal.id !== action.id)
