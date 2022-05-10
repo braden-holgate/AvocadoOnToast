@@ -1,30 +1,25 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
-const util = require('../moneyCalcs/timeToRetirement')
-
+const retire = require('../moneyCalcs/timeToRetirement')
+const utils = require('../moneyCalcs/utils')
 function YearsToRetire () {
   const [years, setYears] = useState()
   const financials = useSelector(state => state.financials)
-  const {income, incomePeriod, savings, savingsPeriod} = financials
+  const {income, incomePeriod, savings, savingsPeriod, currentSavings } = financials
   
   // calculate extra savings per week
   const costs = useSelector(state => state.costs)
   const compareCosts = useSelector(state => state.compareCosts)
 
   const [weeklySavings, setWeeklySavings] = useState(0)
-  // console.log("Weekly savings: ", weeklySavings)
+
 
   useEffect(() => {
-      let weeklySavingsCount = 0
-      for (let i = 0; i < costs.length; i++) {
-        let costsFreq = Number(costs[i].frequencyPerWeek)
-        let compareCostsFreq = Number(compareCosts[i].frequencyPerWeek)
-        weeklySavingsCount += (costsFreq - compareCostsFreq) * costs[i].cost
-      }    
+      const weeklySavingsCount = utils.additionalSavings(costs, compareCosts)
       setWeeklySavings(weeklySavingsCount)
   }, [compareCosts])
 
-
+console.log(compareCosts)
 
   // TODO:
   // update yearsToRetirement to recieve additional savings as an input
@@ -33,8 +28,8 @@ function YearsToRetire () {
 
 
   useEffect(() => {
-      setYears(util.yearsToRetirement(income, incomePeriod, savings, savingsPeriod))
-  }, [financials])
+      setYears(retire.yearsToRetirement(income, incomePeriod, savings, savingsPeriod, currentSavings, weeklySavings))
+  }, [compareCosts])
 
   return (
     <>
