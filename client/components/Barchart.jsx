@@ -16,15 +16,14 @@ const retire = require('../moneyCalcs/timeToRetirement')
 
 function Barchart() {
   const [years, setYears] = useState()
-  const [timesSeries, setTimeSeries] = useState()
+  const [timesSeries, setTimeSeries] = useState([])
   const financials = useSelector((state) => state.financials)
   const { income, incomePeriod, savings, savingsPeriod, currentSavings } =
     financials
 
-
-    const [a, setA] = useState([])
-    const [b, setB] = useState([])
-    const [c, setC] = useState([])
+    // mock data
+    const [xAxisData, setXAxisData] = useState([])
+    const [barData1, setBarData1] = useState([])
 
   echarts.use([
     BarChart,
@@ -37,7 +36,7 @@ function Barchart() {
 
   useEffect(() => {
     setYears(
-      retire.yearsToRetirement(
+      retire.yearsToRetirement(   // return NaN
         income,
         incomePeriod,
         savings,
@@ -60,30 +59,41 @@ function Barchart() {
     setTimeSeries(newTimeSeries)
   }, [years])
   
+  // useEffect(()=>{
+  //     setBarChartData()
+  // }, [timesSeries])
+
+  // const setBarChartData = ()=>{
+  //   const xAxisData = [];
+  //   const yAxisData = []
+  //   timesSeries.forEach(item => {
+  //     xAxisData.push(`Year-${item.year}`)
+  //     yAxisData.push(item.amt)
+  //   });
+
+  //   setXAxisData(xAxisData)
+  //   setBarData1(yAxisData)
+  // }
+
+  /////////mock data begin////////////////////////////
   useEffect(() => {
     const xAxisData = []
     const data1 = []
-    const data2 = []
-    for (var i = 0; i < 100; i++) {
-      xAxisData.push('A' + i)
+    for (let i = 0; i < 100; i++) {
+      xAxisData.push('Year' + i)
       data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5)
-      data2.push((Math.cos(i / 5) * (i / 5 - 10) + i / 6) * 5)
     }
-    setA(xAxisData)
-    setB(data1)
-    setC(data2)
+    setXAxisData(xAxisData)
+    setBarData1(data1)
   }, [])
 
+  ///////mock data end/////////////////////////
+
   const getOption = () => ({
-    title: {
-      text: 'Bar Animation Delay',
-    },
-    legend: {
-      data: ['bar', 'bar2'],
-    },
+
     tooltip: {},
     xAxis: {
-      data: a,
+      data: xAxisData,  // x axis data
       splitLine: {
         show: false,
       },
@@ -91,25 +101,17 @@ function Barchart() {
     yAxis: {},
     series: [
       {
-        name: 'bar',
+        name: 'bar1',
         type: 'bar',
-        data: b,
+        data: barData1,  //bar 1 data
         emphasis: {
           focus: 'series',
+        },
+        itemStyle:{
+          color: '#91cc75'
         },
         animationDelay: function (idx) {
           return idx * 10
-        },
-      },
-      {
-        name: 'bar2',
-        type: 'bar',
-        data: c,
-        emphasis: {
-          focus: 'series',
-        },
-        animationDelay: function (idx) {
-          return idx * 10 + 100
         },
       },
     ],
