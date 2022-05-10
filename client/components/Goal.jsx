@@ -9,7 +9,7 @@ function Goal(props) {
 
   const handleDelete = (id) => {
     dispatch(deleteOneGoal(id))
-    dispatch(getGoals())
+    // dispatch(getGoals())
   }
 
   const stars = Array(rating).fill(0)
