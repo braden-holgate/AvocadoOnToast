@@ -1,8 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { deleteOneGoal } from '../actions'
 import { FaStar } from 'react-icons/fa'
 
 function Goal(props) {
-  const { content, author, rating, date } = props.goal
+  const { id, content, author, rating, date } = props.goal
+  const dispatch = useDispatch()
+
+  const handleDelete = (id) => {
+    dispatch(deleteOneGoal(id))
+  }
 
   const stars = Array(rating).fill(0)
 
@@ -33,37 +40,16 @@ function Goal(props) {
         <button>🗑️</button>
       </p>
       <br />
+      <button onClick={() => handleDelete(id)}>Delete</button>
     </div>
-
-    // <div>
-    //   <div>
-    //     <p>
-    //       <strong>{author}</strong> &emsp; &emsp; Date:
-    //       {new Date(date).toDateString()}
-    //     </p>
-
-    //     <p>Goal:&ensp;{content}</p>
-    //   </div>
-    //   <div style={styles.stars}>
-    //     &ensp;
-    //     {stars.map((_, index) => {
-    //       return (
-    //         <FaStar key={index} name="ratingValue" size={20} color="#FFBA5A" />
-    //       )
-    //     })}
-    //   </div>
-    //     <button>Edit</button>
-    //     <button>Delete</button>
-    //   <br />
-    // </div>
   )
 }
 
 const styles = {
   stars: {
     display: 'flex',
-    flexDirection: 'row',
-  },
+    flexDirection: 'row'
+  }
 }
 
 export default Goal

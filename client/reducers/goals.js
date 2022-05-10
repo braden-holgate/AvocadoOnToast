@@ -3,7 +3,7 @@ import { GET_GOALS, UPDATE_GOAL, REMOVE_GOAL, ADD_GOAL } from '../actions'
 const initialState = []
 
 function goals(state = initialState, action) {
-  const allIds = state.map((plant) => plant.id)
+  const allIds = state.map((goal) => goal.id)
   const maxId = Math.max(...allIds)
 
   switch (action.type) {
@@ -11,8 +11,8 @@ function goals(state = initialState, action) {
       return action.goals
 
     case ADD_GOAL:
-      action.plant.id = maxId + 1
-      return [...state, action.newGoal] //might need format work here
+      action.goal.id = maxId + 1
+      return [...state, action.newGoal]
 
     case UPDATE_GOAL:
       state.forEach((goal) => {
@@ -23,6 +23,7 @@ function goals(state = initialState, action) {
       return [...state]
 
     case REMOVE_GOAL:
+      console.log('in reducer', id)
       return state.filter((goal) => goal.id !== action.id)
 
     default:
