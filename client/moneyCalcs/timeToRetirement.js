@@ -6,9 +6,10 @@ function yearsToRetirement(
   incomePeriod,
   savings,
   savingsPeriod,
-  currentSavings
+  currentSavings,
+  additionalSavingsWeekly,
 ) {
-  const savingsNormalised = utils.moneyPerYear(savings, savingsPeriod)
+  const savingsNormalised = utils.moneyPerYear(savings, savingsPeriod) + utils.moneyPerYear(additionalSavingsWeekly, 'week')
   const afterTax = utils.afterTaxIncomePerYear(income, incomePeriod)
   const savingsRate = savingsNormalised / afterTax
   const SWR = 0.04
@@ -19,14 +20,7 @@ function yearsToRetirement(
     savingsRate * afterTax
   const calc2 = currentSavings * rateOfReturn + savingsRate * afterTax
   const calc3 = Math.log10(calc1 / calc2)
-  const yearsToRetire = roundTo(calc3 / Math.log10(1 + rateOfReturn), 1)
-  console.log(savingsNormalised)
-  console.log(savingsRate)
-  console.log(afterTax)
-  console.log(calc1)
-  console.log(calc2)
-  console.log(calc3)
-  console.log(yearsToRetire)
+  const yearsToRetire = utils.roundTo(calc3 / Math.log10(1 + rateOfReturn), 1)
   if (savingsRate > 1) {
     return "Woah! You're saving more than your after tax income! Retire today!"
   } else if (yearsToRetire == 0) {
@@ -36,23 +30,7 @@ function yearsToRetirement(
   }
 }
 
-function roundTo(n, digits) {
-  var negative = false
-  if (digits === undefined) {
-    digits = 0
-  }
-  if (n < 0) {
-    negative = true
-    n = n * -1
-  }
-  var multiplicator = Math.pow(10, digits)
-  n = parseFloat((n * multiplicator).toFixed(11))
-  n = (Math.round(n) / multiplicator).toFixed(digits)
-  if (negative) {
-    n = (n * -1).toFixed(digits)
-  }
-  return n
-}
+
 module.exports = {
   yearsToRetirement,
 }

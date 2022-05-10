@@ -1,5 +1,6 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateCompareCostsFreqency } from '../actions'
 const timeCostObjCreator = require('../moneyCalcs/timeCostCalc')
 
 // TODO:
@@ -7,11 +8,18 @@ const timeCostObjCreator = require('../moneyCalcs/timeCostCalc')
 // add click handler that dispatches updateCompareCostsFreqency(id, frequencyPerWeek)
  
 function TimeCostTableCompare() {
+  const dispatch = useDispatch()
+
   const compareCosts = useSelector((globalState) => globalState.compareCosts)
   const financials = useSelector((globalState) => globalState.financials)
 
   const {income, incomePeriod, savings, savingsPeriod} = financials
   const notNull = income !== null && incomePeriod !== null && savings !== null && savingsPeriod !== null;
+  
+  const handleFreqChange = (id, e) => {
+    const frequencyPerWeek = e.target.value
+    dispatch(updateCompareCostsFreqency(id, frequencyPerWeek))
+  }
 
   const headers = {
     frequencyPerWeek:'Frequency Weekly',
@@ -43,7 +51,7 @@ function TimeCostTableCompare() {
                     if (key === 'item') {
                       value = data[key]
                     } else if(key==='frequencyPerWeek'){
-                      value=<input className='table-input'/>
+                      value=<input type='number' name='frequency-input' className='table-input' defaultValue={data.frequencyPerWeek} onChange={(e) => handleFreqChange(data.id, e)}/>
                     }
                     else {
                       const obj = data[key]

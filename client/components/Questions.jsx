@@ -143,14 +143,9 @@ function Questions() {
               How much do you currently have saved?
             </label>
           </strong>
-          <input
-            name="current-savings"
-            type="text"
-            style={{ width: '200px', padding: '5px', border: '2px solid #ccc' }}
-            placeholder="Enter how much you already have saved here"
-            defaultValue={currentSavings}
-            onChange={handleCurrentSavings}
-          /> 
+
+          <input type="text" name="current-savings" className="input" placeholder="Enter how much you already have saved here" defaultValue={currentSavings}
+            onChange={handleCurrentSavings}></input>
         </div>
         
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
@@ -171,7 +166,7 @@ function Questions() {
             </label>
           </strong>
 
-          <input type="text" name="coffees" className="input" placeholder="Coffee weekly"
+          <input type="number" name="coffees" className="input" placeholder="Coffee weekly"
             onChange={handleCoffee}></input>
 
         </div>
@@ -182,7 +177,7 @@ function Questions() {
             </label>
           </strong>
 
-          <input type="text" name="food" className="input" placeholder="Eating out" 
+          <input type="number" name="food" className="input" placeholder="Eating out" 
             onChange={handleEatingOut}></input>
 
         </div>
