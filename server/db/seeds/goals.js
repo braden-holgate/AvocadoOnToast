@@ -26,13 +26,6 @@ exports.seed = function (knex) {
           rating: 5,
           date: 1651752000000,
         },
-        {
-          id: 4,
-          content: 'Shop around for better rates on my mortgage',
-          author: 'Mavis',
-          rating: 5,
-          date: 1651838400000,
-        },
       ])
     })
 }
