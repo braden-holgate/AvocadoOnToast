@@ -20,7 +20,7 @@ export function delGoal(id) {
     request
       .delete(`/api/v1/goals/${id}`)
       // .then((response) => response.body)
-      .then((response) => response)
+      .then((response) => response.body)
       .catch(errorHandler('DELETE', `/api/v1/goals/${id}`))
   )
 }
