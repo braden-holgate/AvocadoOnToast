@@ -1,7 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { deleteOneGoal } from '../actions'
 
 function Goal(props) {
   const { id, content, author, rating, date } = props.goal
+  const dispatch = useDispatch()
+
+  const handleDelete = (id) => {
+    dispatch(deleteOneGoal(id))
+  }
+
   return (
     <div>
       <p>
@@ -11,6 +19,7 @@ function Goal(props) {
       <p>{content}</p>
       <p>Rating: {rating}</p>
       <br />
+      <button onClick={() => handleDelete(id)}>Delete</button>
     </div>
   )
 }
