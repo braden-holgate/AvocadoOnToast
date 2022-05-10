@@ -27,7 +27,6 @@ function YearsToRetire() {
         <p id="years">{years}</p>
         {age &&
           <p className="is-size-4">{`You will be ${retirementAge} years old`}</p>}
-
       </section>
     </>
   )
