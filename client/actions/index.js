@@ -73,10 +73,6 @@ export function saveAllGoals(goals) {
 //hmm possibly could rename one of these to be more consistent? i.e save and get are a bit confusing?
 
 export function addGoal(newGoal) {
-  console.log(
-    `hey I've reached add goal action - whats newGoal looking like`,
-    newGoal
-  )
   return {
     type: ADD_GOAL,
     newGoal,
@@ -120,6 +116,21 @@ export function getGoals() {
       .get('/api/v1/goals/')
       .then((res) => {
         dispatch(saveAllGoals(res.body))
+        return null
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+
+export function saveNewGoal(newGoal) {
+  return (dispatch) => {
+    return request
+      .post('/api/v1/goals/')
+      .send(newGoal)
+      .then((res) => {
+        dispatch(addGoal(res.body))
         return null
       })
       .catch((err) => {
