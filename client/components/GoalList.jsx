@@ -19,9 +19,13 @@ function GoalList() {
   return (
     <>
       <Nav />
+
       <div>
         <GoalForm />
       </div>
+      <br />
+      <br />
+
       <div>
         {goals?.map((goal, i) => (
           <Goal key={i} goal={goal} />
