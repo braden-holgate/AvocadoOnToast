@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadFinancials, updateFrequency, getCosts, setCompareCosts } from '../actions'
+import { loadFinancials, updateFrequency, getCosts, setCompareCosts, setCosts } from '../actions'
 
 function Questions() {
 
@@ -56,17 +56,19 @@ function Questions() {
   }
 
   const handleCoffee = (e) => {
-    setCoffeeCost({
-      ...coffeeCost,
-      frequencyPerWeek: e.target.value,
-    })
+    // setCoffeeCost({
+    //   ...coffeeCost,
+    //   frequencyPerWeek: e.target.value,
+    // })
+    items[0].frequencyPerWeek = e.target.value
   }
 
   const handleEatingOut = (e) => {
-    setEatingOutCost({
-      ...eatingOutCost,
-      frequencyPerWeek: e.target.value,
-    })
+    // setEatingOutCost({
+    //   ...eatingOutCost,
+    //   frequencyPerWeek: e.target.value,
+    // })
+    items[1].frequencyPerWeek = e.target.value
   }
 
   const handleDisplayOptions = (e) => {
@@ -84,7 +86,8 @@ function Questions() {
   const handleAddItems = (e) => {
     e.preventDefault()
     let newItemArray = [...items, newItem]
-    dispatch(updateFrequency(newItemArray))
+    dispatch(setCosts(newItemArray))
+    dispatch(setCompareCosts(JSON.parse(JSON.stringify(newItemArray))))
   }
 
   const handleAgeandCommute = (e) => {
@@ -102,8 +105,8 @@ function Questions() {
 
   const handleCalculate = (e) => {
     e.preventDefault()
-    let costsArray = []
-    costsArray.push(coffeeCost, eatingOutCost)
+    // let costsArray = []
+    // costsArray.push(coffeeCost, eatingOutCost)
 
     let totHours
     ageAndCommute.commutePeriod === "day" ? 
@@ -120,8 +123,10 @@ function Questions() {
       age: ageAndCommute.age
     }
 
-    dispatch(updateFrequency(costsArray))
-    dispatch(setCompareCosts(JSON.parse(JSON.stringify(costsArray)))) // creating a deep copy because otherwise the compare costs state will reference the same array and changing one will change the other!
+    // dispatch(updateFrequency(coffeeCost.id, coffeeCost.frequencyPerWeek))
+    // dispatch(updateFrequency(eatingOutCost.id, eatingOutCost.frequencyPerWeek))
+    dispatch(setCosts(items))
+    dispatch(setCompareCosts(JSON.parse(JSON.stringify(items)))) // creating a deep copy because otherwise the compare costs state will reference the same array and changing one will change the other!
     dispatch(loadFinancials(financials))
   }
 

@@ -33,10 +33,18 @@ export function recieveCosts(costs) {
   }
 }
 
-export function updateFrequency(costs) {
+// export function updateFrequency(costs) {
+//   return {
+//     type: UPDATE_FREQUENCY,
+//     costs,
+//   }
+// }
+
+export function updateFrequency(id, frequencyPerWeek) {
   return {
     type: UPDATE_FREQUENCY,
-    costs,
+    id,
+    frequencyPerWeek,
   }
 }
 
