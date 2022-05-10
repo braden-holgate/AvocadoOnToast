@@ -17,7 +17,7 @@ function YearsToRetire () {
   // NOTE: if age = null, a different message will render - this can be changed in the return section below 
   
   useEffect(() => {
-      const yearsToRetirement = util.yearsToRetirement(income, incomePeriod, savings, savingsPeriod, currentSavings)
+      const yearsToRetirement = util.yearsToRetirement(income, incomePeriod, savings, savingsPeriod, currentSavings, 0)
       setYears(yearsToRetirement)
       setRetirementAge((Number(currentAge) + Number(yearsToRetirement)).toFixed(0))
   }, [financials])

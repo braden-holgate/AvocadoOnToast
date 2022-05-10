@@ -29,6 +29,15 @@ function roundTo(n, digits) {
   return n
 }
 
+function additionalSavings (costs, compareCosts) {
+  let weeklySavingsCount = 0
+  for (let i = 0; i < costs.length; i++) {
+    let costsFreq = Number(costs[i].frequencyPerWeek)
+    let compareCostsFreq = Number(compareCosts[i].frequencyPerWeek)
+    weeklySavingsCount += (costsFreq - compareCostsFreq) * costs[i].cost
+  }
+  return weeklySavingsCount
+}
 
 // CALCULATE AFTER TAX INCOME PER YEAR
 // input: pre-tax income per YEAR
@@ -93,4 +102,5 @@ module.exports = {
   calcCompoundInterest,
   calcFVAnnuities,
   roundTo,
+  additionalSavings,
 }

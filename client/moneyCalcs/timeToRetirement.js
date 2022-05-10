@@ -6,9 +6,10 @@ function yearsToRetirement(
   incomePeriod,
   savings,
   savingsPeriod,
-  currentSavings
+  currentSavings,
+  additionalSavingsWeekly,
 ) {
-  const savingsNormalised = utils.moneyPerYear(savings, savingsPeriod)
+  const savingsNormalised = utils.moneyPerYear(savings, savingsPeriod) + utils.moneyPerYear(additionalSavingsWeekly, 'week')
   const afterTax = utils.afterTaxIncomePerYear(income, incomePeriod)
   const savingsRate = savingsNormalised / afterTax
   const SWR = 0.04
