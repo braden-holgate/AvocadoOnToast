@@ -1,25 +1,24 @@
 import React from 'react'
 
-function Footer
-() {
+function Footer () {
   return (
     <>
       <div className=" footer has-text-centered is-size-6 ">
         <div className="columns">
           <div className="column">
-        Muer
+            Muer
           </div>
           <div className="column">
-        Kate
+            Kate
           </div>
           <div className="column">
-        Jessie
+            Jessie
           </div>
           <div className="column">
-        Braden
+            Braden
           </div>
           <div className="column">
-        Louisa
+            Louisa
           </div>
         </div>
 
