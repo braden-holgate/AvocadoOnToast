@@ -1,4 +1,4 @@
-import {SET_COMPARE_COSTS, UPDATE_COMPARE_COSTS_FREQUENCY } from '../actions'
+import {SET_COMPARE_COSTS, UPDATE_COMPARE_COSTS_FREQUENCY, DELETE_COMPARE_COST_BY_ID } from '../actions'
 
 const initialState = [
   {
@@ -20,6 +20,8 @@ function compareCosts(state = initialState, action) {
         }
         return item
       })
+    case DELETE_COMPARE_COST_BY_ID:
+      return state.filter((item) => item.id !== action.id)
     default:
       return state
   }

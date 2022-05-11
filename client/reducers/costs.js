@@ -1,4 +1,4 @@
-import { RECEIVE_COSTS, SET_COSTS, UPDATE_FREQUENCY, DELETE_COSTS } from '../actions'
+import { RECEIVE_COSTS, SET_COSTS, UPDATE_FREQUENCY, DELETE_COST_BY_ID } from '../actions'
 
 const initialState = [
   {
@@ -27,7 +27,7 @@ function costs(state = initialState, action) {
       })
     case SET_COSTS:
       return JSON.parse(JSON.stringify(action.costs))
-    case DELETE_COSTS:
+    case DELETE_COST_BY_ID:
       return state.filter((item) => item.id !== action.id)
 
     default:

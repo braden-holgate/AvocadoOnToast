@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { setCompareCosts, setCosts } from '../actions'
+import { deleteCompareCostById, deleteCostById, setCompareCosts, setCosts } from '../actions'
 
 function UserUpdateTable({displayEdit, setDisplayEdit}) {
   const dispatch = useDispatch()
 
   const costs = useSelector((globalState) => globalState.costs)
-  console.log(costs)
-
   const [costsArr, setCostsArr] = useState(costs)
 
   const handleFreqChange = (id, e) => {
@@ -50,6 +48,7 @@ function UserUpdateTable({displayEdit, setDisplayEdit}) {
 
   const handleDelete = (id) => {
     dispatch(deleteCostById(id))
+    dispatch(deleteCompareCostById(id))
   }
 
   const handleDisplayEdit = (e) => {

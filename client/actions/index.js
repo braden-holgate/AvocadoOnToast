@@ -11,6 +11,7 @@ export const DELETE_COST_BY_ID = 'DELETE_COST_BY_ID'
 
 export const SET_COMPARE_COSTS = 'SET_COMPARE_COSTS'
 export const UPDATE_COMPARE_COSTS_FREQUENCY = 'UPDATE_COMPARE_COSTS_FREQUENCY'
+export const DELETE_COMPARE_COST_BY_ID = 'DELETE_COMPARE_COST_BY_ID'
 
 export const GET_GOALS = 'GET_GOALS'
 export const UPDATE_GOAL = 'UPDATE_GOAL'
@@ -79,6 +80,14 @@ export function updateCompareCostsFrequency(id, frequencyPerWeek) {
     frequencyPerWeek,
   }
 }
+
+export function deleteCompareCostById(id) {
+  return {
+    type: DELETE_COMPARE_COST_BY_ID,
+    id
+  }
+}
+
 
 //GOALS
 export function saveAllGoals(goals) {

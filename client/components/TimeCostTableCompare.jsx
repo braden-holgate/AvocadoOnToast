@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { updateCompareCostsFreqency } from '../actions'
+import { updateCompareCostsFrequency } from '../actions'
 const timeCostObjCreator = require('../moneyCalcs/timeCostCalc')
  
 function TimeCostTableCompare() {
@@ -17,7 +17,7 @@ function TimeCostTableCompare() {
   
   const handleFreqChange = (id, e) => {
     const frequencyPerWeek = e.target.value
-    dispatch(updateCompareCostsFreqency(id, frequencyPerWeek))
+    dispatch(updateCompareCostsFrequency(id, frequencyPerWeek))
   }
 
   const headers = {

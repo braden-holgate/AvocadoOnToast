@@ -11,7 +11,6 @@ function TimeCostTable() {
 
 
   const timeCostObj = timeCostObjCreator(costs[0], financials)
-  console.log(timeCostObj)
   const realWage = (timeCostObj.dollarsPerMinute * 60).toFixed(2)
 
 
