@@ -712,3 +712,22 @@ section.runningman {
   margin-left: 5px;
   width: 80px;
 }
+
+//----------------Table descriptions-----------------//
+.table-description-container {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+.small-padding-bottom {
+ padding-bottom: 0px;
+}
+
+//----------------Arrow-----------------//
+.realWage {
+  font-weight: normal;
+  padding-bottom: 5px;
+}
+

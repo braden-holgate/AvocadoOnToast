@@ -2,37 +2,36 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 const timeCostObjCreator = require('../moneyCalcs/timeCostCalc')
 
-// timeCostObjCreator(costs[0]), financials)
-// returns:
-// { 
-//   frequencyPerWeek: '3'  
-//   item: 'coffee',
-//   timeCostPerItem: { timeValue: '11', unit: 'minutes' },
-//   timeCostPerWeek: { timeValue: '2.1', unit: 'hours' },
-//   timeCostPerYear: { timeValue: '4.6', unit: 'days' }
-//   id: 1
-// }
-
 function TimeCostTable() {
   const costs = useSelector((globalState) => globalState.costs)
   const financials = useSelector((globalState) => globalState.financials)
 
-  const {income, incomePeriod, savings, savingsPeriod} = financials
+  const { income, incomePeriod, savings, savingsPeriod } = financials
   const notNull = income !== null && incomePeriod !== null && savings !== null && savingsPeriod !== null;
 
+
+  const timeCostObj = timeCostObjCreator(costs[0], financials)
+  console.log(timeCostObj)
+  const realWage = (timeCostObj.dollarsPerMinute * 60).toFixed(2)
+
+
   const headers = {
-    frequencyPerWeek:'Number per week',
+    frequencyPerWeek: 'Number per week',
     item: 'Item',
     timeCostPerItem: 'Per item',
     timeCostPerWeek: 'Weekly',
     timeCostPerYear: 'Yearly',
   }
- 
+
   return (
     <>
+
       <section className="section columns has-background-white is-centered ">
         <table className="table is-hoverable">
           <thead>
+            <tr>
+              <th colSpan="5" align="center"><p className="realWage"><em>{`Based on your real wage of $${realWage} per hour`}</em></p></th>
+            </tr>
             <tr>
               <th rowSpan="2">Number per week</th>
               <th rowSpan="2">Item</th>
@@ -53,7 +52,7 @@ function TimeCostTable() {
                     let value
                     if (key === 'item') {
                       value = data[key]
-                    } else if(key==='frequencyPerWeek'){
+                    } else if (key === 'frequencyPerWeek') {
                       value = data.frequencyPerWeek
                     } else {
                       const obj = data[key]
