@@ -294,7 +294,7 @@ function Questions() {
             </div>
             <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
               <strong>
-                <label className="mr-2">
+                <label className="mr-2 expense-input">
                   Expense name:  
                 </label>
               </strong>
