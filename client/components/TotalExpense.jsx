@@ -21,7 +21,7 @@ useEffect(() => {
   return (
     <>
       <section className="section has-text-centered is-size-5 ">
-        <p>A rule of thumb says that you can live off investment income when your total  investment is 25 x expenses.</p>
+        <p>A rule of thumb says that you can live off investment income when your total  investment is 25 x expenses.</p><FontAwesomeIcon icon="fa-solid fa-block-question" />
         <p className="for-you">For you that is:</p>
         {retirementTotal ? <p className="total-expense">${new Intl.NumberFormat('us-US').format(retirementTotal)}</p>
         : <p className="total-expense">?</p> }
