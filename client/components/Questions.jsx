@@ -151,10 +151,7 @@ function Questions() {
             <option value="fortnight">Fortnight</option>
             <option value="year">Year</option>
           </select>
-          
-          <div class="tooltip">?
-            <span class="tooltiptext">This is your before tax income</span>
-          </div>
+          <span data-tooltip="This is your before tax income">?</span>
           </div>
 
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
@@ -214,10 +211,13 @@ function Questions() {
             onChange={handleEatingOut}></input>
 
         </div>
-        <div>--------------------------------------------------------------------</div>
         {displayAdditional && 
         <div className='additional-options'>
           {displayAdditional && <button className='additional-option' onClick={handleDisplayOptions}>Hide Options</button>}
+          
+          <br></br>
+          <div className="is-divider" data-content="Additional Options make things a little more useful"></div>
+          <br></br>
           <form>
             <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
               <strong>
@@ -269,38 +269,20 @@ function Questions() {
               </strong>
               <input type="number" min="0" name="cost" className="input" value={newItem.cost}
                 onChange={handleItems}></input>
-              <button onClick={handleAddItems} type='submit'>Add</button>
+              <button className='additional-option' onClick={handleAddItems} type='submit'>Add</button>
             </div>
-            {newItemAlert && <p>Please fill in all fields before clicking "Add"</p>}
+            {newItemAlert && <div><p>Please fill in all fields before clicking "Add"</p><br></br></div>}
           </form>
           {!displayEdit && <button className='additional-option' onClick={handleDisplayEdit}>Edit expenses</button>}
         </div>}
 
         {displayEdit && <div>
-          <UserUpdateTable />
+          <UserUpdateTable displayEdit={displayEdit} setDisplayEdit={setDisplayEdit}/>
         </div>}
 
-
         {!displayAdditional && <button className='additional-option' onClick={handleDisplayOptions}>Additional Options</button>}
-        {displayEdit && <button className='additional-option' onClick={handleDisplayEdit}>Hide expenses</button>}
         <br></br>
         <button className='question-button' onClick={handleCalculate} type='submit'>Calculate</button>
-       
-          
-        {/* -----Jessie's toggle test-----start----- */}
-         {/* toggle 1 */}
-        {/* <div className='toggle-box'>
-          <label className="label">
-            <div className="toggle">
-              <input className="toggle-state" type="checkbox" name="check" value="check"/>
-            <div className="indicator"></div>
-            </div>
-          </label>
-        </div> */}
-
-    
-
- 
       </section>
     </>
   )
