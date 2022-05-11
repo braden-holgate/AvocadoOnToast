@@ -25,7 +25,11 @@ A user can then optionally answer more questiions to get a more accurate retirem
 This site is brought to you by 
 
 Kate https://github.com/kate-blincoe
+
 Muer https://github.com/muer-zhang
+
 Jessie https://github.com/guotiaotiao
-Braden https://github.com/braden-holgate  
+
+Braden https://github.com/braden-holgate
+
 Louisa https://github.com/lou-thomas
