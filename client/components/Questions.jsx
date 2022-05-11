@@ -59,6 +59,7 @@ function Questions() {
 
   const handleDisplayOptions = (e) => {
     displayAdditional ? setDisplayAdditional(false) : setDisplayAdditional(true)
+    displayAdditional ? setDisplayEdit(false) : null
   }
 
   const handleDisplayEdit = (e) => {
@@ -211,8 +212,10 @@ function Questions() {
             onChange={handleEatingOut}></input>
 
         </div>
+        <div>--------------------------------------------------------------------</div>
         {displayAdditional && 
         <div className='additional-options'>
+          {displayAdditional && <button className='additional-option' onClick={handleDisplayOptions}>Hide Options</button>}
           <form>
             <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
               <strong>
@@ -268,6 +271,7 @@ function Questions() {
             </div>
             {newItemAlert && <p>Please fill in all fields before clicking "Add"</p>}
           </form>
+          {!displayEdit && <button className='additional-option' onClick={handleDisplayEdit}>Edit expenses</button>}
         </div>}
 
         {displayEdit && <div>
@@ -276,11 +280,7 @@ function Questions() {
 
 
         {!displayAdditional && <button className='additional-option' onClick={handleDisplayOptions}>Additional Options</button>}
-        {displayAdditional && <button className='additional-option' onClick={handleDisplayOptions}>Hide Options</button>}
-        
-        {!displayEdit && <button className='additional-option' onClick={handleDisplayEdit}>Edit expenses</button>}
         {displayEdit && <button className='additional-option' onClick={handleDisplayEdit}>Hide expenses</button>}
-        
         <br></br>
         <button className='question-button' onClick={handleCalculate} type='submit'>Calculate</button>
        
