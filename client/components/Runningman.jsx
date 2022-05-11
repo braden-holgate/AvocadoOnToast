@@ -4,7 +4,7 @@ function Runningman () {
   return (
     <>
     <section className='section animation'>
-      <p className='animation-words'>FINANCIAL<br></br> FREEDOM?<br></br>WHEN?</p>
+      <p className='animation-words'>Retirement<br></br>feels<br></br>unreachable?</p>
       <section className="runningman">
         <div className="back one"></div>
         <div className="back two"></div>
