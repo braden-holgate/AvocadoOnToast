@@ -253,7 +253,7 @@ function Questions() {
                   Expense name:  
                 </label>
               </strong>
-              <input type="text" name="item" className="input" value={newItem.item} 
+              <input type="text" name="item" className="input expense-input " value={newItem.item} 
                 onChange={handleItems}></input>
               <strong>
                 <label className="mr-2">

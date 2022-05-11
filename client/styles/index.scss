@@ -57,7 +57,7 @@ nav.container{
   margin-top:20px;
   margin-right: 20px;
   margin-left:20px;
-  width:100px !important;
+  width:120px !important;
   max-height: 100px !important;
 }
 
@@ -164,7 +164,7 @@ nav.container{
   z-index: 100; 
   width:100%;
   text-align: center;
-  margin-top: 50px;
+
 }
 
 .banner-line2{
@@ -173,6 +173,9 @@ nav.container{
   text-align: center;
 }
 
+.message2{
+  margin:20px 0;
+}
 
 
 // section setting//
@@ -198,7 +201,8 @@ nav.container{
   font-weight:bold;
   cursor: pointer;
   display: inline-flex;
-  height: 48px;
+  height:100px;
+  width:186px;
   justify-content: center;
   line-height: 1;
   list-style: none;
@@ -214,8 +218,9 @@ nav.container{
   touch-action: manipulation;
   white-space: nowrap;
   will-change: box-shadow,transform;
-  font-size: 18px;
+  font-size:18px;
   margin-right:20px;
+  margin-top:20px;
   }
 
 
@@ -375,8 +380,8 @@ section.runningman {
   position: absolute;
   width: 300px;
   height: 144px;
-  top: 42%;
-  left: 76%;
+  top: 50%;
+  left: 80%;
   overflow: hidden;
   box-shadow: 0 16px 10px -10px #3f3f3f;
   transform: translate(-50%, -50%); }
@@ -636,11 +641,17 @@ section.runningman {
   font-size: medium;
   font-weight: bold;
   max-width: 200px;
+  width:120px;
+  
  }
  
  .input:focus {
   outline-color: white;
   place-content: "Enter your message!";
+ }
+
+ .expense-input{
+   width:200px !important;
  }
 
  //----------------Input----------end--------//
@@ -661,20 +672,21 @@ section.runningman {
   background-color: #76B76D;
   color:white;
   padding:20px;
+  width:1024px;
+  margin-left:0px;
 } 
 
 .subscribe-words{
   padding-top:16px;
-  margin-left:50px;
+  margin-left:10px;
   font-size: 20px;
-  padding-left:30px;
+  padding-left:60px;
+  
   
 }
 .subscribe-button{
-  margin-right: 20px;
+  margin-right: 16px;
   width:100px;
-  //margin-top: 10px;
-
 }
 
 ///---------//
@@ -685,6 +697,8 @@ section.runningman {
 
 }
 
+
+
 .goal{
   padding:50px 110px;
 
@@ -692,6 +706,16 @@ section.runningman {
 
 .goal-background{
   border:#76B76D solid 80px;
+}
+
+
+.rate-with-star{
+ padding-left:14px;
+ 
+}
+
+.goal-form-star{
+  padding-top:10px;
 }
 
 .line{

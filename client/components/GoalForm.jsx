@@ -61,13 +61,14 @@ function GoalForm() {
   return (
     <div className="goal-form">
       <div>
+      <section className="columns">
         <strong>
-          <label className="mr-2">
+          <label className="mr-2 column">
             What's your thought? Any financial goal to share?
           </label>
         </strong>
         <input
-          className="input"
+          className="input column"
           name="content"
           type="text"
           style={{
@@ -80,13 +81,29 @@ function GoalForm() {
           value={formData.content}
           onChange={handleChange}
         />
+         </section>
       </div>
-      <div>
+
+      {/*   
+      <section className="section subscribe columns">
+        <div className="subscribe-words column is-7">
+          Want to continue to learn and explore these ideas?
+        </div>    
+
+        <div className="navbar-item  column">
+          <div className="button subscribe-button"><a target="_blank" href="https://www.mrmoneymustache.com/2012/12/18/your-money-or-your-life/">Learn More</a></div>
+          <div className="button subscribe-button">About Us</div>
+        </div>
+      </section>
+       */}
+
+      <div >
+      <section className="columns">
         <strong>
-          <label className="mr-2">Your name:</label>
+          <label className="mr-2 column ">Your name:</label>
         </strong>
         <input
-          className="input"
+          className="input column"
           name="author"
           type="text"
           style={{
@@ -99,10 +116,13 @@ function GoalForm() {
           value={formData.author}
           onChange={handleChange}
         />
+         </section>
       </div>
+
+      <section className="columns goal-form-star">
       <div style={styles.stars}>
-        <strong>
-          <label className="mr-2">Rate your satisfaction with our app:</label>
+        <strong className=''>
+          <label className="mr-2 rate-with-star">Rate your satisfaction with our app:</label>
         </strong>
         {stars.map((_, index) => {
           return (
@@ -129,7 +149,9 @@ function GoalForm() {
         <button className="button" onClick={onShare} type="submit">
           Share
         </button>
+         
       </div>
+      </section>
     </div>
   )
 }
