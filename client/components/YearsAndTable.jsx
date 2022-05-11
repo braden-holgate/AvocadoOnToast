@@ -33,17 +33,7 @@ function YearsAndTable() {
             </div>
           </section>
 
-          <section className="section arrow-container columns">
-            <div className="column has-text-centered">
-              <p className="arrow-left">↓</p>
-            </div>
-
-            <div className="column has-text-centered">
-              <p className="arrow-right">↓</p>
-            </div>
-          </section>
-
-          <section className="section year-and-table columns small-padding-top">
+          <section className="section year-and-table columns">
             <div className="table-left card column">
               <YearsToRetire />
               <TimeCostTable />

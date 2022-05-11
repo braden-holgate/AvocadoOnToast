@@ -7,14 +7,15 @@ function TimeCostTableCompare() {
   const compareCosts = useSelector((globalState) => globalState.compareCosts)
   const financials = useSelector((globalState) => globalState.financials)
 
-  const dispatch = useDispatch()
-
   const { income, incomePeriod, savings, savingsPeriod } = financials
   const notNull =
     income !== null &&
     incomePeriod !== null &&
     savings !== null &&
     savingsPeriod !== null
+
+  const timeCostObj = timeCostObjCreator(compareCosts[0], financials)
+  const realWage = (timeCostObj.dollarsPerMinute * 60).toFixed(2)
 
   const handleFreqChange = (id, e) => {
     const frequencyPerWeek = e.target.value
@@ -34,6 +35,13 @@ function TimeCostTableCompare() {
       <section className=" section columns has-background-white is-centered ">
         <table className="table is-hoverable">
           <thead>
+            <tr>
+              <th colSpan="5" align="center">
+                <p className="realWage">
+                  <em>{`Based on your real wage of $${realWage} per hour`}</em>
+                </p>
+              </th>
+            </tr>
             <tr>
               <th rowSpan="2">Number per week</th>
               <th rowSpan="2">Item</th>
