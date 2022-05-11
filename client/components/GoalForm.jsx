@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { getGoals, saveNewGoal } from '../actions'
+import { saveNewGoal } from '../actions'
 import { FaStar } from 'react-icons/fa'
 
 const colors = {
@@ -15,7 +15,7 @@ function GoalForm() {
     author: '',
     content: '',
     rating: 0,
-    date: new Date(Date.now())
+    date: new Date(Date.now()),
   })
 
   const dispatch = useDispatch()
@@ -26,7 +26,7 @@ function GoalForm() {
     setRatingValue(value)
     setFormData({
       ...formData,
-      rating: value
+      rating: value,
     })
   }
 
@@ -41,27 +41,26 @@ function GoalForm() {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     })
   }
 
   const onShare = (e) => {
     e.preventDefault()
     dispatch(saveNewGoal(formData))
-    // dispatch(getGoals())
     setRatingValue(0)
     setHoverValue(undefined)
     setFormData({
       author: '',
       content: '',
       rating: 0,
-      date: new Date(Date.now())
+      date: new Date(Date.now()),
     })
   }
 
   return (
-    <div className='goal-form'>
-      <div >
+    <div className="goal-form">
+      <div>
         <strong>
           <label className="mr-2">
             What's your thought? Any financial goal to share?
@@ -74,7 +73,7 @@ function GoalForm() {
             width: '200px',
             padding: '5px',
             margin: '15px',
-            border: '1px solid #ccc'
+            border: '1px solid #ccc',
           }}
           placeholder="Enter your goal here"
           value={formData.content}
@@ -92,7 +91,7 @@ function GoalForm() {
             width: '200px',
             padding: '5px',
             margin: '15px',
-            border: '1px solid #ccc'
+            border: '1px solid #ccc',
           }}
           placeholder="Enter your name here"
           value={formData.author}
@@ -118,7 +117,7 @@ function GoalForm() {
                   : colors.grey
               }
               style={{
-                cursor: 'pointer'
+                cursor: 'pointer',
               }}
             />
           )
@@ -127,10 +126,9 @@ function GoalForm() {
         &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
         <button onClick={onShare} type="submit">
           Share
-        </button>   
-      </div>  
+        </button>
+      </div>
     </div>
-   
   )
 }
 
@@ -138,11 +136,11 @@ const styles = {
   container: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   stars: {
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   textarea: {
     border: '1px solid #a9a9a9',
@@ -150,13 +148,13 @@ const styles = {
     padding: 10,
     margin: '20px 0',
     minHeight: 100,
-    width: 300
+    width: 300,
   },
   button: {
     border: '1px solid #a9a9a9',
     borderRadius: 5,
     width: 300,
-    padding: 10
+    padding: 10,
   },
 }
 
