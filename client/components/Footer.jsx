@@ -4,7 +4,7 @@ function Footer () {
   return (
     <>
       <div className=" footer has-text-centered is-size-6 ">
-        <div className="columns">
+        <div className="columns footer-names">
           <div className="column">
             Muer
           </div>
@@ -22,7 +22,7 @@ function Footer () {
           </div>
         </div>
 
-        <p >
+        <p className='footer-mark'>
         &copy; Avocado.onToast - EDA Piwakawaka 2022
         </p>
       </div>

@@ -20,11 +20,12 @@ function Nav () {
                 </figure>
                 <p className="app-name">Avocado.onToast ?</p>
             </a>
-             <Link to="/goals">
-              <div className="navbar-item">Avo Community Posts</div>
+            
+            <Link to="/goals">
+              <button className="navbar-item avo-goal-button">Avo Community Posts</button>
             </Link>
 
-            <div className='navbar-end'> 
+            {/* <div className='navbar-end'> 
               {loggedIn
                 ? (<div className="navbar-item logout-button">Logout</div>)
                 : (
@@ -38,7 +39,7 @@ function Nav () {
                     </div>
                   </>
                 )}
-            </div>
+            </div> */}
           </div>
         </div>
       </nav>
