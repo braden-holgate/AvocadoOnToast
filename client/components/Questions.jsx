@@ -141,14 +141,12 @@ function Questions() {
             <label className="mr-2">What is your income?</label>
           </strong>
 
-          <input type="number" name="income" className="input" placeholder="Enter your income" defaultValue={income}
+          <input type="number" min="0" name="income" className="input" placeholder="Enter your income" defaultValue={income}
             onChange={handleIncome}></input>
           
 
-          <select  className='dropdown' onChange={incomeFrequency} defaultValue={incomePeriod}>
-            <option  value="week">
-              Week
-            </option>
+          <select  className='dropdown' onChange={incomeFrequency}defaultValue='year'>
+            <option  value="week">Week</option>
             <option value="fortnight">Fortnight</option>
             <option value="year">Year</option>
           </select>
@@ -159,10 +157,10 @@ function Questions() {
             <label className="mr-2">How much do you estimate you save?</label>
           </strong>
 
-          <input type="number" name="average-savings" className="input" placeholder="Estimate save" defaultValue={savings}
+          <input type="number" min="0" name="average-savings" className="input" placeholder="Estimate save" defaultValue={savings}
             onChange={handleSavings}></input>
 
-          <select onChange={savingFrequency} defaultValue={savingsPeriod}>
+          <select className='dropdown' onChange={savingFrequency} defaultValue={savingsPeriod}>
             <option  value="week">
               Week
             </option>
@@ -178,7 +176,7 @@ function Questions() {
             </label>
           </strong>
 
-          <input type="number" name="current-savings" className="input" placeholder="Enter how much you already have saved here" defaultValue={currentSavings}
+          <input type="number" min="0" name="current-savings" className="input" placeholder="Enter how much you already have saved here" defaultValue={currentSavings}
             onChange={handleCurrentSavings}></input>
         </div>
         
@@ -187,12 +185,10 @@ function Questions() {
             <label className="mr-2">How many hours per week do you work?</label>
           </strong>
 
-          <input type="number" name="hours-worked" className="input" placeholder="Working hours weekly" defaultValue={hoursWorkedPerWeek}
+          <input type="number" min="0" name="hours-worked" className="input" placeholder="Working hours weekly" defaultValue={hoursWorkedPerWeek}
             onChange={handleHoursInput}></input>
-
         </div>
 
-        {/* //LOU - MAKE SURE TO PREVENT NEGATIVE NUMBERS */}
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
             <label className="mr-2">
@@ -200,7 +196,7 @@ function Questions() {
             </label>
           </strong>
 
-          <input type="number" name="coffees" className="input" placeholder="Coffee weekly"
+          <input type="number" min="0" name="coffees" className="input" placeholder="Coffee weekly"
             onChange={handleCoffee}></input>
 
         </div>
@@ -211,7 +207,7 @@ function Questions() {
             </label>
           </strong>
 
-          <input type="number" name="food" className="input" placeholder="Eating out" 
+          <input type="number" min="0" name="food" className="input" placeholder="Eating out" 
             onChange={handleEatingOut}></input>
 
         </div>
@@ -224,7 +220,7 @@ function Questions() {
                   How old are you in years?
                 </label>
               </strong>
-              <input type="number" name="age" className="input"  
+              <input type="number" min="0" name="age" className="input"  
                 onChange={handleAgeandCommute}></input>
             </div>
             <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
@@ -233,9 +229,9 @@ function Questions() {
                   How many hours do you spend commuting to work?
                 </label>
               </strong>
-              <input type="number" name="commute" className="input"  
+              <input type="number" min="0" name="commute" className="input"  
                 onChange={handleAgeandCommute}></input>
-              <select name="commutePeriod" onChange={handleAgeandCommute} defaultValue={ageAndCommute.commutePeriod}>
+              <select className='dropdown' name="commutePeriod" onChange={handleAgeandCommute} defaultValue={ageAndCommute.commutePeriod}>
                 <option  value="day">Day</option>
                 <option value="week">Week</option>
               </select>
@@ -259,14 +255,14 @@ function Questions() {
                   How often per week?
                 </label>
               </strong>
-              <input type="number" name="frequencyPerWeek" className="input" value={newItem.frequencyPerWeek} 
+              <input type="number" min="0" name="frequencyPerWeek" className="input" value={newItem.frequencyPerWeek} 
                 onChange={handleItems}></input>
               <strong>
                 <label className="mr-2">
                   Cost?
                 </label>
               </strong>
-              <input type="number" name="cost" className="input" value={newItem.cost}
+              <input type="number" min="0" name="cost" className="input" value={newItem.cost}
                 onChange={handleItems}></input>
               <button onClick={handleAddItems} type='submit'>Add</button>
             </div>
@@ -279,14 +275,14 @@ function Questions() {
         </div>}
 
 
-        {!displayAdditional && <button onClick={handleDisplayOptions}>Additional Options</button>}
-        {displayAdditional && <button onClick={handleDisplayOptions}>Hide Options</button>}
+        {!displayAdditional && <button className='additional-option' onClick={handleDisplayOptions}>Additional Options</button>}
+        {displayAdditional && <button className='additional-option' onClick={handleDisplayOptions}>Hide Options</button>}
         
-        {!displayEdit && <button onClick={handleDisplayEdit}>Edit expenses</button>}
-        {displayEdit && <button onClick={handleDisplayEdit}>Hide expenses</button>}
+        {!displayEdit && <button className='additional-option' onClick={handleDisplayEdit}>Edit expenses</button>}
+        {displayEdit && <button className='additional-option' onClick={handleDisplayEdit}>Hide expenses</button>}
         
         <br></br>
-        <button onClick={handleCalculate} type='submit'>Calculate</button>
+        <button className='question-button' onClick={handleCalculate} type='submit'>Calculate</button>
        
           
         {/* -----Jessie's toggle test-----start----- */}
