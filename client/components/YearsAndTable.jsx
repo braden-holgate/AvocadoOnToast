@@ -16,7 +16,7 @@ function YearsAndTable() {
 
     <>
       {notNull &&
-        <section className='section columns'>
+        <section className='section year-and-table columns'>
           <div className="table-left card column">
             <YearsToRetire />
             <TimeCostTable />
