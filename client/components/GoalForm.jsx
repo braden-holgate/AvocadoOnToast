@@ -61,76 +61,80 @@ function GoalForm() {
   return (
     <div className="goal-form">
       <div>
-        <strong>
-          <label className="mr-2">
-            What's your thought? Any financial goal to share?
-          </label>
-        </strong>
-        <input
-          className="input"
-          name="content"
-          type="text"
-          style={{
-            width: '200px',
-            padding: '5px',
-            margin: '15px',
-            border: '1px solid #ccc',
-          }}
-          placeholder="Enter your goal here"
-          value={formData.content}
-          onChange={handleChange}
-        />
+        <section className="columns">
+          <strong>
+            <label className="mr-2 column">
+              What's your thought? Any financial goal to share?
+            </label>
+          </strong>
+          <input
+            className="input column"
+            name="content"
+            type="text"
+            style={{
+              width: '200px',
+              padding: '5px',
+              margin: '15px',
+              border: '1px solid #ccc',
+            }}
+            placeholder="Enter your goal here"
+            value={formData.content}
+            onChange={handleChange}
+          />
+        </section>
       </div>
-
-      <div>
-        <strong>
-          <label className="mr-2">Your name:</label>
-        </strong>
-        <input
-          className="input"
-          name="author"
-          type="text"
-          style={{
-            width: '200px',
-            padding: '5px',
-            margin: '15px',
-            border: '1px solid #ccc',
-          }}
-          placeholder="Enter your name here"
-          value={formData.author}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div style={styles.stars}>
-        <strong>
-          <label className="mr-2">Rate your satisfaction with our app:</label>
-        </strong>
-        {stars.map((_, index) => {
-          return (
-            <FaStar
-              key={index}
-              name="ratingValue"
-              size={24}
-              onClick={() => handleClick(index + 1)}
-              onMouseOver={() => handleMouseOver(index + 1)}
-              onMouseLeave={handleMouseLeave}
-              color={
-                (hoverValue || ratingValue) > index
-                  ? colors.orange
-                  : colors.grey
-              }
-              style={{
-                cursor: 'pointer',
-              }}
-            />
-          )
-        })}
-        &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
-        <button className="button" onClick={onShare} type="submit">
-          Share
-        </button>
-      </div>
+      <section className="columns">
+        <div>
+          <strong>
+            <label className="mr-2 column ">Your name:</label>
+          </strong>
+          <input
+            className="input column"
+            name="author"
+            type="text"
+            style={{
+              width: '200px',
+              padding: '5px',
+              margin: '15px',
+              border: '1px solid #ccc',
+            }}
+            placeholder="Enter your name here"
+            value={formData.author}
+            onChange={handleChange}
+          />  
+        </div>
+      </section>
+      <section className="columns goal-form-star">
+        <div style={styles.stars}>
+          <strong className=''>
+            <label className="mr-2 rate-with-star">Rate your satisfaction with our app:</label>
+          </strong>
+          {stars.map((_, index) => {
+            return (
+              <FaStar
+                key={index}
+                name="ratingValue"
+                size={24}
+                onClick={() => handleClick(index + 1)}
+                onMouseOver={() => handleMouseOver(index + 1)}
+                onMouseLeave={handleMouseLeave}
+                color={
+                  (hoverValue || ratingValue) > index
+                    ? colors.orange
+                    : colors.grey
+                }
+                style={{
+                  cursor: 'pointer',
+                }}
+              />
+            )
+          })}
+          &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+          <button className="button" onClick={onShare} type="submit">
+            Share
+          </button>
+       </div>
+      </section>
     </div>
   )
 }

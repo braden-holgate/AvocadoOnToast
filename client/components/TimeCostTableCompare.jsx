@@ -4,6 +4,7 @@ import { updateCompareCostsFrequency } from '../actions'
 const timeCostObjCreator = require('../moneyCalcs/timeCostCalc')
 
 function TimeCostTableCompare() {
+  const dispatch = useDispatch()
   const compareCosts = useSelector((globalState) => globalState.compareCosts)
   const financials = useSelector((globalState) => globalState.financials)
 
