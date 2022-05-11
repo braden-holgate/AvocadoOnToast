@@ -1,60 +1,39 @@
-# Fullstack Collection App
+# Avocado.onToast ?
 
-This repo is designed to provide space to code a fullstack app. It contains node modules and folders for databases, routes, api requests, react components, and redux actions and creators. Let's get going!
+This project is designed to help people gain a better sense of their current financial status. By showing each user their personalised retirement age, we aim to emphasise how much of their lives they could be working for. Once a user can visualise how many years they have until retirement, we want to empower them to understand how small tweaks to their lifestyle now, can significantly shorten their road to total financial freedom. 
 
-```
-npm install
-git checkout -b <branchname>
-npm run dev
-```
+To run this project locally
 
-## Notes
+- `npm install `
+- `npm run knex migrate:latest`
+- `npm run knex seed:run`
+- `npm run dev`
 
-A few notes to keep you out of trouble:
-- When running knex, run `npm run knex <command>`, e.g. `npm run knex migrate:latest` rather than using `npx`
-- When running webpack, run `npm run webpack <extra commands>`, e.g. `npm run webpack`, rather than using `npx`
+Or checkout our deployed site at
 
-## How to start
+https://avocado-on-toast.herokuapp.com/
 
-First, decide what you would like to keep a collection of. This could be a repo for keeping track of movies, books, gifs, cars, rocks, anything you fancy!
 
-**Note:** the aim is to have some simple data. If you think you might need more than one database table, or have lots of details you want to store, how could you simplify the information you're keeping track of? Leave more complex data until later in the project. For example, I want to keep track of books that I want to read, ones that I have read, and ones that I own. To start with though, let's keep track of the books themselves. My data might look like:
+## Learn More
 
-|id|title|author|
-|---|---|---|
-| 1 | Ready Player One | Ernest Cline |
-| 2 | Throwing Rocks at the Google Bus | Douglas Rushkoff |
+On our home page you will see a series of questions that allows us to paint a basic picture of a user's financial status. The user can answer only these questions and we will calculate when we predict they will be able to retire. 
 
-Our first job is getting something showing on the front end from our database. Here's a list of steps in case they are useful. You can build in any order you like though ;)
+A user can then optionally answer more questions to get a more accurate retirement figure based on their habits. Once this information is shown, we allow the user to tweak their answers and we will present an updated retirement age. This is shown as a comparison to their original answers. This way a user can really see the difference that buying 1 less coffee a week could make. 
 
-### Back End
+We have also built an option for users to add their own expenses, this displays in a table where the user can clearly see how much the item costs in terms of time. So buying 3 meals out per week for example may amount to 4 days per year of their total time.
 
-1.  Design a database to store a list of your things (e.g. books)
-1.  Build the migrations and seed data
-1.  Build an API (back end route) to get the information from your database
-1.  Test your API with Postman/Insomnia
+To involve users further there is the ability for them to share a comment on the site. This could be their savings goal or what they have learned from the site and can include a rating.
 
-### Front End
 
-1.  Build a React Component with static html
-1.  Build Redux Reducer. Start with a hardcoded initial state, for example:
-```js
-const initialState = [{ id: 1, title: 'Ready Player One', author: 'Ernest Cline' }]
-```
-3.  Use `useSelector` to display the redux state you hardcoded in the React Component
-1.  Build an API Client in the front end to request the information from your routes
-1.  Build Thunk Actions to use the API and get the information
-1.  Build Redux Actions to save task data from the thunk
-1.  Use `useDispatch` and `useEffect` to dispatch the thunk when your app loads
 
-## Next steps
+This site is brought to you by 
 
-At this stage we should be able to view our information. Below are suggested next steps, though you might prioritize these in another order.
+Kate https://github.com/kate-blincoe
 
-- Include the ability to add a new record (will need a form in your components)
-- Include the ability to remove/delete records
-- Include the ability to update records (e.g. for correcting typos)
-  - You might have some other information (e.g. unread books vs. read books) that should be included in your database design, but this may require adjusting your database design - start simple!
-- Is there any complex data you chose to not include earlier or any way you could expand this dataset?
-- Could you add an external API (maybe an inspirational quote in the footer?)
-- If you haven't already, CSS!
+Muer https://github.com/muer-zhang
+
+Jessie https://github.com/guotiaotiao
+
+Braden https://github.com/braden-holgate
+
+Louisa https://github.com/lou-thomas
