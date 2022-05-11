@@ -93,7 +93,7 @@ function UserUpdateTable() {
           </tbody>
         </table>
         <div>
-          <button onClick={handleSubmit} type='submit'>Submit changes</button>
+          <button className='button' onClick={handleSubmit} type='submit'>Submit changes</button>
         </div>
       </section>
     </>

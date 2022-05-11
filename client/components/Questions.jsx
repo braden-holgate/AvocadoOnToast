@@ -264,7 +264,7 @@ function Questions() {
               </strong>
               <input type="number" min="0" name="cost" className="input" value={newItem.cost}
                 onChange={handleItems}></input>
-              <button onClick={handleAddItems} type='submit'>Add</button>
+              <button className='button' onClick={handleAddItems} type='submit'>Add</button>
             </div>
             {newItemAlert && <p>Please fill in all fields before clicking "Add"</p>}
           </form>
