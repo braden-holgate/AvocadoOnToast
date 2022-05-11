@@ -15,7 +15,7 @@ function Nav() {
           <div className="navbar-start">
             <a className="navbar-item" href="/">
               <figure className="image columns is-flex">
-                <img className="logo" src="/images/logo.png" />
+                <img className="logo" src="/images/Logo.png" />
               </figure>
               <p className="app-name">Avocado.onToast ?</p>
             </a>
