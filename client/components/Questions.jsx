@@ -145,10 +145,8 @@ function Questions() {
             onChange={handleIncome}></input>
           
 
-          <select  className='dropdown' onChange={incomeFrequency} defaultValue={incomePeriod}>
-            <option  value="week">
-              Week
-            </option>
+          <select  className='dropdown' onChange={incomeFrequency}defaultValue='year'>
+            <option  value="week">Week</option>
             <option value="fortnight">Fortnight</option>
             <option value="year">Year</option>
           </select>
