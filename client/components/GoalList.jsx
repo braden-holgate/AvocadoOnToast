@@ -20,18 +20,21 @@ function GoalList() {
   return (
     <div id="wrapper">
       <Nav />
-      <div className='goal-background'>
+
+      <div className="goal-background">
         <GoalForm />
-        <div className='line'>------------------------------------------------------------------------------</div>
-        <div className='goal'>
+        <div className="line">
+          ------------------------------------------------------------------------------
+        </div>
+        <div className="goal">
           {goals?.map((goal, i) => (
             <Goal key={i} goal={goal} />
           ))}
         </div>
       </div>
-      
+
       <Footer />
-      </div>
+    </div>
   )
 }
 
