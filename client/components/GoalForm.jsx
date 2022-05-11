@@ -72,6 +72,7 @@ function GoalForm() {
           </label> */}
         </strong>
         <input
+          className="input"
           name="content"
           type="text"
           style={{
@@ -90,6 +91,7 @@ function GoalForm() {
           <label className="mr-2">Your name:</label>
         </strong>
         <input
+          className="input"
           name="author"
           type="text"
           style={{
@@ -130,7 +132,7 @@ function GoalForm() {
         })}
         {/* </div> */}
         &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
-        <button onClick={onShare} type="submit">
+        <button className="button" onClick={onShare} type="submit">
           Share
         </button>   
       </div>  

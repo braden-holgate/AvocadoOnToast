@@ -54,9 +54,11 @@ nav.container{
   padding: 10px;
   margin-top:20px;
   margin-right: 20px;
+  margin-left:20px;
   width:100px !important;
   max-height: 100px !important;
 }
+
 
 .app-name{
   margin-top:-14px;
@@ -81,8 +83,9 @@ nav.container{
   color:white;
   width: 184px;
   height:40px;
-  margin-left:420px;
-  margin-top:28px;
+  margin-left:300px;
+  margin-top:12px;
+  margin-right:30px;
 }
 
 .login-button{
@@ -639,9 +642,9 @@ section.runningman {
   
 }
 .subscribe-button{
-  margin-right: 80px;
+  margin-right: 20px;
   width:100px;
-  margin-top: 10px;
+  //margin-top: 10px;
 
 }
 

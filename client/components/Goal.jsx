@@ -35,9 +35,9 @@ function Goal(props) {
       <p>
         Goal:&ensp;{content}
         &emsp; &emsp; &emsp; &emsp;
-        <button>✏️</button>
+        <button className="button">✏️</button>
         &emsp;
-        <button>🗑️</button>
+        <button className="button">🗑️</button>
       </p>
       <br />
       <button onClick={() => handleDelete(id)}>Delete</button>
