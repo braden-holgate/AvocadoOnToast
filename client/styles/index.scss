@@ -226,7 +226,34 @@ nav.container{
   box-shadow: #629d62 0 3px 7px inset;
   transform: translateY(2px);
   }
- 
+
+  //--------Income tooltip--------//
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: auto;
+    background-color: white;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+  }
+
+  .tooltip {
+    border-bottom: 1px solid black;
+    display: inline-block;
+    margin-left: 5px;
+    position: relative;
+  }
+
+  .tooltip:hover .tooltiptext {
+    margin-left: 5px;
+    visibility: visible;
+  }
+
  //--------question-button---ends---------//
 
  //--------additional-option-button---start---------//
@@ -673,11 +700,13 @@ section.runningman {
 }
 
 .dropdown{
-  height:40px;
-  width:80px;
-  border:1px solid #76B76D;
+  height: 40px;
+  border: 1px solid #76B76D;
   border-radius: 5px;
+  margin-left: 5px;
+  width: 80px;
 }
+<<<<<<< HEAD
 
 //----------------Table descriptions-----------------//
 .table-description-container {
@@ -703,3 +732,7 @@ section.runningman {
   font-size: 80px;
   color: #76B76D;
 }
+||||||| dfce999
+
+=======
+>>>>>>> 056ce150c1279a2c9f541ff81008790c642f212f

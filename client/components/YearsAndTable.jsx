@@ -16,6 +16,7 @@ function YearsAndTable() {
 
     <>
       {notNull &&
+<<<<<<< HEAD
         <>
           <section className='section columns'>
             <div className="column">
@@ -56,6 +57,31 @@ function YearsAndTable() {
 
           </section>
         </>
+||||||| dfce999
+        <section className='section columns'>
+          <div className="table-left card column">
+            <YearsToRetire />
+            <TimeCostTable />
+          </div>
+
+          <div className="table-right card column">
+            <YearsToRetireCompare />
+            <TimeCostTableCompare />
+          </div>
+        </section>
+=======
+        <section className='section year-and-table columns'>
+          <div className="table-left card column">
+            <YearsToRetire />
+            <TimeCostTable />
+          </div>
+
+          <div className="table-right card column">
+            <YearsToRetireCompare />
+            <TimeCostTableCompare />
+          </div>
+        </section>
+>>>>>>> 056ce150c1279a2c9f541ff81008790c642f212f
       }
     </>
   )
