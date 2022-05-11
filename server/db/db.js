@@ -13,7 +13,7 @@ function getGoalById(id, db = conn) {
 }
 
 function addGoal(newGoal, db = conn) {
-  return db('goals').insert(newGoal)
+  return db('goals').insert(newGoal, 'id')
 }
 
 function updateGoal(id, newInfo, db = conn) {
