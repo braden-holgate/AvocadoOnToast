@@ -58,14 +58,15 @@ function Goal(props) {
           })}
         </p>
       </div>
+
       <p>
         💬 &ensp;{content}
         &emsp; &emsp; &emsp; &emsp;
-
         <button onClick={() => handleDelete(id)}>🗑️</button>
         &emsp;
         {!input && <button onClick={handleClick}>✏️</button>}
       </p>
+
       {input && (
         <>
           <input

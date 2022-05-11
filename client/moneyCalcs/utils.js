@@ -1,17 +1,11 @@
 // NORMALISE MONETARY INPUT DATA TO PER YEAR
 
 function moneyPerYear(value, valuePeriod) {
-  if (valuePeriod == 'day')
-    return value * 365
-  else if (valuePeriod == 'week') 
-    return value * 52
-  else if (valuePeriod == 'fortnight')
-    return value * 26
-  else if (valuePeriod == 'month')
-    return value * 12
-  else if (valuePeriod == 'year')
-    return value
-  // else return console.log(`Error! '${valuePeriod}' does not match any of the available options in the moneyPerYear function in client/moneyCalcs/utils`)
+  if (valuePeriod == 'day') return value * 365
+  else if (valuePeriod == 'week') return value * 52
+  else if (valuePeriod == 'fortnight') return value * 26
+  else if (valuePeriod == 'month') return value * 12
+  else if (valuePeriod == 'year') return value
 }
 
 // from stackoverflow
@@ -33,11 +27,13 @@ function roundTo(n, digits) {
   return n
 }
 
-function additionalSavings (costs, compareCosts) {
+function additionalSavings(costs, compareCosts) {
   let weeklySavingsCount = 0
   for (let i = 0; i < costs.length; i++) {
     let costsFreq = Number(costs[i].frequencyPerWeek)
-    let compareCostsFreq = Number((compareCosts[i] || costs[i]).frequencyPerWeek)
+    let compareCostsFreq = Number(
+      (compareCosts[i] || costs[i]).frequencyPerWeek
+    )
     weeklySavingsCount += (costsFreq - compareCostsFreq) * costs[i].cost
   }
   return weeklySavingsCount
@@ -80,7 +76,7 @@ function calcTakeHomePercent(preTaxIncomePerYear) {
   // handle case where income is greater than highest entry in table
   if (preTaxIncomePerYear > takeHomePay[takeHomePay.length - 1].lessThan)
     return takeHomePay[takeHomePay.length - 1].takeHomePercent
-  // handle all other cases  
+  // handle all other cases
   else {
     for (const payBracket of takeHomePay) {
       if (preTaxIncomePerYear <= payBracket.lessThan)
@@ -95,18 +91,29 @@ function calcTakeHomePercent(preTaxIncomePerYear) {
 // t -> number of time periods elapsed
 
 function calcCompoundInterest(principal, rate, years) {
-  return principal * Math.pow(1 + rate, years);
+  return principal * Math.pow(1 + rate, years)
 }
 
 function calcFVAnnuities(depositAnnual, additionalSavingsAnnual, rate, years) {
-  return (depositAnnual + additionalSavingsAnnual) * ((Math.pow((1 + rate), years) - 1) / rate)
+  return (
+    (depositAnnual + additionalSavingsAnnual) *
+    ((Math.pow(1 + rate, years) - 1) / rate)
+  )
 }
 
-function retirementAmount(income, incomePeriod, savings, savingsPeriod, additionalSavingsWeekly) {
+function retirementAmount(
+  income,
+  incomePeriod,
+  savings,
+  savingsPeriod,
+  additionalSavingsWeekly
+) {
   const SWR = 0.04
-  const savingsNormalised = moneyPerYear(savings, savingsPeriod) + moneyPerYear(additionalSavingsWeekly, 'week')
+  const savingsNormalised =
+    moneyPerYear(savings, savingsPeriod) +
+    moneyPerYear(additionalSavingsWeekly, 'week')
   const afterTax = afterTaxIncomePerYear(income, incomePeriod)
-  const amount = roundTo((1 / SWR),0) * (afterTax - savingsNormalised)
+  const amount = roundTo(1 / SWR, 0) * (afterTax - savingsNormalised)
   return amount
 }
 
@@ -117,5 +124,5 @@ module.exports = {
   calcFVAnnuities,
   roundTo,
   additionalSavings,
-  retirementAmount
+  retirementAmount,
 }

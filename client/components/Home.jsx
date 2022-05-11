@@ -17,14 +17,13 @@ function Home() {
   return (
     <>
       <Nav />
-      {/* <Welcome /> */}
-      <Runningman/>
+      <Runningman />
       <Message2 />
       <Questions />
-      <YearsAndTable/>
-      <TotalExpense/>
-      <Barchart/>
-      <Subscribe/>
+      <YearsAndTable />
+      <TotalExpense />
+      <Barchart />
+      <Subscribe />
       <Footer />
     </>
   )

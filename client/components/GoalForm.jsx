@@ -81,6 +81,7 @@ function GoalForm() {
           onChange={handleChange}
         />
       </div>
+
       <div>
         <strong>
           <label className="mr-2">Your name:</label>
@@ -100,6 +101,7 @@ function GoalForm() {
           onChange={handleChange}
         />
       </div>
+
       <div style={styles.stars}>
         <strong>
           <label className="mr-2">Rate your satisfaction with our app:</label>
@@ -124,7 +126,6 @@ function GoalForm() {
             />
           )
         })}
-        {/* </div> */}
         &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
         <button className="button" onClick={onShare} type="submit">
           Share

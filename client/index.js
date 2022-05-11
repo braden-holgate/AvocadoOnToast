@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
           <Route path="/goals" element={<GoalList />}></Route>
         </Routes>
       </BrowserRouter>
-      {/* <App /> */}
     </Provider>,
     document.getElementById('app')
   )
