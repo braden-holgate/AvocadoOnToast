@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteOneGoal, getGoals, updateAGoal } from '../actions'
+import { deleteOneGoal, updateAGoal } from '../actions'
 import { FaStar } from 'react-icons/fa'
 
 function Goal(props) {
@@ -20,7 +20,6 @@ function Goal(props) {
 
   const handleDelete = (id) => {
     dispatch(deleteOneGoal(id))
-    // dispatch(getGoals())
   }
 
   const handleClick = () => {
@@ -37,13 +36,6 @@ function Goal(props) {
   const handleEdit = (e) => {
     e.preventDefault()
     dispatch(updateAGoal(formData))
-    // setFormData({
-    //   author: author,
-    //   content: content,
-    //   rating: rating,
-    //   date: date,
-    //   id: id,
-    // })
     setInput(false)
   }
 
@@ -51,8 +43,8 @@ function Goal(props) {
     <div>
       <div style={styles.stars}>
         <p>
-          <strong>{author}</strong> &emsp; &emsp; Date:
-          {new Date(date).toDateString()}
+          <strong>{author}</strong> &emsp; &emsp; &emsp;
+          {new Date(date).toLocaleDateString()}
           &emsp; &emsp;
           {stars.map((_, index) => {
             return (
@@ -67,7 +59,7 @@ function Goal(props) {
         </p>
       </div>
       <p>
-        Goal:&ensp;{content}
+        💬 &ensp;{content}
         &emsp; &emsp; &emsp; &emsp;
         <button onClick={() => handleDelete(id)}>🗑️</button>
         &emsp;
