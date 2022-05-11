@@ -37,7 +37,7 @@ function additionalSavings (costs, compareCosts) {
   let weeklySavingsCount = 0
   for (let i = 0; i < costs.length; i++) {
     let costsFreq = Number(costs[i].frequencyPerWeek)
-    let compareCostsFreq = Number(compareCosts[i].frequencyPerWeek)
+    let compareCostsFreq = Number((compareCosts[i] || costs[i]).frequencyPerWeek)
     weeklySavingsCount += (costsFreq - compareCostsFreq) * costs[i].cost
   }
   return weeklySavingsCount
