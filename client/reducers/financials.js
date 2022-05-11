@@ -12,7 +12,7 @@ const initialState = {
 export default function financials(state = initialState, action) {
   switch (action.type) {
     case LOAD_FINANCIALS:
-      return action.financials
+      return JSON.parse(JSON.stringify(action.financials))
 
     default:
       return state
