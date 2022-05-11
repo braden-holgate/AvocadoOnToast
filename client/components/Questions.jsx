@@ -150,7 +150,11 @@ function Questions() {
             <option value="fortnight">Fortnight</option>
             <option value="year">Year</option>
           </select>
-        </div>
+          
+          <div class="tooltip">?
+            <span class="tooltiptext">This is your before tax income</span>
+          </div>
+          </div>
 
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
@@ -160,10 +164,8 @@ function Questions() {
           <input type="number" min="0" name="average-savings" className="input" placeholder="Estimate save" defaultValue={savings}
             onChange={handleSavings}></input>
 
-          <select onChange={savingFrequency} defaultValue={savingsPeriod}>
-            <option  value="week">
-              Week
-            </option>
+          <select className='dropdown' onChange={savingFrequency} defaultValue='week'>
+            <option  value="week">Week</option>
             <option value="fortnight">Fortnight</option>
             <option value="year">Year</option>
           </select>
