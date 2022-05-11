@@ -152,12 +152,23 @@ export function saveNewGoal(newGoal) {
 
 export function deleteOneGoal(id) {
   return (dispatch) => {
-    // return request
-    //   .delete(`/api/v1/goals/${id}`)
     delGoal(id)
       .then((res) => {
-        console.log('res:', res.body)
-        dispatch(removeGoal(id))
+        console.log(res, 'res at thunk')
+        dispatch(saveAllGoals(res))
+        return null
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
+  }
+}
+
+export function updateAGoal(info) {
+  return (dispatch) => {
+    patchGoal(info)
+      .then((res) => {
+        dispatch(updateGoal(res))
         return null
       })
       .catch((err) => {

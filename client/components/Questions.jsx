@@ -14,9 +14,6 @@ function Questions() {
   const [savings, setSavings] = useState(null)
   const [savingsPeriod, setSavingsPeriod] = useState('week')
   const [hoursWorkedPerWeek, setHoursWorkedPerWeek] = useState(null)
-  // const [localItems, setLocalItems] = useState("items")
-  // const [coffeeCost, setCoffeeCost] = useState(null)
-  // const [eatingOutCost, setEatingOutCost] = useState(null)
   const [displayAdditional, setDisplayAdditional] = useState(false)
   const [displayEdit, setDisplayEdit] = useState(false)
   const [ageAndCommute, setAgeAndCommute] = useState({age: null, commute: 0, commutePeriod: "day"})
@@ -26,12 +23,6 @@ function Questions() {
   useEffect(() => {
   dispatch(getCosts())
   }, [])
-
-  // useEffect(() => {
-  //   setCoffeeCost(items[0])
-  //   setEatingOutCost(items[1])
-  //   setLocalItems(items)
-  // }, [items])
 
   const handleIncome = (e) => {
     setIncome(Number(e.target.value))
@@ -59,18 +50,10 @@ function Questions() {
   }
 
   const handleCoffee = (e) => {
-    // setCoffeeCost({
-    //   ...coffeeCost,
-    //   frequencyPerWeek: e.target.value,
-    // })
     items[0].frequencyPerWeek = e.target.value
   }
 
   const handleEatingOut = (e) => {
-    // setEatingOutCost({
-    //   ...eatingOutCost,
-    //   frequencyPerWeek: e.target.value,
-    // })
     items[1].frequencyPerWeek = e.target.value
   }
 
@@ -123,8 +106,6 @@ function Questions() {
 
   const handleCalculate = (e) => {
     e.preventDefault()
-    // let costsArray = []
-    // costsArray.push(coffeeCost, eatingOutCost)
 
     let totHours
     ageAndCommute.commutePeriod === "day" ? 
@@ -141,10 +122,8 @@ function Questions() {
       age: ageAndCommute.age
     }
 
-    // dispatch(updateFrequency(coffeeCost.id, coffeeCost.frequencyPerWeek))
-    // dispatch(updateFrequency(eatingOutCost.id, eatingOutCost.frequencyPerWeek))
     dispatch(setCosts(items))
-    dispatch(setCompareCosts(JSON.parse(JSON.stringify(items)))) // creating a deep copy because otherwise the compare costs state will reference the same array and changing one will change the other!
+    dispatch(setCompareCosts(items))
     dispatch(loadFinancials(financials))
   }
 
