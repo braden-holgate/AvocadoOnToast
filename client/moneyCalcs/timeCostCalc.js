@@ -28,13 +28,16 @@ function timeCostObjCreator(itemCostsObj, financialsObj) {
   const minutesPerWeek = timeCostPerWeek(minutesPerItem, frequencyPerWeek)
   const minutesPerYear = timeCostPerYear(minutesPerWeek)
 
+  const dollarsPerMinute = timeValuePerMinute(income, incomePeriod, hoursWorkedPerWeek)
+
   return {
     item,
     timeCostPerItem: determineUnit(minutesPerItem),
     timeCostPerWeek: determineUnit(minutesPerWeek),
     timeCostPerYear: determineUnit(minutesPerYear),
     frequencyPerWeek,
-    id
+    id,
+    dollarsPerMinute
   }
 }
 // console.log(timeCostObjCreator(costs, financials))
