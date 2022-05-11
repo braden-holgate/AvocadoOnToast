@@ -55,9 +55,15 @@ nav.container {
   max-height: 100px !important;
 }
 
-.app-name {
-  margin-top: -14px;
-  font-family: 'Righteous', cursive;
+.tooltip-icon {
+  width: 1em;
+  margin-left: 0.3em;
+  position: relative;
+  top: 0.2em;
+}
+.app-name{
+  margin-top:-14px;
+  font-family:'Righteous', cursive;
   font-size: 30px;
   color: #76b76d;
 }
@@ -156,7 +162,6 @@ nav.container {
   z-index: 100;
   width: 100%;
   text-align: center;
-
 }
 
 .banner-line2 {

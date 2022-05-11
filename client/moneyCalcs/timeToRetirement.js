@@ -16,7 +16,6 @@ function yearsToRetirement(
   const savingsRate = savingsNormalised / afterTax
   const SWR = 0.04
   const rateOfReturn = 0.05
-
   const calc1 =
     (((1 - savingsRate) * afterTax) / SWR) * rateOfReturn +
     savingsRate * afterTax

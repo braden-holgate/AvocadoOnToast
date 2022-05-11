@@ -71,6 +71,18 @@ function Barchart() {
   }
 
   const getOption = () => ({
+    title: {
+      text: "Compounded Wealth",
+      subtext: "Your savings growing exponentially",
+      left: "center",
+      bottom: "80%",
+      textStyle: {
+        fontSize: 25
+      },
+      subtextStyle: {
+        fontSize: 15
+      }
+    },
     tooltip: {},
 
     xAxis: {
@@ -79,17 +91,15 @@ function Barchart() {
         show: false,
       },
     },
-
-    yAxis: [
-      {
-        type: 'value',
-        nameLocation: 'middle',
-        nameTextStyle: {
-          verticalAlign: 'middle',
-        },
-        nameRotate: 0,
+    yAxis: [{
+      type: "value",
+      name: "$1000's",
+      nameLocation: "middle",
+      nameGap: 35,
+      nameTextStyle: {
+        verticalAlign: "middle"
       },
-    ],
+    }],
 
     series: [
       {

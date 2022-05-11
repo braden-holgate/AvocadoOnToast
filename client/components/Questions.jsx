@@ -151,27 +151,17 @@ function Questions() {
             <label className="mr-2">What is your income?</label>
           </strong>
 
-          <input
-            type="number"
-            min="0"
-            name="income"
-            className="input"
-            placeholder="Enter your income"
-            defaultValue={income}
-            onChange={handleIncome}
-          ></input>
+          <input type="number" min="0" name="income" className="input" placeholder="Enter your income" defaultValue={income}
+            onChange={handleIncome}></input>
+          
 
-          <select
-            className="dropdown"
-            onChange={incomeFrequency}
-            defaultValue="year"
-          >
-            <option value="week">Week</option>
+          <select  className='dropdown' onChange={incomeFrequency} defaultValue='week'>
+            <option  value="week">Week</option>
             <option value="fortnight">Fortnight</option>
             <option value="year">Year</option>
           </select>
-          <span data-tooltip="This is your before tax income">?</span>
-        </div>
+          <span data-tooltip="This is your NZD pay before tax and kiwisaver."><img className="tooltip-icon" src="/images/tooltip.png"></img></span>
+          </div>
 
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
@@ -265,136 +255,78 @@ function Questions() {
             onChange={handleEatingOut}
           ></input>
         </div>
+        {displayAdditional && 
+        <div className='additional-options'>
+          {displayAdditional && <button className='additional-option' onClick={handleDisplayOptions}>Hide Options</button>}
+          
+          <br></br>
+          <div className="is-divider" data-content="Additional Options make things a little more useful"></div>
+          <br></br>
+          <form>
+            <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
+              <strong>
+                <label className="mr-2">
+                  How old are you in years?
+                </label>
+              </strong>
+              <input type="number" min="0" name="age" className="input"  
+                onChange={handleAgeAndCommute}></input>
+            </div>
+            <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
+              <strong>
+                <label className="mr-2">
+                  How many hours do you spend commuting to work?
+                </label>
+              </strong>
+              <input type="number" min="0" name="commute" className="input"  
+                onChange={handleAgeAndCommute}></input>
+              <select className='dropdown' name="commutePeriod" onChange={handleAgeAndCommute} defaultValue={ageAndCommute.commutePeriod}>
+                <option  value="day">Day</option>
+                <option value="week">Week</option>
+              </select>
+              <span className="has-tooltip-multiline" data-tooltip="We include this in the calculation of you real hourly wage."><img className="tooltip-icon" src="/images/tooltip.png"></img></span>
+            </div>
+            <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
+              <strong>
+                <p>Have other expenses you want to factor in?</p>
+                <p>Subscriptions, Car expenses, Rent?</p>
+              </strong>
+            </div>
+            <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
+              <strong>
+                <label className="mr-2 expense-input">
+                  Expense name:  
+                </label>
+              </strong>
+              <input type="text" name="item" className="input" value={newItem.item} 
+                onChange={handleItems}></input>
+              <strong>
+                <label className="mr-2">
+                  How often per week?
+                </label>
+              </strong>
+              <input type="number" min="0" name="frequencyPerWeek" className="input" value={newItem.frequencyPerWeek} 
+                onChange={handleItems}></input>
+              <strong>
+                <label className="mr-2">
+                  Cost?
+                </label>
+              </strong>
+              <input type="number" min="0" name="cost" className="input" value={newItem.cost}
+                onChange={handleItems}></input>
+              <button className='additional-option' onClick={handleAddItems} type='submit'>Add</button>
+            </div>
+            {newItemAlert && <div><p>Please fill in all fields before clicking "Add"</p><br></br></div>}
+          </form>
+          <div className="is-divider" data-content="Expenses"></div>
+          {!displayEdit && <button className='additional-option' onClick={handleDisplayEdit}>Edit expenses</button>}
+        </div>}
 
-        {displayAdditional && (
-          <div className="additional-options">
-            {displayAdditional && (
-              <button
-                className="additional-option"
-                onClick={handleDisplayOptions}
-              >
-                Hide Options
-              </button>
-            )}
+        {displayEdit && <div>
+          <UserUpdateTable displayEdit={displayEdit} setDisplayEdit={setDisplayEdit}/>
+        </div>}
 
-            <br></br>
-            <div
-              className="is-divider"
-              data-content="Additional Options make things a little more useful"
-            ></div>
-            <br></br>
-            <form>
-              <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
-                <strong>
-                  <label className="mr-2">How old are you in years?</label>
-                </strong>
-                <input
-                  type="number"
-                  min="0"
-                  name="age"
-                  className="input"
-                  onChange={handleAgeAndCommute}
-                ></input>
-              </div>
-              <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
-                <strong>
-                  <label className="mr-2">
-                    How many hours do you spend commuting to work?
-                  </label>
-                </strong>
-                <input
-                  type="number"
-                  min="0"
-                  name="commute"
-                  className="input"
-                  onChange={handleAgeAndCommute}
-                ></input>
-                <select
-                  className="dropdown"
-                  name="commutePeriod"
-                  onChange={handleAgeAndCommute}
-                  defaultValue={ageAndCommute.commutePeriod}
-                >
-                  <option value="day">Day</option>
-                  <option value="week">Week</option>
-                </select>
-              </div>
-              <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
-                <strong>
-                  <p>Have other expenses you want to factor in?</p>
-                  <p>Subscriptions, Car expenses, Rent?</p>
-                </strong>
-              </div>
-              <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
-                <strong>
-                  <label className="mr-2 expense-input">Expense name:</label>
-                </strong>
-                <input
-                  type="text"
-                  name="item"
-                  className="input"
-                  value={newItem.item}
-                  onChange={handleItems}
-                ></input>
-                <strong>
-                  <label className="mr-2">How often per week?</label>
-                </strong>
-                <input
-                  type="number"
-                  min="0"
-                  name="frequencyPerWeek"
-                  className="input"
-                  value={newItem.frequencyPerWeek}
-                  onChange={handleItems}
-                ></input>
-                <strong>
-                  <label className="mr-2">Cost?</label>
-                </strong>
-                <input
-                  type="number"
-                  min="0"
-                  name="cost"
-                  className="input"
-                  value={newItem.cost}
-                  onChange={handleItems}
-                ></input>
-                <button
-                  className="additional-option"
-                  onClick={handleAddItems}
-                  type="submit"
-                >
-                  Add
-                </button>
-              </div>
-              {newItemAlert && (
-                <div>
-                  <p>Please fill in all fields before clicking "Add"</p>
-                  <br></br>
-                </div>
-              )}
-            </form>
-            {!displayEdit && (
-              <button className="additional-option" onClick={handleDisplayEdit}>
-                Edit expenses
-              </button>
-            )}
-          </div>
-        )}
-
-        {displayEdit && (
-          <div>
-            <UserUpdateTable
-              displayEdit={displayEdit}
-              setDisplayEdit={setDisplayEdit}
-            />
-          </div>
-        )}
-
-        {!displayAdditional && (
-          <button className="additional-option" onClick={handleDisplayOptions}>
-            Additional Options
-          </button>
-        )}
+        {!displayAdditional && <button className='additional-option' onClick={handleDisplayOptions}>Additional Options</button>}
         <br></br>
         <button
           className="question-button"
