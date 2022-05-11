@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+<<<<<<< HEAD
 import {
   loadFinancials,
   updateFrequency,
   getCosts,
   setCompareCosts,
 } from '../actions'
+=======
+import { loadFinancials, updateFrequency, getCosts, setCompareCosts, setCosts } from '../actions'
+import UserUpdateTable from './UserUpdateTable'
+>>>>>>> main
 
 function Questions() {
   const dispatch = useDispatch()
@@ -16,6 +21,7 @@ function Questions() {
   const [savings, setSavings] = useState(null)
   const [savingsPeriod, setSavingsPeriod] = useState('week')
   const [hoursWorkedPerWeek, setHoursWorkedPerWeek] = useState(null)
+<<<<<<< HEAD
   const [localItems, setLocalItems] = useState('items')
   const [coffeeCost, setCoffeeCost] = useState(null)
   const [eatingOutCost, setEatingOutCost] = useState(null)
@@ -26,16 +32,17 @@ function Questions() {
     commutePeriod: 'day',
   })
   const [newItem, setNewItem] = useState({})
+=======
+  const [displayAdditional, setDisplayAdditional] = useState(false)
+  const [displayEdit, setDisplayEdit] = useState(false)
+  const [ageAndCommute, setAgeAndCommute] = useState({age: null, commute: 0, commutePeriod: "day"})
+  const [newItem, setNewItem] = useState({item: "", cost: "", frequencyPerWeek: ""})
+  const [newItemAlert, setNewItemAlert] = useState(false)
+>>>>>>> main
 
   useEffect(() => {
     dispatch(getCosts())
   }, [])
-
-  useEffect(() => {
-    setCoffeeCost(items[0])
-    setEatingOutCost(items[1])
-    setLocalItems(items)
-  }, [items])
 
   const handleIncome = (e) => {
     setIncome(Number(e.target.value))
@@ -62,34 +69,49 @@ function Questions() {
   }
 
   const handleCoffee = (e) => {
-    setCoffeeCost({
-      ...coffeeCost,
-      frequencyPerWeek: e.target.value,
-    })
+    items[0].frequencyPerWeek = e.target.value
   }
 
   const handleEatingOut = (e) => {
-    setEatingOutCost({
-      ...eatingOutCost,
-      frequencyPerWeek: e.target.value,
-    })
+    items[1].frequencyPerWeek = e.target.value
   }
 
   const handleDisplayOptions = (e) => {
     displayAdditional ? setDisplayAdditional(false) : setDisplayAdditional(true)
   }
 
+<<<<<<< HEAD
   const handleItems = (e) => {
+=======
+  const handleDisplayEdit = (e) => {
+    displayEdit ? setDisplayEdit(false) : setDisplayEdit(true)
+  }
+
+  const handleItems = (e) => {
+    e.target.name === 'item' ?
+>>>>>>> main
     setNewItem({
       id: items.length + 1,
       ...newItem,
       [e.target.name]: e.target.value,
     })
+    :
+    setNewItem({
+      id: (items.length + 1),
+      ...newItem,
+      [e.target.name]: Number(e.target.value)
+    })
   }
   const handleAddItems = (e) => {
     e.preventDefault()
+    let notNull = newItem.item !== "" && newItem.cost !== "" && newItem.frequencyPerWeek !== ""
+    if (notNull) {
     let newItemArray = [...items, newItem]
-    dispatch(updateFrequency(newItemArray))
+    dispatch(setCosts(newItemArray))
+    dispatch(setCompareCosts(JSON.parse(JSON.stringify(newItemArray))))
+    setNewItem({item: "", cost: "", frequencyPerWeek: ""})
+    setNewItemAlert(false)
+    } else {setNewItemAlert(true)}
   }
 
   const handleAgeandCommute = (e) => {
@@ -106,8 +128,6 @@ function Questions() {
 
   const handleCalculate = (e) => {
     e.preventDefault()
-    let costsArray = []
-    costsArray.push(coffeeCost, eatingOutCost)
 
     let totHours
     ageAndCommute.commutePeriod === 'day'
@@ -124,8 +144,8 @@ function Questions() {
       age: ageAndCommute.age,
     }
 
-    dispatch(updateFrequency(costsArray))
-    dispatch(setCompareCosts(JSON.parse(JSON.stringify(costsArray)))) // creating a deep copy because otherwise the compare costs state will reference the same array and changing one will change the other!
+    dispatch(setCosts(items))
+    dispatch(setCompareCosts(items))
     dispatch(loadFinancials(financials))
   }
 
@@ -247,6 +267,7 @@ function Questions() {
             onChange={handleEatingOut}
           ></input>
         </div>
+<<<<<<< HEAD
         {displayAdditional && (
           <div className="additional-options">
             <form>
@@ -341,6 +362,82 @@ function Questions() {
         )}
        
 
+=======
+        {displayAdditional && 
+        <div className='additional-options'>
+          <form>
+            <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
+              <strong>
+                <label className="mr-2">
+                  How old are you in years?
+                </label>
+              </strong>
+              <input type="number" name="age" className="input"  
+                onChange={handleAgeandCommute}></input>
+            </div>
+            <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
+              <strong>
+                <label className="mr-2">
+                  How many hours do you spend commuting to work?
+                </label>
+              </strong>
+              <input type="number" name="commute" className="input"  
+                onChange={handleAgeandCommute}></input>
+              <select name="commutePeriod" onChange={handleAgeandCommute} defaultValue={ageAndCommute.commutePeriod}>
+                <option  value="day">Day</option>
+                <option value="week">Week</option>
+              </select>
+            </div>
+            <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
+              <strong>
+                <p>Have other expenses you want to factor in?</p>
+                <p>Subscriptions, Car expenses, Rent?</p>
+              </strong>
+            </div>
+            <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
+              <strong>
+                <label className="mr-2">
+                  Expense name:  
+                </label>
+              </strong>
+              <input type="text" name="item" className="input" value={newItem.item} 
+                onChange={handleItems}></input>
+              <strong>
+                <label className="mr-2">
+                  How often per week?
+                </label>
+              </strong>
+              <input type="number" name="frequencyPerWeek" className="input" value={newItem.frequencyPerWeek} 
+                onChange={handleItems}></input>
+              <strong>
+                <label className="mr-2">
+                  Cost?
+                </label>
+              </strong>
+              <input type="number" name="cost" className="input" value={newItem.cost}
+                onChange={handleItems}></input>
+              <button onClick={handleAddItems} type='submit'>Add</button>
+            </div>
+            {newItemAlert && <p>Please fill in all fields before clicking "Add"</p>}
+          </form>
+        </div>}
+
+        {displayEdit && <div>
+          <UserUpdateTable />
+        </div>}
+
+
+        {!displayAdditional && <button onClick={handleDisplayOptions}>Additional Options</button>}
+        {displayAdditional && <button onClick={handleDisplayOptions}>Hide Options</button>}
+        
+        {!displayEdit && <button onClick={handleDisplayEdit}>Edit expenses</button>}
+        {displayEdit && <button onClick={handleDisplayEdit}>Hide expenses</button>}
+        
+        <br></br>
+        <button onClick={handleCalculate} type='submit'>Calculate</button>
+       
+          
+>>>>>>> main
         {/* -----Jessie's toggle test-----start----- */}
         {/* toggle 1 */}
         {/* <div className='toggle-box'>

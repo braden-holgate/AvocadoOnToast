@@ -10,6 +10,7 @@ import YearsAndTable from './YearsAndTable'
 import TotalExpense from './TotalExpense'
 import Barchart from './Barchart'
 import Subscribe from './Subscribe'
+import UserUpdateTable from './UserUpdateTable'
 
 function Home() {
   return (

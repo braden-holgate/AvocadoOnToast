@@ -1,12 +1,13 @@
-# Fullstack Collection App
+# Avocado.onToast ?
 
-This repo is designed to provide space to code a fullstack app. It contains node modules and folders for databases, routes, api requests, react components, and redux actions and creators. Let's get going!
+This app is designed to help people gain a better sense of their
 
-```
-npm install
-git checkout -b <branchname>
-npm run dev
-```
+
+Purpose of project
+How to run your project locally
+Who has been part of making your project
+User stories
+Where to find deployed version
 
 ## Notes
 

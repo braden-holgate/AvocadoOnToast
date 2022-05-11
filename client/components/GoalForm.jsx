@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { getGoals, saveNewGoal } from '../actions'
+import { saveNewGoal } from '../actions'
 import { FaStar } from 'react-icons/fa'
 
 const colors = {
@@ -48,7 +48,6 @@ function GoalForm() {
   const onShare = (e) => {
     e.preventDefault()
     dispatch(saveNewGoal(formData))
-    dispatch(getGoals())
     setRatingValue(0)
     setHoverValue(undefined)
     setFormData({
@@ -60,16 +59,12 @@ function GoalForm() {
   }
 
   return (
-    <div className='goal-form'>
-      <div >
+    <div className="goal-form">
+      <div>
         <strong>
           <label className="mr-2">
             What's your thought? Any financial goal to share?
           </label>
-          {/* <label className="mr-2">
-            Share your goal with others who are trying to reach financial
-            freedom
-          </label> */}
         </strong>
         <input
           className="input"
@@ -109,7 +104,6 @@ function GoalForm() {
         <strong>
           <label className="mr-2">Rate your satisfaction with our app:</label>
         </strong>
-        {/* <div style={styles.stars}> */}
         {stars.map((_, index) => {
           return (
             <FaStar
@@ -134,10 +128,9 @@ function GoalForm() {
         &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
         <button className="button" onClick={onShare} type="submit">
           Share
-        </button>   
-      </div>  
+        </button>
+      </div>
     </div>
-   
   )
 }
 

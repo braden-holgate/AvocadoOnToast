@@ -47,7 +47,8 @@ router.delete('/:id', async (req, res) => {
   try {
     const id = Number(req.params.id)
     await db.deleteGoal(id)
-    return res.json({})
+    const allGoals = await db.getAllGoals()
+    return res.json(allGoals)
   } catch (error) {
     res.status(500).json({ error: error.message })
   }

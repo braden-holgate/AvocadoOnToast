@@ -22,9 +22,9 @@ function yearsToRetirement(
   const calc3 = Math.log10(calc1 / calc2)
   const yearsToRetire = utils.roundTo(calc3 / Math.log10(1 + rateOfReturn), 1)
   if (savingsRate > 1) {
-    return "Woah! You're saving more than your after tax income! Retire today!"
+    return "Retire!"
   } else if (yearsToRetire == 0) {
-    return { years: 0, message: 'Retire today!' }
+    return { years: 0, message: 'Retire!' }
   } else {
     return yearsToRetire
   }
