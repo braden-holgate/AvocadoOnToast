@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-function Nav () {
+function Nav() {
   const [loggedIn, setLoggedIn] = useState(false)
 
   const handleLogIn = () => {
@@ -12,23 +12,24 @@ function Nav () {
     <>
       <nav className="navigation navbar">
         <div className="container">
-
-          <div className='navbar-start'>
+          <div className="navbar-start">
             <a className="navbar-item" href="/">
-                <figure className="image columns is-flex">
-                  <img className="logo" src="images/logo.png" />
-                </figure>
-                <p className="app-name">Avocado.onToast ?</p>
+              <figure className="image columns is-flex">
+                <img className="logo" src="/images/logo.png" />
+              </figure>
+              <p className="app-name">Avocado.onToast ?</p>
             </a>
           </div>
 
-          <div className='navbar-end'>
+          <div className="navbar-end">
             <Link to="/goals">
-              <button className="navbar-item avo-goal-button">Avo Community Posts</button>
+              <button className="navbar-item avo-goal-button">
+                Avo Community Posts
+              </button>
             </Link>
           </div>
 
-            {/* <div className='navbar-end'> 
+          {/* <div className='navbar-end'> 
               {loggedIn
                 ? (<div className="navbar-item logout-button">Logout</div>)
                 : (
@@ -43,7 +44,6 @@ function Nav () {
                   </>
                 )}
             </div> */}
-         
         </div>
       </nav>
     </>
