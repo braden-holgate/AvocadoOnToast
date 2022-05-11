@@ -28,22 +28,6 @@ function Nav() {
               </button>
             </Link>
           </div>
-
-          {/* <div className='navbar-end'> 
-              {loggedIn
-                ? (<div className="navbar-item logout-button">Logout</div>)
-                : (
-                  <>
-                    <div>
-                      <div className="navbar-item">
-                        <button className="login-button"onClick={handleLogIn}>Login</button>
-                        <button className="register-button">Register</button>
-                        
-                      </div>
-                    </div>
-                  </>
-                )}
-            </div> */}
         </div>
       </nav>
     </>
