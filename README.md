@@ -3,13 +3,15 @@
 This app is designed to help people gain a better sense of their current financial status. By showing each user their personalised retirement age, we aim to emphasise how much of their lives they could be working for. Once a user can visualise how many years they have until retirement, we want to empower them to understand how small tweaks to their lifestyle now, can significantly shorten their road to total financial freedom. 
 
 To run this project locally
-- fork and clone to your own repository
-- `npm install `
-- `npm run dev`
+- fork and or clone to your own repository
 
 In order to use the database information you can run
 - `npm run knex migrate:latest`
 - `npm run knex seed:run`
+
+Then simply
+- `npm install `
+- `npm run dev`
 
 Or checkout our deployed site at
 
