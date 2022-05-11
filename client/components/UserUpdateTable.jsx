@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setCompareCosts, setCosts } from '../actions'
 
-function UserUpdateTable() {
+function UserUpdateTable({displayEdit, setDisplayEdit}) {
   const dispatch = useDispatch()
 
   const costs = useSelector((globalState) => globalState.costs)
@@ -50,7 +50,9 @@ function UserUpdateTable() {
     // dispatch(setCompareCosts(JSON.parse(JSON.stringify(costsArr))))
   }
 
-
+  const handleDisplayEdit = (e) => {
+    displayEdit ? setDisplayEdit(false) : setDisplayEdit(true)
+  }
   const headers = {
     item: 'Item',
     frequencyPerWeek: 'Number per week',
@@ -59,6 +61,7 @@ function UserUpdateTable() {
 
   return (
     <>
+       {displayEdit && <button className='additional-option' onClick={handleDisplayEdit}>Hide expenses</button>}
       <section className=" section columns has-background-white is-centered ">
         <table className="table is-hoverable">
           <thead>
@@ -92,10 +95,8 @@ function UserUpdateTable() {
             })}
           </tbody>
         </table>
-        <div>
-          <button onClick={handleSubmit} type='submit'>Submit changes</button>
-        </div>
       </section>
+      <button className='additional-option' onClick={handleSubmit} type='submit'>Submit changes</button>
     </>
   )
 }

@@ -30,10 +30,15 @@ function TimeCostTableCompare() {
       <section className=" section columns has-background-white is-centered ">
         <table className="table is-hoverable">
           <thead>
+          <tr>
+              <th rowSpan="2">Number per week</th>
+              <th rowSpan="2">Item</th>
+              <th colSpan="3" align="center">Time spent per:</th>
+            </tr>
             <tr>
-              {Object.values(headers).map((header) => {
-                return <th key={header}>{header}</th>
-              })}
+              <th>Item</th>
+              <th>Week</th>
+              <th>Year</th>
             </tr>
           </thead>
 

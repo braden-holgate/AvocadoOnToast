@@ -34,12 +34,16 @@ function TimeCostTable() {
         <table className="table is-hoverable">
           <thead>
             <tr>
-              {Object.values(headers).map((header) => {
-                return <th key={header}>{header}</th>
-              })}
+              <th rowSpan="2">Number per week</th>
+              <th rowSpan="2">Item</th>
+              <th colSpan="3" align="center">Time spent per:</th>
+            </tr>
+            <tr>
+              <th>Item</th>
+              <th>Week</th>
+              <th>Year</th>
             </tr>
           </thead>
-
           <tbody>
             {notNull && costs.map((item, index) => {
               const data = timeCostObjCreator(item, financials);

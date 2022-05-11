@@ -11,6 +11,7 @@ import TotalExpense from './TotalExpense'
 import Barchart from './Barchart'
 import Subscribe from './Subscribe'
 import UserUpdateTable from './UserUpdateTable'
+import Message2 from './Message2'
 
 function Home() {
   return (
@@ -18,6 +19,7 @@ function Home() {
       <Nav />
       {/* <Welcome /> */}
       <Runningman/>
+      <Message2 />
       <Questions />
       <YearsAndTable/>
       <TotalExpense/>
