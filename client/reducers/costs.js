@@ -18,7 +18,6 @@ function costs(state = initialState, action) {
       })
       return newCosts
     case UPDATE_FREQUENCY:
-      // return action.costs
       return state.map((item) => {
         if (item.id == action.id) {
           item.frequencyPerWeek = action.frequencyPerWeek

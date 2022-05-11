@@ -16,13 +16,10 @@ export function postGoal(newGoal) {
 }
 
 export function delGoal(id) {
-  return (
-    request
-      .delete(`/api/v1/goals/${id}`)
-      // .then((response) => response.body)
-      .then((response) => response.body)
-      .catch(errorHandler('DELETE', `/api/v1/goals/${id}`))
-  )
+  return request
+    .delete(`/api/v1/goals/${id}`)
+    .then((response) => response.body)
+    .catch(errorHandler('DELETE', `/api/v1/goals/${id}`))
 }
 
 export function patchGoal(goal) {

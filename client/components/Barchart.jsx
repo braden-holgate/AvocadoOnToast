@@ -16,11 +16,12 @@ const retire = require('../moneyCalcs/timeToRetirement')
 
 function Barchart() {
   const [years, setYears] = useState()
-  // const [timesSeries, setTimeSeries] = useState([])
-  const financials = useSelector((state) => state.financials)
-  const { income, incomePeriod, savings, savingsPeriod, currentSavings } = financials
   const [xAxisData, setXAxisData] = useState([])
   const [barData1, setBarData1] = useState([])
+
+  const financials = useSelector((state) => state.financials)
+  const { income, incomePeriod, savings, savingsPeriod, currentSavings } =
+    financials
 
   echarts.use([
     BarChart,
@@ -32,7 +33,7 @@ function Barchart() {
   ])
 
   useEffect(() => {
-setYears(
+    setYears(
       retire.yearsToRetirement(
         income,
         incomePeriod,
@@ -56,32 +57,18 @@ setYears(
     )
     setBarChartData(newTimeSeries)
   }, [years])
-  
-  const setBarChartData = (timeSeries)=>{
-    const xAxisData = [];
+
+  const setBarChartData = (timeSeries) => {
+    const xAxisData = []
     const yAxisData = []
-    timeSeries.forEach(item => {
+    timeSeries.forEach((item) => {
       xAxisData.push(`Year- ${item.year}`)
-      yAxisData.push((item.amt/1000))
-    });
+      yAxisData.push(item.amt / 1000)
+    })
 
     setXAxisData(xAxisData)
     setBarData1(yAxisData)
   }
-
-  /////////mock data begin////////////////////////////
-  // useEffect(() => {
-  //   const xAxisData = []
-  //   const data1 = []
-  //   for (let i = 0; i < 100; i++) {
-  //     xAxisData.push('Year' + i)
-  //     data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5)
-  //   }
-  //   setXAxisData(xAxisData)
-  //   setBarData1(data1)
-  // }, [])
-
-  ///////mock data end/////////////////////////
 
   const getOption = () => ({
     title: {
@@ -97,8 +84,9 @@ setYears(
       }
     },
     tooltip: {},
+
     xAxis: {
-      data: xAxisData,  // x axis data
+      data: xAxisData, // x axis data
       splitLine: {
         show: false,
       },
@@ -111,24 +99,25 @@ setYears(
       nameTextStyle: {
         verticalAlign: "middle"
       },
-      nameRotate: 0
     }],
+
     series: [
       {
-        name: 'Wealth 1000\'s',
+        name: "Wealth 1000's",
         type: 'bar',
         data: barData1,
         emphasis: {
           focus: 'series',
         },
-        itemStyle:{
-          color: '#91cc75'
+        itemStyle: {
+          color: '#91cc75',
         },
         animationDelay: function (idx) {
           return idx * 10
         },
       },
     ],
+
     animationEasing: 'elasticOut',
     animationDelayUpdate: function (idx) {
       return idx * 5
@@ -136,15 +125,16 @@ setYears(
   })
 
   return (
-      <section className="hero has-background-light ">
-          <ReactEChartsCore
-            echarts={echarts}
-            option={getOption()}
-            notMerge={true}
-            lazyUpdate={true}
-            theme={'theme_name'}
-          />
-      </section>
+    <section className="hero has-background-light ">
+      <ReactEChartsCore
+        echarts={echarts}
+        option={getOption()}
+        notMerge={true}
+        lazyUpdate={true}
+        theme={'theme_name'}
+      />
+    </section>
   )
 }
+
 export default Barchart

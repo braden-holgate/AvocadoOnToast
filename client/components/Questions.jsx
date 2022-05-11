@@ -1,13 +1,12 @@
-
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loadFinancials, updateFrequency, getCosts, setCompareCosts, setCosts } from '../actions'
+import { loadFinancials, getCosts, setCompareCosts, setCosts } from '../actions'
 import UserUpdateTable from './UserUpdateTable'
 
 function Questions() {
-
   const dispatch = useDispatch()
-  const items = useSelector(state => state.costs)
+  const items = useSelector((state) => state.costs)
+
   const [income, setIncome] = useState(null)
   const [incomePeriod, setIncomePeriod] = useState('week')
   const [currentSavings, setCurrentSavings] = useState(null)
@@ -16,17 +15,24 @@ function Questions() {
   const [hoursWorkedPerWeek, setHoursWorkedPerWeek] = useState(null)
   const [displayAdditional, setDisplayAdditional] = useState(false)
   const [displayEdit, setDisplayEdit] = useState(false)
-  const [ageAndCommute, setAgeAndCommute] = useState({age: null, commute: 0, commutePeriod: "day"})
-  const [newItem, setNewItem] = useState({item: "", cost: "", frequencyPerWeek: ""})
+  const [ageAndCommute, setAgeAndCommute] = useState({
+    age: null,
+    commute: 0,
+    commutePeriod: 'day',
+  })
+  const [newItem, setNewItem] = useState({
+    item: '',
+    cost: '',
+    frequencyPerWeek: '',
+  })
   const [newItemAlert, setNewItemAlert] = useState(false)
 
   useEffect(() => {
-  dispatch(getCosts())
+    dispatch(getCosts())
   }, [])
 
   const handleIncome = (e) => {
     setIncome(Number(e.target.value))
-
   }
 
   const incomeFrequency = (e) => {
@@ -67,60 +73,63 @@ function Questions() {
   }
 
   const handleItems = (e) => {
-    e.target.name === 'item' ?
-    setNewItem({
-      id: (items.length + 1),
-      ...newItem,
-      [e.target.name]: e.target.value
-    })
-    :
-    setNewItem({
-      id: (items.length + 1),
-      ...newItem,
-      [e.target.name]: Number(e.target.value)
-    })
+    e.target.name === 'item'
+      ? setNewItem({
+          id: items.length + 1,
+          ...newItem,
+          [e.target.name]: e.target.value,
+        })
+      : setNewItem({
+          id: items.length + 1,
+          ...newItem,
+          [e.target.name]: Number(e.target.value),
+        })
   }
   const handleAddItems = (e) => {
     e.preventDefault()
-    let notNull = newItem.item !== "" && newItem.cost !== "" && newItem.frequencyPerWeek !== ""
+    let notNull =
+      newItem.item !== '' &&
+      newItem.cost !== '' &&
+      newItem.frequencyPerWeek !== ''
     if (notNull) {
-    let newItemArray = [...items, newItem]
-    dispatch(setCosts(newItemArray))
-    dispatch(setCompareCosts(JSON.parse(JSON.stringify(newItemArray))))
-    setNewItem({item: "", cost: "", frequencyPerWeek: ""})
-    setNewItemAlert(false)
-    } else {setNewItemAlert(true)}
+      let newItemArray = [...items, newItem]
+      dispatch(setCosts(newItemArray))
+      dispatch(setCompareCosts(JSON.parse(JSON.stringify(newItemArray))))
+      setNewItem({ item: '', cost: '', frequencyPerWeek: '' })
+      setNewItemAlert(false)
+    } else {
+      setNewItemAlert(true)
+    }
   }
 
-  const handleAgeandCommute = (e) => {
-    e.target.name === "commutePeriod" ? 
-    setAgeAndCommute({
-      ...ageAndCommute,
-      [e.target.name]: e.target.value
-    })
-    :
-    setAgeAndCommute({
-      ...ageAndCommute,
-      [e.target.name]: Number(e.target.value)
-    })
+  const handleAgeAndCommute = (e) => {
+    e.target.name === 'commutePeriod'
+      ? setAgeAndCommute({
+          ...ageAndCommute,
+          [e.target.name]: e.target.value,
+        })
+      : setAgeAndCommute({
+          ...ageAndCommute,
+          [e.target.name]: Number(e.target.value),
+        })
   }
 
   const handleCalculate = (e) => {
     e.preventDefault()
 
     let totHours
-    ageAndCommute.commutePeriod === "day" ? 
-    totHours = hoursWorkedPerWeek + (ageAndCommute.commute * 5)
-    : totHours = hoursWorkedPerWeek + ageAndCommute.commute
+    ageAndCommute.commutePeriod === 'day'
+      ? (totHours = hoursWorkedPerWeek + ageAndCommute.commute * 5)
+      : (totHours = hoursWorkedPerWeek + ageAndCommute.commute)
 
     const financials = {
-      ...{income}, 
-      ...{incomePeriod}, 
-      ...{savings}, 
-      ...{savingsPeriod}, 
-      ...{hoursWorkedPerWeek: totHours},
-      ...{currentSavings},
-      age: ageAndCommute.age
+      ...{ income },
+      ...{ incomePeriod },
+      ...{ savings },
+      ...{ savingsPeriod },
+      ...{ hoursWorkedPerWeek: totHours },
+      ...{ currentSavings },
+      age: ageAndCommute.age,
     }
 
     dispatch(setCosts(items))
@@ -159,11 +168,22 @@ function Questions() {
             <label className="mr-2">How much do you estimate you save?</label>
           </strong>
 
-          <input type="number" min="0" name="average-savings" className="input" placeholder="Estimate save" defaultValue={savings}
-            onChange={handleSavings}></input>
+          <input
+            type="number"
+            min="0"
+            name="average-savings"
+            className="input"
+            placeholder="Estimate save"
+            defaultValue={savings}
+            onChange={handleSavings}
+          ></input>
 
-          <select className='dropdown' onChange={savingFrequency} defaultValue='week'>
-            <option  value="week">Week</option>
+          <select
+            className="dropdown"
+            onChange={savingFrequency}
+            defaultValue="week"
+          >
+            <option value="week">Week</option>
             <option value="fortnight">Fortnight</option>
             <option value="year">Year</option>
           </select>
@@ -176,17 +196,31 @@ function Questions() {
             </label>
           </strong>
 
-          <input type="number" min="0" name="current-savings" className="input" placeholder="Enter how much you already have saved here" defaultValue={currentSavings}
-            onChange={handleCurrentSavings}></input>
+          <input
+            type="number"
+            min="0"
+            name="current-savings"
+            className="input"
+            placeholder="Enter how much you already have saved here"
+            defaultValue={currentSavings}
+            onChange={handleCurrentSavings}
+          ></input>
         </div>
-        
+
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
             <label className="mr-2">How many hours per week do you work?</label>
           </strong>
 
-          <input type="number" min="0" name="hours-worked" className="input" placeholder="Working hours weekly" defaultValue={hoursWorkedPerWeek}
-            onChange={handleHoursInput}></input>
+          <input
+            type="number"
+            min="0"
+            name="hours-worked"
+            className="input"
+            placeholder="Working hours weekly"
+            defaultValue={hoursWorkedPerWeek}
+            onChange={handleHoursInput}
+          ></input>
         </div>
 
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
@@ -196,9 +230,14 @@ function Questions() {
             </label>
           </strong>
 
-          <input type="number" min="0" name="coffees" className="input" placeholder="Coffee weekly"
-            onChange={handleCoffee}></input>
-
+          <input
+            type="number"
+            min="0"
+            name="coffees"
+            className="input"
+            placeholder="Coffee weekly"
+            onChange={handleCoffee}
+          ></input>
         </div>
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
@@ -207,9 +246,14 @@ function Questions() {
             </label>
           </strong>
 
-          <input type="number" min="0" name="food" className="input" placeholder="Eating out" 
-            onChange={handleEatingOut}></input>
-
+          <input
+            type="number"
+            min="0"
+            name="food"
+            className="input"
+            placeholder="Eating out"
+            onChange={handleEatingOut}
+          ></input>
         </div>
         {displayAdditional && 
         <div className='additional-options'>
@@ -226,7 +270,7 @@ function Questions() {
                 </label>
               </strong>
               <input type="number" min="0" name="age" className="input"  
-                onChange={handleAgeandCommute}></input>
+                onChange={handleAgeAndCommute}></input>
             </div>
             <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
               <strong>
@@ -235,8 +279,8 @@ function Questions() {
                 </label>
               </strong>
               <input type="number" min="0" name="commute" className="input"  
-                onChange={handleAgeandCommute}></input>
-              <select className='dropdown' name="commutePeriod" onChange={handleAgeandCommute} defaultValue={ageAndCommute.commutePeriod}>
+                onChange={handleAgeAndCommute}></input>
+              <select className='dropdown' name="commutePeriod" onChange={handleAgeAndCommute} defaultValue={ageAndCommute.commutePeriod}>
                 <option  value="day">Day</option>
                 <option value="week">Week</option>
               </select>
@@ -284,7 +328,13 @@ function Questions() {
 
         {!displayAdditional && <button className='additional-option' onClick={handleDisplayOptions}>Additional Options</button>}
         <br></br>
-        <button className='question-button' onClick={handleCalculate} type='submit'>Calculate</button>
+        <button
+          className="question-button"
+          onClick={handleCalculate}
+          type="submit"
+        >
+          Calculate
+        </button>
       </section>
     </>
   )

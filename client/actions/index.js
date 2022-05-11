@@ -16,8 +16,7 @@ export const UPDATE_GOAL = 'UPDATE_GOAL'
 export const REMOVE_GOAL = 'REMOVE_GOAL'
 export const ADD_GOAL = 'ADD_GOAL'
 
-// ACTION CREATORS
-
+//ACTION CREATORS
 //ERROR HANDLING
 export function showError(errorMessage) {
   return {
@@ -27,19 +26,12 @@ export function showError(errorMessage) {
 }
 
 //COSTS & FINANCIALS
-export function recieveCosts(costs) {
+export function receiveCosts(costs) {
   return {
     type: RECEIVE_COSTS,
     costs,
   }
 }
-
-// export function updateFrequency(costs) {
-//   return {
-//     type: UPDATE_FREQUENCY,
-//     costs,
-//   }
-// }
 
 export function updateFrequency(id, frequencyPerWeek) {
   return {
@@ -63,7 +55,7 @@ export function setCosts(costs) {
   }
 }
 
-// COMPARE COSTS
+//COMPARE COSTS
 export function setCompareCosts(compareCosts) {
   return {
     type: SET_COMPARE_COSTS,
@@ -71,11 +63,26 @@ export function setCompareCosts(compareCosts) {
   }
 }
 
-export function updateCompareCostsFreqency(id, frequencyPerWeek) {
+export function updateCompareCostsFrequency(id, frequencyPerWeek) {
   return {
     type: UPDATE_COMPARE_COSTS_FREQUENCY,
     id,
     frequencyPerWeek,
+  }
+}
+
+//COST THUNKS
+export function getCosts() {
+  return (dispatch) => {
+    return request
+      .get('/api/v1/costs/')
+      .then((res) => {
+        dispatch(receiveCosts(res.body))
+        return null
+      })
+      .catch((err) => {
+        dispatch(showError(err.message))
+      })
   }
 }
 
@@ -105,21 +112,6 @@ export function removeGoal(id) {
   return {
     type: REMOVE_GOAL,
     id,
-  }
-}
-
-// THUNKS
-export function getCosts() {
-  return (dispatch) => {
-    return request
-      .get('/api/v1/costs/')
-      .then((res) => {
-        dispatch(recieveCosts(res.body))
-        return null
-      })
-      .catch((err) => {
-        dispatch(showError(err.message))
-      })
   }
 }
 
@@ -154,7 +146,6 @@ export function deleteOneGoal(id) {
   return (dispatch) => {
     delGoal(id)
       .then((res) => {
-        console.log(res, 'res at thunk')
         dispatch(saveAllGoals(res))
         return null
       })
