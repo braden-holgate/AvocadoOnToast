@@ -162,7 +162,7 @@ function Questions() {
           <input type="number" name="average-savings" className="input" placeholder="Estimate save" defaultValue={savings}
             onChange={handleSavings}></input>
 
-          <select onChange={savingFrequency} defaultValue={savingsPeriod}>
+          <select className='dropdown' onChange={savingFrequency} defaultValue={savingsPeriod}>
             <option  value="week">
               Week
             </option>
@@ -235,7 +235,7 @@ function Questions() {
               </strong>
               <input type="number" name="commute" className="input"  
                 onChange={handleAgeandCommute}></input>
-              <select name="commutePeriod" onChange={handleAgeandCommute} defaultValue={ageAndCommute.commutePeriod}>
+              <select className='dropdown' name="commutePeriod" onChange={handleAgeandCommute} defaultValue={ageAndCommute.commutePeriod}>
                 <option  value="day">Day</option>
                 <option value="week">Week</option>
               </select>
@@ -279,14 +279,14 @@ function Questions() {
         </div>}
 
 
-        {!displayAdditional && <button onClick={handleDisplayOptions}>Additional Options</button>}
-        {displayAdditional && <button onClick={handleDisplayOptions}>Hide Options</button>}
+        {!displayAdditional && <button className='additional-option' onClick={handleDisplayOptions}>Additional Options</button>}
+        {displayAdditional && <button className='additional-option' onClick={handleDisplayOptions}>Hide Options</button>}
         
-        {!displayEdit && <button onClick={handleDisplayEdit}>Edit expenses</button>}
-        {displayEdit && <button onClick={handleDisplayEdit}>Hide expenses</button>}
+        {!displayEdit && <button className='additional-option' onClick={handleDisplayEdit}>Edit expenses</button>}
+        {displayEdit && <button className='additional-option' onClick={handleDisplayEdit}>Hide expenses</button>}
         
         <br></br>
-        <button onClick={handleCalculate} type='submit'>Calculate</button>
+        <button className='question-button' onClick={handleCalculate} type='submit'>Calculate</button>
        
           
         {/* -----Jessie's toggle test-----start----- */}
