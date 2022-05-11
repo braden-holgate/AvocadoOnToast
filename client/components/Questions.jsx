@@ -146,12 +146,12 @@ function Questions() {
             onChange={handleIncome}></input>
           
 
-          <select  className='dropdown' onChange={incomeFrequency}defaultValue='year'>
+          <select  className='dropdown' onChange={incomeFrequency} defaultValue='week'>
             <option  value="week">Week</option>
             <option value="fortnight">Fortnight</option>
             <option value="year">Year</option>
           </select>
-          <span data-tooltip="This is your before tax income">?</span>
+          <span data-tooltip="This is your NZD pay before tax and kiwisaver."><img className="tooltip-icon" src="/images/tooltip.png"></img></span>
           </div>
 
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
@@ -240,6 +240,7 @@ function Questions() {
                 <option  value="day">Day</option>
                 <option value="week">Week</option>
               </select>
+              <span className="has-tooltip-multiline" data-tooltip="We include this in the calculation of you real hourly wage."><img className="tooltip-icon" src="/images/tooltip.png"></img></span>
             </div>
             <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
               <strong>
@@ -273,6 +274,7 @@ function Questions() {
             </div>
             {newItemAlert && <div><p>Please fill in all fields before clicking "Add"</p><br></br></div>}
           </form>
+          <div className="is-divider" data-content="Expenses"></div>
           {!displayEdit && <button className='additional-option' onClick={handleDisplayEdit}>Edit expenses</button>}
         </div>}
 

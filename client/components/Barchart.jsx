@@ -84,18 +84,18 @@ setYears(
   ///////mock data end/////////////////////////
 
   const getOption = () => ({
-    // title: {
-    //   text: "Compounded Wealth",
-    //   subtext: "Your savings growing exponentially",
-    //   left: "center",
-    //   top: "center",
-    //   textStyle: {
-    //     fontSize: 30
-    //   },
-    //   subtextStyle: {
-    //     fontSize: 20
-    //   }
-    // },
+    title: {
+      text: "Compounded Wealth",
+      subtext: "Your savings growing exponentially",
+      left: "center",
+      bottom: "80%",
+      textStyle: {
+        fontSize: 25
+      },
+      subtextStyle: {
+        fontSize: 15
+      }
+    },
     tooltip: {},
     xAxis: {
       data: xAxisData,  // x axis data
@@ -105,8 +105,9 @@ setYears(
     },
     yAxis: [{
       type: "value",
-      // name: "Wealth 1000's",
+      name: "$1000's",
       nameLocation: "middle",
+      nameGap: 35,
       nameTextStyle: {
         verticalAlign: "middle"
       },

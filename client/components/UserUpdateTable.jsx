@@ -85,7 +85,7 @@ function UserUpdateTable({displayEdit, setDisplayEdit}) {
                       value = <input type='number' name='frequency-input' className='table-input' defaultValue={itemObj.frequencyPerWeek} onChange={(e) => handleFreqChange(itemObj.id, e)} />
                     }
                     else if (key === 'costPerItem') {
-                      value = <input type='text' name='cost-per-item' className='table-input' defaultValue={itemObj.cost} onChange={(e) => handleCostChange(itemObj.id, e)} />
+                      value = <input type='number' name='cost-per-item' className='table-input' defaultValue={itemObj.cost} onChange={(e) => handleCostChange(itemObj.id, e)} />
                     }
 
                     return <td key={key}>{value}</td>
