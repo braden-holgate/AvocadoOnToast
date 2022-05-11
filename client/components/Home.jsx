@@ -17,7 +17,7 @@ function Home() {
   return (
     <>
       <Nav />
-      <Welcome />
+      {/* <Welcome /> */}
       <Runningman/>
       <Message2 />
       <Questions />
