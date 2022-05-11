@@ -1,51 +1,32 @@
+
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-<<<<<<< HEAD
-import {
-  loadFinancials,
-  updateFrequency,
-  getCosts,
-  setCompareCosts,
-} from '../actions'
-=======
 import { loadFinancials, updateFrequency, getCosts, setCompareCosts, setCosts } from '../actions'
 import UserUpdateTable from './UserUpdateTable'
->>>>>>> main
 
 function Questions() {
+
   const dispatch = useDispatch()
-  const items = useSelector((state) => state.costs)
+  const items = useSelector(state => state.costs)
   const [income, setIncome] = useState(null)
   const [incomePeriod, setIncomePeriod] = useState('week')
   const [currentSavings, setCurrentSavings] = useState(null)
   const [savings, setSavings] = useState(null)
   const [savingsPeriod, setSavingsPeriod] = useState('week')
   const [hoursWorkedPerWeek, setHoursWorkedPerWeek] = useState(null)
-<<<<<<< HEAD
-  const [localItems, setLocalItems] = useState('items')
-  const [coffeeCost, setCoffeeCost] = useState(null)
-  const [eatingOutCost, setEatingOutCost] = useState(null)
-  const [displayAdditional, setDisplayAdditional] = useState(false)
-  const [ageAndCommute, setAgeAndCommute] = useState({
-    age: null,
-    commute: 0,
-    commutePeriod: 'day',
-  })
-  const [newItem, setNewItem] = useState({})
-=======
   const [displayAdditional, setDisplayAdditional] = useState(false)
   const [displayEdit, setDisplayEdit] = useState(false)
   const [ageAndCommute, setAgeAndCommute] = useState({age: null, commute: 0, commutePeriod: "day"})
   const [newItem, setNewItem] = useState({item: "", cost: "", frequencyPerWeek: ""})
   const [newItemAlert, setNewItemAlert] = useState(false)
->>>>>>> main
 
   useEffect(() => {
-    dispatch(getCosts())
+  dispatch(getCosts())
   }, [])
 
   const handleIncome = (e) => {
     setIncome(Number(e.target.value))
+
   }
 
   const incomeFrequency = (e) => {
@@ -80,20 +61,16 @@ function Questions() {
     displayAdditional ? setDisplayAdditional(false) : setDisplayAdditional(true)
   }
 
-<<<<<<< HEAD
-  const handleItems = (e) => {
-=======
   const handleDisplayEdit = (e) => {
     displayEdit ? setDisplayEdit(false) : setDisplayEdit(true)
   }
 
   const handleItems = (e) => {
     e.target.name === 'item' ?
->>>>>>> main
     setNewItem({
-      id: items.length + 1,
+      id: (items.length + 1),
       ...newItem,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     })
     :
     setNewItem({
@@ -115,33 +92,34 @@ function Questions() {
   }
 
   const handleAgeandCommute = (e) => {
-    e.target.name === 'commutePeriod'
-      ? setAgeAndCommute({
-          ...ageAndCommute,
-          [e.target.name]: e.target.value,
-        })
-      : setAgeAndCommute({
-          ...ageAndCommute,
-          [e.target.name]: Number(e.target.value),
-        })
+    e.target.name === "commutePeriod" ? 
+    setAgeAndCommute({
+      ...ageAndCommute,
+      [e.target.name]: e.target.value
+    })
+    :
+    setAgeAndCommute({
+      ...ageAndCommute,
+      [e.target.name]: Number(e.target.value)
+    })
   }
 
   const handleCalculate = (e) => {
     e.preventDefault()
 
     let totHours
-    ageAndCommute.commutePeriod === 'day'
-      ? (totHours = hoursWorkedPerWeek + ageAndCommute.commute * 5)
-      : (totHours = hoursWorkedPerWeek + ageAndCommute.commute)
+    ageAndCommute.commutePeriod === "day" ? 
+    totHours = hoursWorkedPerWeek + (ageAndCommute.commute * 5)
+    : totHours = hoursWorkedPerWeek + ageAndCommute.commute
 
     const financials = {
-      ...{ income },
-      ...{ incomePeriod },
-      ...{ savings },
-      ...{ savingsPeriod },
-      ...{ hoursWorkedPerWeek: totHours },
-      ...{ currentSavings },
-      age: ageAndCommute.age,
+      ...{income}, 
+      ...{incomePeriod}, 
+      ...{savings}, 
+      ...{savingsPeriod}, 
+      ...{hoursWorkedPerWeek: totHours},
+      ...{currentSavings},
+      age: ageAndCommute.age
     }
 
     dispatch(setCosts(items))
@@ -163,16 +141,9 @@ function Questions() {
             <label className="mr-2">What is your income?</label>
           </strong>
 
-          <input
-            type="number"
-            name="income"
-            className="input"
-            placeholder="Enter your income"
-            defaultValue={income}
-            onChange={handleIncome}
-          ></input>
-
-         
+          <input type="number" name="income" className="input" placeholder="Enter your income" defaultValue={income}
+            onChange={handleIncome}></input>
+          
 
           <select  className='dropdown' onChange={incomeFrequency} defaultValue={incomePeriod}>
             <option  value="week">
@@ -188,17 +159,13 @@ function Questions() {
             <label className="mr-2">How much do you estimate you save?</label>
           </strong>
 
-          <input
-            type="number"
-            name="average-savings"
-            className="input"
-            placeholder="Estimate save"
-            defaultValue={savings}
-            onChange={handleSavings}
-          ></input>
+          <input type="number" name="average-savings" className="input" placeholder="Estimate save" defaultValue={savings}
+            onChange={handleSavings}></input>
 
-          <select className='dropdown' onChange={savingFrequency} defaultValue={savingsPeriod}>
-            <option value="week">Week</option>
+          <select onChange={savingFrequency} defaultValue={savingsPeriod}>
+            <option  value="week">
+              Week
+            </option>
             <option value="fortnight">Fortnight</option>
             <option value="year">Year</option>
           </select>
@@ -211,29 +178,18 @@ function Questions() {
             </label>
           </strong>
 
-          <input
-            type="number"
-            name="current-savings"
-            className="input"
-            placeholder="Enter how much you already have saved here"
-            defaultValue={currentSavings}
-            onChange={handleCurrentSavings}
-          ></input>
+          <input type="number" name="current-savings" className="input" placeholder="Enter how much you already have saved here" defaultValue={currentSavings}
+            onChange={handleCurrentSavings}></input>
         </div>
-
+        
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
             <label className="mr-2">How many hours per week do you work?</label>
           </strong>
 
-          <input
-            type="number"
-            name="hours-worked"
-            className="input"
-            placeholder="Working hours weekly"
-            defaultValue={hoursWorkedPerWeek}
-            onChange={handleHoursInput}
-          ></input>
+          <input type="number" name="hours-worked" className="input" placeholder="Working hours weekly" defaultValue={hoursWorkedPerWeek}
+            onChange={handleHoursInput}></input>
+
         </div>
 
         {/* //LOU - MAKE SURE TO PREVENT NEGATIVE NUMBERS */}
@@ -244,13 +200,9 @@ function Questions() {
             </label>
           </strong>
 
-          <input
-            type="number"
-            name="coffees"
-            className="input"
-            placeholder="Coffee weekly"
-            onChange={handleCoffee}
-          ></input>
+          <input type="number" name="coffees" className="input" placeholder="Coffee weekly"
+            onChange={handleCoffee}></input>
+
         </div>
         <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
           <strong>
@@ -259,110 +211,10 @@ function Questions() {
             </label>
           </strong>
 
-          <input
-            type="number"
-            name="food"
-            className="input"
-            placeholder="Eating out"
-            onChange={handleEatingOut}
-          ></input>
+          <input type="number" name="food" className="input" placeholder="Eating out" 
+            onChange={handleEatingOut}></input>
+
         </div>
-<<<<<<< HEAD
-        {displayAdditional && (
-          <div className="additional-options">
-            <form>
-              <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
-                <strong>
-                  <label className="mr-2">How old are you in years?</label>
-                </strong>
-                <input
-                  type="number"
-                  name="age"
-                  className="input"
-                  onChange={handleAgeandCommute}
-                ></input>
-              </div>
-              <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
-                <strong>
-                  <label className="mr-2">
-                    How many hours do you spend commuting to work?
-                  </label>
-                </strong>
-                <input
-                  type="number"
-                  name="commute"
-                  className="input"
-                  onChange={handleAgeandCommute}
-                ></input>
-                <select
-                  className='dropdown'
-                  name="commutePeriod"
-                  onChange={handleAgeandCommute}
-                  defaultValue={ageAndCommute.commutePeriod}
-                >
-                  <option value="day">Day</option>
-                  <option value="week">Week</option>
-                </select>
-              </div>
-              <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
-                <strong>
-                  <p>Have other expenses you want to factor in?</p>
-                  <p>Subscriptions, Car expenses, Rent?</p>
-                </strong>
-              </div>
-              <div style={{ whiteSpace: 'nowrap', marginBottom: '25px' }}>
-                <strong>
-                  <label className="mr-2">Expense name:</label>
-                </strong>
-                <input
-                  type="text"
-                  name="item"
-                  className="input"
-                  onChange={handleItems}
-                ></input>
-                <strong>
-                  <label className="mr-2">How often per week?</label>
-                </strong>
-                <input
-                  type="number"
-                  name="frequencyPerWeek"
-                  className="input"
-                  onChange={handleItems}
-                ></input>
-                <strong>
-                  <label className="mr-2">Cost?</label>
-                </strong>
-                <input
-                  type="number"
-                  name="cost"
-                  className="input"
-                  onChange={handleItems}
-                ></input>
-                <button onClick={handleAddItems} type="submit">
-                  Add
-                </button>
-              </div>
-            </form>
-          </div>
-        )}
-
-        <button
-          className="question-button"
-          onClick={handleCalculate}
-          type="submit"
-        >
-          Calculate
-        </button>
-
-        {!displayAdditional && (
-          <button className="additional-option" onClick={handleDisplayOptions}>Additional Options</button>
-        )}
-        {displayAdditional && (
-          <button className="additional-option" onClick={handleDisplayOptions}>Hide Options</button>
-        )}
-       
-
-=======
         {displayAdditional && 
         <div className='additional-options'>
           <form>
@@ -437,9 +289,8 @@ function Questions() {
         <button onClick={handleCalculate} type='submit'>Calculate</button>
        
           
->>>>>>> main
         {/* -----Jessie's toggle test-----start----- */}
-        {/* toggle 1 */}
+         {/* toggle 1 */}
         {/* <div className='toggle-box'>
           <label className="label">
             <div className="toggle">
@@ -448,6 +299,10 @@ function Questions() {
             </div>
           </label>
         </div> */}
+
+    
+
+ 
       </section>
     </>
   )
