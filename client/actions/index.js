@@ -7,6 +7,7 @@ export const RECEIVE_COSTS = 'RECEIVE_COSTS'
 export const UPDATE_FREQUENCY = 'UPDATE_FREQUENCY'
 export const LOAD_FINANCIALS = 'LOAD_FINANCIALS'
 export const SET_COSTS = 'SET_COSTS'
+export const DELETE_COST_BY_ID = 'DELETE_COST_BY_ID'
 
 export const SET_COMPARE_COSTS = 'SET_COMPARE_COSTS'
 export const UPDATE_COMPARE_COSTS_FREQUENCY = 'UPDATE_COMPARE_COSTS_FREQUENCY'
@@ -34,13 +35,6 @@ export function recieveCosts(costs) {
   }
 }
 
-// export function updateFrequency(costs) {
-//   return {
-//     type: UPDATE_FREQUENCY,
-//     costs,
-//   }
-// }
-
 export function updateFrequency(id, frequencyPerWeek) {
   return {
     type: UPDATE_FREQUENCY,
@@ -63,6 +57,13 @@ export function setCosts(costs) {
   }
 }
 
+export function deleteCostById(id) {
+  return {
+    type: DELETE_COST_BY_ID,
+    id
+  }
+}
+
 // COMPARE COSTS
 export function setCompareCosts(compareCosts) {
   return {
@@ -71,7 +72,7 @@ export function setCompareCosts(compareCosts) {
   }
 }
 
-export function updateCompareCostsFreqency(id, frequencyPerWeek) {
+export function updateCompareCostsFrequency(id, frequencyPerWeek) {
   return {
     type: UPDATE_COMPARE_COSTS_FREQUENCY,
     id,

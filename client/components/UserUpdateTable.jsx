@@ -46,8 +46,10 @@ function UserUpdateTable({displayEdit, setDisplayEdit}) {
     dispatch(setCosts(costsArr))
     dispatch(setCompareCosts(costsArr))
 
-    // dispatch(setCosts(JSON.parse(JSON.stringify(costsArr))))
-    // dispatch(setCompareCosts(JSON.parse(JSON.stringify(costsArr))))
+  }
+
+  const handleDelete = (id) => {
+    dispatch(deleteCostById(id))
   }
 
   const handleDisplayEdit = (e) => {
@@ -56,7 +58,8 @@ function UserUpdateTable({displayEdit, setDisplayEdit}) {
   const headers = {
     item: 'Item',
     frequencyPerWeek: 'Number per week',
-    costPerItem: 'Cost per item'
+    costPerItem: 'Cost per item',
+    delete: ''
   }
 
   return (
@@ -86,6 +89,8 @@ function UserUpdateTable({displayEdit, setDisplayEdit}) {
                     }
                     else if (key === 'costPerItem') {
                       value = <input type='text' name='cost-per-item' className='table-input' defaultValue={itemObj.cost} onChange={(e) => handleCostChange(itemObj.id, e)} />
+                    } else if (key === 'delete') {
+                      value = <button onClick={() => handleDelete(itemObj.id)}>🗑️</button>
                     }
 
                     return <td key={key}>{value}</td>
