@@ -22,6 +22,10 @@ router.post('/', async (req, res) => {
     const input = req.body
     input.date = new Date()
     const dbResponse = await db.addGoal(input)
+    console.log(
+      `🚀 ~ file: goals.js ~ line 25 ~ router.post ~ dbResponse`,
+      dbResponse
+    )
     const newGoal = await db.getGoalById(
       dbResponse.id ? dbResponse.id : dbResponse[0]
     )
