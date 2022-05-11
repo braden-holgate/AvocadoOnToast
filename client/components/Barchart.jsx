@@ -16,14 +16,11 @@ const retire = require('../moneyCalcs/timeToRetirement')
 
 function Barchart() {
   const [years, setYears] = useState()
-  const [timesSeries, setTimeSeries] = useState([])
+  // const [timesSeries, setTimeSeries] = useState([])
   const financials = useSelector((state) => state.financials)
-  const { income, incomePeriod, savings, savingsPeriod, currentSavings } =
-    financials
-
-    // mock data
-    const [xAxisData, setXAxisData] = useState([])
-    const [barData1, setBarData1] = useState([])
+  const { income, incomePeriod, savings, savingsPeriod, currentSavings } = financials
+  const [xAxisData, setXAxisData] = useState([])
+  const [barData1, setBarData1] = useState([])
 
   echarts.use([
     BarChart,
@@ -35,13 +32,14 @@ function Barchart() {
   ])
 
   useEffect(() => {
-    setYears(
-      retire.yearsToRetirement(   // return NaN
+setYears(
+      retire.yearsToRetirement(
         income,
         incomePeriod,
         savings,
         savingsPeriod,
-        currentSavings
+        currentSavings,
+        0
       )
     )
   }, [financials])
@@ -56,41 +54,48 @@ function Barchart() {
       savingsPeriod,
       0
     )
-    setTimeSeries(newTimeSeries)
+    setBarChartData(newTimeSeries)
   }, [years])
   
-  // useEffect(()=>{
-  //     setBarChartData()
-  // }, [timesSeries])
+  const setBarChartData = (timeSeries)=>{
+    const xAxisData = [];
+    const yAxisData = []
+    timeSeries.forEach(item => {
+      xAxisData.push(`Year- ${item.year}`)
+      yAxisData.push((item.amt/1000))
+    });
 
-  // const setBarChartData = ()=>{
-  //   const xAxisData = [];
-  //   const yAxisData = []
-  //   timesSeries.forEach(item => {
-  //     xAxisData.push(`Year-${item.year}`)
-  //     yAxisData.push(item.amt)
-  //   });
-
-  //   setXAxisData(xAxisData)
-  //   setBarData1(yAxisData)
-  // }
+    setXAxisData(xAxisData)
+    setBarData1(yAxisData)
+  }
 
   /////////mock data begin////////////////////////////
-  useEffect(() => {
-    const xAxisData = []
-    const data1 = []
-    for (let i = 0; i < 100; i++) {
-      xAxisData.push('Year' + i)
-      data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5)
-    }
-    setXAxisData(xAxisData)
-    setBarData1(data1)
-  }, [])
+  // useEffect(() => {
+  //   const xAxisData = []
+  //   const data1 = []
+  //   for (let i = 0; i < 100; i++) {
+  //     xAxisData.push('Year' + i)
+  //     data1.push((Math.sin(i / 5) * (i / 5 - 10) + i / 6) * 5)
+  //   }
+  //   setXAxisData(xAxisData)
+  //   setBarData1(data1)
+  // }, [])
 
   ///////mock data end/////////////////////////
 
   const getOption = () => ({
-
+    // title: {
+    //   text: "Compounded Wealth",
+    //   subtext: "Your savings growing exponentially",
+    //   left: "center",
+    //   top: "center",
+    //   textStyle: {
+    //     fontSize: 30
+    //   },
+    //   subtextStyle: {
+    //     fontSize: 20
+    //   }
+    // },
     tooltip: {},
     xAxis: {
       data: xAxisData,  // x axis data
@@ -98,12 +103,20 @@ function Barchart() {
         show: false,
       },
     },
-    yAxis: {},
+    yAxis: [{
+      type: "value",
+      // name: "Wealth 1000's",
+      nameLocation: "middle",
+      nameTextStyle: {
+        verticalAlign: "middle"
+      },
+      nameRotate: 0
+    }],
     series: [
       {
-        name: 'bar1',
+        name: 'Wealth 1000\'s',
         type: 'bar',
-        data: barData1,  //bar 1 data
+        data: barData1,
         emphasis: {
           focus: 'series',
         },
