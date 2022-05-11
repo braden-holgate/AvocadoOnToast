@@ -21,8 +21,9 @@ router.post('/', async (req, res) => {
   try {
     const input = req.body
     input.date = new Date()
-    const newIdArr = await db.addGoal(input)
-    const newGoal = await db.getGoalById(newIdArr[0])
+    const dbResponse = await db.addGoal(input)
+    const id = dbResponse[0]
+    const newGoal = await db.getGoalById(id.id ? id.id : id)
     return res.json(newGoal)
   } catch (error) {
     res.status(500).json({ error: error.message })
