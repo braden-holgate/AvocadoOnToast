@@ -708,3 +708,28 @@ section.runningman {
   margin-left: 5px;
   width: 80px;
 }
+
+//----------------Table descriptions-----------------//
+.table-description-container {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+
+
+//----------------Arrow-----------------//
+.arrow-container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.arrow-left {
+  font-size: 80px;
+  color: #4a4a4a;
+}
+
+.arrow-right {
+  font-size: 80px;
+  color: #76B76D;
+}
