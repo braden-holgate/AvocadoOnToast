@@ -4,7 +4,7 @@ exports.up = function (knex) {
     table.string('content')
     table.string('author')
     table.integer('rating')
-    table.date('date')
+    table.string('date')
   })
 }
 

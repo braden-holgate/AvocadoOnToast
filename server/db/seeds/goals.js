@@ -10,21 +10,21 @@ exports.seed = function (knex) {
           content: `Save an extra 2% per year by cancelling Netflix`,
           author: `Barat`,
           rating: 5,
-          date: 1651579200,
+          date: 1651579200000,
         },
         {
           id: 2,
           content: 'Make coffee at home to save $15 per week',
           author: 'Sierra',
           rating: 4,
-          date: 1651665600,
+          date: 1651665600000,
         },
         {
           id: 3,
           content: 'Move to a city with lower rents and less commuting time.',
           author: 'Jin',
           rating: 5,
-          date: 1651752000,
+          date: 1651752000000,
         },
       ])
     })
